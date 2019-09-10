@@ -1,0 +1,22 @@
+/* 每个页面最外部元素初始化样式 */
+.page{
+		height:100%;
+		width:96%;
+		margin: 0 auto;
+		background:#FFFFFF;
+		font-size:30rpx;
+		position: relative;
+}
+
+/* 大按钮 */
+.big_button_while{
+	height:64rpx;
+	line-height: 64rpx;
+	font-size: 16px;
+	border:1px solid #7F7F7F;
+	color:#020001;
+	border-radius: 30px;
+	width:475rpx;
+	text-align: center;
+	margin:0 auto;
+}
