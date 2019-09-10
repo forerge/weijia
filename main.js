@@ -4,6 +4,7 @@ import App from './App'
 import commonConfig from "common/config.js"
 Vue.prototype.$commonConfig=commonConfig;//将对象挂载到Vue
 
+
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
