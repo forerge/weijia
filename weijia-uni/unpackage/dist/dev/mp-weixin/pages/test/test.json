@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "测试",
+  "usingComponents": {
+    "dzy-grid-templat": "/components/dzy-grid-templat/dzy-grid-templat"
+  }
+}
