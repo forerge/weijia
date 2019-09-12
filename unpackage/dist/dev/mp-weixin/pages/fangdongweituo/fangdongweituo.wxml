@@ -1,0 +1,1 @@
+<view><nav-top-return vue-id="1" title="房东委托" bind:__l="__l"></nav-top-return><view class="left-title">补充内容</view><view class="fang-textarea"><textarea placeholder="{{areainput}}" auto-height value="{{msg}}"></textarea></view><view>{{msg}}</view><checkbox-column-frame vue-id="2" columnTitle="房屋配置" checkboxVal="{{['床','宽带']}}" bind:__l="__l"></checkbox-column-frame></view>

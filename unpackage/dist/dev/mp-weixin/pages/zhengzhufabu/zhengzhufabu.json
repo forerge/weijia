@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-top-return": "/components/dzy-nav-top-return/dzy-nav-top-return",
+    "column-title": "/components/dzy-column-title/dzy-column-title",
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

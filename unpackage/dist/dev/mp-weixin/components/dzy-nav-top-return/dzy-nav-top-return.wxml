@@ -1,0 +1,1 @@
+<view><view class="dzy-navigation-top" style="{{'padding-top:'+(statusBarHeight)+';'}}"><view class="dzy-navigation">{{''+title+''}}<navigator class="dzy-navigation-left-return" open-type="navigateBack" hover-class="none">‹</navigator></view></view></view>

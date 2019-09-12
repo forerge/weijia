@@ -1,0 +1,1 @@
+<view><view class="person"><view class="person-b"><image src="{{serverUrl+'static/images/'+downUpImg}}"></image></view><view class="person-a"><view class="person-a-l"><image src="{{serverUrl+'static/images/'+headImg}}" mode="widthFix"></image></view><view class="person-a-c"></view><view class="person-a-r"></view></view></view></view>

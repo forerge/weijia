@@ -1,0 +1,65 @@
+
+.person{
+	height:330rpx;
+	width:750rpx;
+	position: relative;
+}
+.person-b{
+	position: absolute;
+	height:330rpx !important;
+	width:750rpx;
+}
+.person-b image{
+	height:330rpx !important;
+	width:750rpx;
+}
+.person-a{
+	position: absolute;
+	height:330rpx;
+	width:750rpx;
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-orient:horizontal;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:row;
+	    -ms-flex-direction:row;
+	        flex-direction:row;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	/* background:url('../../images/person-fuwu.png'); */
+	background-size:100% 100%;
+}
+.person-a-l{
+	width:120rpx;
+	height:120rpx;
+	-webkit-box-flex:0;
+	-webkit-flex-grow:0;
+	    -ms-flex-positive:0;
+	        flex-grow:0;
+	background:#007AFF;
+	margin-left:40rpx;
+}
+.person-a-l image{
+}
+.person-a-c{
+	height:30rpx;
+	-webkit-box-flex:1;
+	-webkit-flex-grow:1;
+	    -ms-flex-positive:1;
+	        flex-grow:1;
+	background:#09BB07
+}
+.person-a-r{
+	-webkit-box-flex:0;
+	-webkit-flex-grow:0;
+	    -ms-flex-positive:0;
+	        flex-grow:0;
+	height:66rpx;
+	width:208rpx;
+	background:pink;
+}
+

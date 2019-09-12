@@ -1,0 +1,12 @@
+/* 大按钮 */
+.big_button_while{
+	height:64rpx;
+	line-height: 64rpx;
+	font-size: 16px;
+	border:1px solid #7F7F7F;
+	color:#020001;
+	border-radius: 30px;
+	width:475rpx;
+	text-align: center;
+	margin:0 auto;
+}

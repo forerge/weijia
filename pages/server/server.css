@@ -1,0 +1,70 @@
+.server-top{
+		border-bottom: 1px solid #3F536E;
+		height:42px;
+		text-align: center;
+		line-height: 42px;
+	}
+	.server-pro{
+		height:205rpx;
+		width:665rpx;
+		border:1px solid #999;
+		border-radius: 8px;
+		margin:0 auto;
+		box-shadow: 2px 2px 5px 0px #999;
+		position: relative;
+		margin-top:30rpx;
+	}
+	.server-pro-a{
+		width:226rpx;
+		height:154rpx;
+		border-radius: 8px;
+		display:block;
+		position: absolute;
+		top:20rpx;
+		left:26rpx;
+	}
+	.server-pro-a image{
+		width:226rpx;
+		height:154rpx;
+	}
+	.server-pro-b{
+		    position: absolute;
+		    top: 20rpx;
+		    left: 306rpx;
+		    font-size: 14px;
+			color:#333;
+			width:350rpx;
+			height:32rpx;
+			overflow: hidden;
+	}
+	.server-pro-c{
+		    position: absolute;
+		    top: 88rpx;
+		    left: 306rpx;
+		    font-size: 14px;
+			color:#333;
+	}
+	.server-pro-c text{
+		    color: #999;
+		    font-size: 14px;
+	}
+	.server-pro-d{
+		    position: absolute;
+		    top: 144rpx;
+		    left: 306rpx;
+		    font-size: 16px;
+			color:#C40000;
+	}
+	.server-pro-e{
+		position: absolute;
+		    top: 136rpx;
+		    left: 472rpx;
+		    font-size: 13px;
+		    width: 140rpx;
+		    height: 50rpx;
+		    background:#FDE648;
+			text-align: center;
+			line-height: 50rpx;
+			color: #333;
+			border-radius: 8px;
+	}
