@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "唯家首页",
-  "usingComponents": {
-    "uni-select": "/components/lee-select/lee-select"
-  }
-}
