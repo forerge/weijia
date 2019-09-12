@@ -70,6 +70,10 @@
 				"navigationBarTitleText": "个人服务"
 			}
         }
+        ,{
+            "path" : "pages/test01/test01",
+            "style" : {}
+        }
     ],
 	//2.头部导航条默认样式
 	"globalStyle": {
