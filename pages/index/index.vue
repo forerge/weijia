@@ -4,11 +4,11 @@
 		<view class="topsearch">
 			<view class="location" @click="showCitySelect">
 				<text class="address" v-text="cityName"></text>
-				<image class="img" :src="serverUrl+'static/images/'+downUpImg"></image>
+				<image class="img" :src="serverImgUrl+'images/'+downUpImg"></image>
 			</view>  
 			<view class="searchInput">
 				<view class="hr"></view>
-				<image class="img" :src="serverUrl+'static/images/sousuo.png'" ></image>
+				<image class="img" :src="serverImgUrl+'sousuo.png'" ></image>
 				<input class="input" type="text" placeholder="请输入小区名或地址" @focus="hideCitySelect"/>
 			</view>
 		</view>
@@ -17,10 +17,10 @@
 		<!-- 轮播图板块 start -->
 		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000"  :circular="true" class="lunbo" >
 			<swiper-item>
-				<image class="lunboimg" :src="serverUrl+'static/images/banner1.png'" mode="widthFix"></image>
+				<image class="lunboimg" :src="serverImgUrl+'banner1.png'" mode="widthFix"></image>
 			</swiper-item>
 			<swiper-item>
-				<image class="lunboimg" :src="serverUrl+'static/images/banner2.png'" mode="widthFix"></image>
+				<image class="lunboimg" :src="serverImgUrl+'banner2.png'" mode="widthFix"></image>
 			</swiper-item> 
 		</swiper>
       <!-- 轮播图板块 end -->
@@ -29,73 +29,73 @@
 	<view class="grid grid-col-4 nav-list">
 		<view class="grid-list">
 				<navigator url="../weijiahaofang/weijiahaofang" hover-class="none">
-			<image :src="serverUrl+'static/images/nav01.png'" ></image>
+			<image :src="serverImgUrl+'nav01.png'" ></image>
 			<text>唯家好房</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
-			<image :src="serverUrl+'static/images/nav02.png'" ></image>
+			<image :src="serverImgUrl+'nav02.png'" ></image>
 			<text>整租</text>
 			</navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
-			<image :src="serverUrl+'static/images/nav03.png'" ></image>
+			<image :src="serverImgUrl+'nav03.png'" ></image>
 			<text>合租</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../fangyuanshangchuan/fangyuanshangchuan" open-type="switchTab" hover-class="none">
-			<image :src="serverUrl+'static/images/nav04.png'" ></image>
+			<image :src="serverImgUrl+'nav04.png'" ></image>
 			<text>上传房源</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="javascript:void(0)" hover-class="none">
-			<image :src="serverUrl+'static/images/nav05.png'" ></image>
+			<image :src="serverImgUrl+'nav05.png'" ></image>
 			<text>职业房东</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../jingjirenjiaru/jingjirenjiaru" hover-class="none">
-			<image :src="serverUrl+'static/images/nav06.png'" ></image>
+			<image :src="serverImgUrl+'nav06.png'" ></image>
 			<text>职业经纪人</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
-			<image :src="serverUrl+'static/images/nav07.png'" ></image>
+			<image :src="serverImgUrl+'nav07.png'" ></image>
 			<text>房东委托</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../yuyuekanfang/yuyuekanfang" hover-class="none">
-			<image :src="serverUrl+'static/images/nav08.png'" ></image>
+			<image :src="serverImgUrl+'nav08.png'" ></image>
 			<text>预约看房</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../wuyejiaojie/wuyejiaojie" hover-class="none">
-			<image :src="serverUrl+'static/images/nav09.png'" ></image>
+			<image :src="serverImgUrl+'nav09.png'" ></image>
 			<text>物业交接</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
-			<image :src="serverUrl+'static/images/nav010.png'" ></image>
+			<image :src="serverImgUrl+'nav010.png'" ></image>
 			<text>找室友</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../wodehetong/wodehetong2" hover-class="none">
-			<image :src="serverUrl+'static/images/nav011.png'" ></image>
+			<image :src="serverImgUrl+'nav011.png'" ></image>
 			<text>我的合同</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../wodeqianbao/wodeqianbao" hover-class="none">
-			<image :src="serverUrl+'static/images/nav012.png'" ></image>
+			<image :src="serverImgUrl+'nav012.png'" ></image>
 			<text>我的钱包</text>
 			 </navigator>
 		</view>
@@ -129,6 +129,7 @@
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//推荐内容
 				tuijianContent:[
 					{
@@ -194,7 +195,59 @@
 		
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
-			
+			//执行uni-app提供的类似ajax异步加载
+			uni.request({ 
+				url: this.serverUrl+'home/house/hot', //请求url
+				method: 'POST',               //请求方式
+				data: {},                     //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						console.log(JObject.Parse(res.data[0].h_uploads));//获取服务器数据，并赋值
+						// this.tuijianContent:[
+							// {
+							// imgUrl:this.serverUrl+res.data[0].uploads[0],
+							// title:'合租.天通苑北二区 3居室.1厅.1卫',res.data
+							// area:this.serverUrl+res.data[0].h_space+'㎡',
+							// floor:this.serverUrl+res.data[0].h_addr+'/'.this.serverUrl+res.data.[0].h_floor,
+							// towards:this.serverUrl+res.data[0].h_xiang,
+							// subwayDistance:'距5号线800m',
+							// pledge:this.serverUrl+res.data[0].h_rule,
+							// subway:'离地铁近',
+							// veranda:'有阳台',
+							// monthPrice:this.serverUrl+res.data[0].h_money
+							// },
+							// {
+							// imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+							// title:'合租.天通苑北二区 3居室.1厅.1卫',
+							// area:'15m²',
+							// floor:'12/18层',
+							// towards:'朝南',
+							// subwayDistance:'距5号线800m',
+							// pledge:'押一付一',
+							// subway:'离地铁近',
+							// veranda:'有阳台',
+							// monthPrice:'2300'
+							// },{
+							// imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+							// title:'合租.天通苑北二区 3居室.1厅.1卫',
+							// area:'15m²',
+							// floor:'12/18层',
+							// towards:'朝南',
+							// subwayDistance:'距5号线800m',
+							// pledge:'押一付一',
+							// subway:'离地铁近',
+							// veranda:'有阳台',
+							// monthPrice:'2300'
+							// }
+						// ],
+					}else{
+						console.log(res);
+					}
+					
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		}, 
 		
 		//3.事件以及自定义方法存放处
