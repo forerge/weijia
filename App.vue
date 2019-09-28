@@ -12,8 +12,8 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
-	@import url("./common/common.css");
-	@import url("./common/grid.min.css");
+	@import "./common/common";
+	@import "./common/grid.min.css";
 </style>

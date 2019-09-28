@@ -1,112 +1,97 @@
 <template>
 	<view>
-		<view class="house-warning">
-			<view class="house-warning-img">
-				<image class="img" :src="serverUrl+'static/images/'+one" mode="widthFix"></image>
-			</view>
-			<view class="house-warning-word">温馨提示：请正确选择发布信息的分类，分类错误会导致信息违规下架</view>
+		<view class="house-warning row-items-left-center">
+			<image class="house-warning-img" :src="serverUrl+'static/images/lingdang.png'" mode="widthFix"></image>
+			<text class="house-warning-word">温馨提示：请正确选择发布信息的分类，分类错误会导致信息违规下架</text>
 		</view>
 		<view class="house-person" >居民住房</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/'+two" mode="widthFix"></image>
+				<image class="img" :src="serverUrl+'static/images/nav02.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >整租</view>
 				<view class="house-c-bottom">一整套房子，也包括房间</view>
 			</view>
+			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
 			<view class="house-right" >＞</view>
+			</navigator>
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/'+three" mode="widthFix"></image>
+				<image class="img" :src="serverUrl+'static/images/nav03.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >合租</view>
 				<view class="house-c-bottom">一个房间</view>
 			</view>
+			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
 			<view class="house-right" >＞</view>
+				</navigator>
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/'+four" mode="widthFix"></image>
+				<image class="img" :src="serverUrl+'static/images/nav07.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >房东委托</view>
 				<view class="house-c-bottom">委托给经纪人，方便又省心</view>
 			</view>
+				<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
 			<view class="house-right" >＞</view>
+				</navigator>
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/'+five" mode="widthFix"></image>
+				<image class="img" :src="serverUrl+'static/images/nav010.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >找室友</view>
 				<view class="house-c-bottom">找一起住的人，分摊房租</view>
 			</view>
+			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
 			<view class="house-right" >＞</view>
+				</navigator>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl,
-				one:"lingdang.png",
-				two:"nav02.png",
-				three:"nav03.png",
-				four:"nav07.png",
-				five:"nav010.png",
+				serverUrl:this.$commonConfig.serverUrl
 			}
-		},
-		methods: {
-			
-		}
+		} 
 	}
 </script>
 
 <style lang="scss">
 	.house-warning{
-		height: 72rpx;
 		background: #FEFCED;
 		font-size: $uni-font-size-sm-minus;
-		line-height: 72rpx;
+		height: 60rpx;
 		color: #F7A677;
-		dispaly:flex;
-		flex-direction:row;
-		justify-content:flex-start;
-		display: flex;
-
 	}
 	.house-warning-img{
-		height: 72rpx;
-		width: 54rpx;
-		text-align: right;
-		line-height: 90rpx;
-
+		width:30rpx;
+		margin-left:1em;
+	}
+	.house-warning-word{
+		text-indent: 1em;
 	}
 	.house-person{
 		height: 40rpx;
 		line-height: 60rpx;
-		font-size: 20rpx;
+		font-size: $uni-font-size-sm;
 		text-indent: 30rpx;
 		color: #999;
-
-	}
-	.house-warning-word{
-		text-indent: 10rpx
-	}
-	.house-warning-img image{
-		height:30rpx;
-		width:30rpx;
 	}
 	.house-fenlei{
 		width: 100%;
 		height: 140rpx;
-		border-bottom: 1px solid #999;
+		border-bottom: 1px solid #F0F0F0;
 		display: flex;
 
 		}
@@ -117,8 +102,7 @@
 		flex-grow: 0;
 
 	}
-	.house-left image{
-		// height:62rpx !important;
+	.house-left .img{
 		width:56rpx;
 		margin-top: 38rpx;
 
@@ -146,9 +130,9 @@
 	.house-right{
 		height: 140rpx;
 		line-height: 140rpx;
-		width: 60rpx;
 		flex-grow: 0;
 		color: #666;
-
+		width: 50px;
+		text-align: center;
 	}
 </style>

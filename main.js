@@ -11,7 +11,7 @@ const app = new Vue({
 	onLaunch: function() { 
 		//app启动时获取顶部状态栏高度并原型绑定到vue
 		var res = uni.getSystemInfoSync();
-		Vue.prototype.$statusBarHeight=res.statusBarHeight+'px';
+		Vue.prototype.$statusBarHeight=res.statusBarHeight;
 	}
 })
 app.$mount()

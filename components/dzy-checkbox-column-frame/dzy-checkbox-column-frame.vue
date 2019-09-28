@@ -2,20 +2,12 @@
 	<view>
 		<columnTitle :columnTitle="columnTitle"/>
 		<view class="checkbox-column-frame">
-		<view class="grid grid-col-5 checkbox-column">
-			<!-- <view class="grid-list"> 
-					<text class="text active">宽带</text>
-			</view> -->
+		<view class="grid grid-col-4 grid-fixed-width checkbox-column">
 			<block v-for="(val,index) in checkboxVal" :key="index">
-			<view class="grid-list">
+			<view class="grid-list grid-row-align-center">
 					<text class="text" :class="{active: index===0 }">{{val}}</text>
-			</view>
+			</view> 
 			</block>
-			<view class="grid-list grid-fill"></view>
-			<view class="grid-list grid-fill"></view>
-			<view class="grid-list grid-fill"></view>
-			<view class="grid-list grid-fill"></view>
-			<view class="grid-list grid-fill"></view>
 		</view>
 		</view>
 		
@@ -45,13 +37,12 @@
 
 <style lang="scss" >	
 	.checkbox-column-frame{
-		padding:0 15px;
+		padding-bottom:30rpx;
 		.checkbox-column {
 			.grid-list{
 				height: 50px !important;
-				@include row-row-col-align;
 				.text{
-					font-size:$uni-font-size-sm;
+					font-size:$uni-font-size-sm-minus;
 					padding:3px 15px;
 					border-radius: 15px;
 					color:#A0A0A0;

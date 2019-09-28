@@ -1,6 +1,8 @@
 <template>
 	<view>
+		<view style="padding:1em 0;background:#fff;">
 		<view class="big_button_yellow" >{{big_button_yellow}}</view>
+		</view>
 	</view>
 </template>
 

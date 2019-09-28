@@ -15,7 +15,7 @@
 		<!-- 位置搜索板块 end -->
 		
 		<!-- 轮播图板块 start -->
-		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000"  class="lunbo" >
+		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000"  :circular="true" class="lunbo" >
 			<swiper-item>
 				<image class="lunboimg" :src="serverUrl+'static/images/banner1.png'" mode="widthFix"></image>
 			</swiper-item>
@@ -28,25 +28,25 @@
 	<!-- 导航栏板块 start-->
 	<view class="grid grid-col-4 nav-list">
 		<view class="grid-list">
-				<navigator url="javascript:void(0)" hover-class="none">
+				<navigator url="../weijiahaofang/weijiahaofang" hover-class="none">
 			<image :src="serverUrl+'static/images/nav01.png'" ></image>
 			<text>唯家好房</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
 			<image :src="serverUrl+'static/images/nav02.png'" ></image>
 			<text>整租</text>
 			</navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
 			<image :src="serverUrl+'static/images/nav03.png'" ></image>
 			<text>合租</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../fangyuanshangchuan/fangyuanshangchuan" open-type="switchTab" hover-class="none">
 			<image :src="serverUrl+'static/images/nav04.png'" ></image>
 			<text>上传房源</text>
 			 </navigator>
@@ -58,43 +58,43 @@
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../jingjirenjiaru/jingjirenjiaru" hover-class="none">
 			<image :src="serverUrl+'static/images/nav06.png'" ></image>
 			<text>职业经纪人</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
 			<image :src="serverUrl+'static/images/nav07.png'" ></image>
 			<text>房东委托</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../yuyuekanfang/yuyuekanfang" hover-class="none">
 			<image :src="serverUrl+'static/images/nav08.png'" ></image>
 			<text>预约看房</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../wuyejiaojie/wuyejiaojie" hover-class="none">
 			<image :src="serverUrl+'static/images/nav09.png'" ></image>
 			<text>物业交接</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
 			<image :src="serverUrl+'static/images/nav010.png'" ></image>
 			<text>找室友</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../wodehetong/wodehetong2" hover-class="none">
 			<image :src="serverUrl+'static/images/nav011.png'" ></image>
 			<text>我的合同</text>
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
+			<navigator url="../wodeqianbao/wodeqianbao" hover-class="none">
 			<image :src="serverUrl+'static/images/nav012.png'" ></image>
 			<text>我的钱包</text>
 			 </navigator>
@@ -107,167 +107,65 @@
 			<view class="title">
 				推荐
 			</view>
-			<view class="content">
-				<view class="content-list">
-					<view class="img">
-						<navigator url="javascript:void(0)" hover-class="none">
-						 <image :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-						  </navigator>
-					</view>
-					<view class="description">
-						<navigator url="javascript:void(0)" hover-class="none">
-						<view class="v1">合租.天通苑北二区 3居室.1厅.1卫</view>
-						<view class="v2">
-							<text class="t1">15m²</text>
-							 <text class="t2">12/18层</text> 
-							 <text class="t3">朝南</text> <br>
-							 <text class="t4">距5号线800m</text>
-						</view>
-						<view class="v3">
-							<text class="t1">押一付一</text>
-							 <text class="t2">离地铁近</text> 
-							 <text class="t3">有阳台</text>
-						</view>
-						<view class="v4">
-							<text class="t1">2300 </text>
-							 <text class="t2">元/月</text>
-						</view>
-						 </navigator>
-					</view>
-				</view> 
-				
-				<view class="content-list">
-					<view class="img">
-						<navigator url="javascript:void(0)" hover-class="none">
-						 <image :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-						  </navigator>
-					</view>
-					<view class="description">
-						<navigator url="javascript:void(0)" hover-class="none">
-						<view class="v1">合租.天通苑北二区 3居室.1厅.1卫</view>
-						<view class="v2">
-							<text class="t1">15m²</text>
-							 <text class="t2">12/18层</text> 
-							 <text class="t3">朝南</text> <br>
-							 <text class="t4">距5号线800m</text>
-						</view>
-						<view class="v3">
-							<text class="t1">押一付一</text>
-							 <text class="t2">离地铁近</text> 
-							 <text class="t3">有阳台</text>
-						</view>
-						<view class="v4">
-							<text class="t1">2300 </text>
-							 <text class="t2">元/月</text>
-						</view>
-						 </navigator>
-					</view>
-				</view> 
-				
-				<view class="content-list">
-					<view class="img">
-						<navigator url="javascript:void(0)" hover-class="none">
-						 <image :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-						  </navigator>
-					</view>
-					<view class="description">
-						<navigator url="javascript:void(0)" hover-class="none">
-						<view class="v1">合租.天通苑北二区 3居室.1厅.1卫</view>
-						<view class="v2">
-							<text class="t1">15m²</text>
-							 <text class="t2">12/18层</text> 
-							 <text class="t3">朝南</text> <br>
-							 <text class="t4">距5号线800m</text>
-						</view>
-						<view class="v3">
-							<text class="t1">押一付一</text>
-							 <text class="t2">离地铁近</text> 
-							 <text class="t3">有阳台</text>
-						</view>
-						<view class="v4">
-							<text class="t1">2300 </text>
-							 <text class="t2">元/月</text>
-						</view>
-						 </navigator>
-					</view>
-				</view> 
-				
-				<view class="content-list">
-					<view class="img">
-						<navigator url="javascript:void(0)" hover-class="none">
-						 <image :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-						  </navigator>
-					</view>
-					<view class="description">
-						<navigator url="javascript:void(0)" hover-class="none">
-						<view class="v1">合租.天通苑北二区 3居室.1厅.1卫</view>
-						<view class="v2">
-							<text class="t1">15m²</text>
-							 <text class="t2">12/18层</text> 
-							 <text class="t3">朝南</text> <br>
-							 <text class="t4">距5号线800m</text>
-						</view>
-						<view class="v3">
-							<text class="t1">押一付一</text>
-							 <text class="t2">离地铁近</text> 
-							 <text class="t3">有阳台</text>
-						</view>
-						<view class="v4">
-							<text class="t1">2300 </text>
-							 <text class="t2">元/月</text>
-						</view>
-						 </navigator>
-					</view>
-				</view> 
-				
-				<view class="content-list">
-					<view class="img">
-						<navigator url="javascript:void(0)" hover-class="none">
-						 <image :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-						  </navigator>
-					</view>
-					<view class="description">
-						<navigator url="javascript:void(0)" hover-class="none">
-						<view class="v1">合租.天通苑北二区 3居室.1厅.1卫</view>
-						<view class="v2">
-							<text class="t1">15m²</text>
-							 <text class="t2">12/18层</text> 
-							 <text class="t3">朝南</text> <br>
-							 <text class="t4">距5号线800m</text>
-						</view>
-						<view class="v3">
-							<text class="t1">押一付一</text>
-							 <text class="t2">离地铁近</text> 
-							 <text class="t3">有阳台</text>
-						</view>
-						<view class="v4">
-							<text class="t1">2300 </text>
-							 <text class="t2">元/月</text>
-						</view>
-						 </navigator>
-					</view>
-				</view> 
-			</view>
+			<tuijianContentList :tuijianContent="tuijianContent"/>
 		</view>
 		<!-- 推荐模块结束 -->
 		<!-- 城市选择组件 -->
-		<uni-select class="uni-select" :class="{active:isActive }" :listData="listData" :quickPanelData="quickPanelData" @chooseItem="chooseItem"></uni-select>
+		<citySelect class="uni-select" :class="{active:isActive }" :listData="listData" :quickPanelData="quickPanelData" @chooseItem="chooseItem" />
     </view>
 </template>
 <!-- 二、逻辑层 -->
 <script>
-	import city from '../../common/city.js'
-	import uniSelect from '../../components/lee-select/lee-select.vue'
+	import city from '@/common/city.js'
+	import citySelect from '@/components/uni-city-select/uni-city-select.vue'
+	import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue'
 	export default {
 		components:{
-			uniSelect
+			citySelect,
+			tuijianContentList
 		},
 		//1.初始化模板变量
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverUrl:this.$commonConfig.serverUrl,
-				
+				//推荐内容
+				tuijianContent:[
+					{
+					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					title:'合租.天通苑北二区 3居室.1厅.1卫',
+					area:'15m²',
+					floor:'12/18层',
+					towards:'朝南',
+					subwayDistance:'距5号线800m',
+					pledge:'押一付一',
+					subway:'离地铁近',
+					veranda:'有阳台',
+					monthPrice:'2300'
+					},{
+					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					title:'合租.天通苑北二区 3居室.1厅.1卫',
+					area:'15m²',
+					floor:'12/18层',
+					towards:'朝南',
+					subwayDistance:'距5号线800m',
+					pledge:'押一付一',
+					subway:'离地铁近',
+					veranda:'有阳台',
+					monthPrice:'2300'
+					},{
+					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					title:'合租.天通苑北二区 3居室.1厅.1卫',
+					area:'15m²',
+					floor:'12/18层',
+					towards:'朝南',
+					subwayDistance:'距5号线800m',
+					pledge:'押一付一',
+					subway:'离地铁近',
+					veranda:'有阳台',
+					monthPrice:'2300'
+					}
+				],
 				//获取定位城市处->上下图标切换
 				downUpImg:"xiala-down.png",
 				
@@ -291,28 +189,6 @@
 					height: 224
 				}
 				]
-				// listAttr: {
-				// 	listBackgroundColor:'none',
-				// 	titleFontSize: 28,
-				// 	titleColor: '#333',
-				// 	titleHeight: 60,
-				// 	titleBackground: '#ccc',
-				// 	titlePadding: 20,
-				// 	itemHeight: 80,
-				// 	itemFontSize: 28,
-				// 	itemBorderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-				// 	itemColor: '#333'
-				// },
-				// navAttr: {
-				// 	enable: true,
-				// 	backgroundColor: 'rgba(0, 0, 0, 0.4)',
-				// 	color: '#333',
-				// 	activeColor: '#fff',
-				// 	fontSize: 20,
-				// 	itemPadding:'6 0',
-				// 	borderRadius: 100,
-				// 	padding:'20 0'
-				// }
 			}
 		},
 		
@@ -342,6 +218,6 @@
 	}
 </script>
 <!-- 三、样式层 -->
-<style>
-@import url("../../common/index.css");
+<style lang="scss">
+@import "../../common/index";
 </style>

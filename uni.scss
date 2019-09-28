@@ -42,6 +42,7 @@ $uni-font-size-sm-minus:20upx;
 $uni-font-size-sm:24upx;
 $uni-font-size-base:28upx;
 $uni-font-size-lg:32upx;
+$uni-font-size-larger:50upx;
 
 /* 图片尺寸 */
 $uni-img-size-sm:40upx;
@@ -75,46 +76,4 @@ $uni-font-size-subtitle:36upx;
 $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:30upx;
 
-/* 对齐 */
-// 多列标签或单个元素上下左右居中
-@mixin row-row-col-align {
-  display: flex;
-   flex-direction: row;
-  align-items: center;
-  justify-content:center;
-}
-// 多行标签上下左右居中
-@mixin col-row-col-align {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:center;
-}
-// 多列标签左对齐上下居中
-@mixin row-left-col-align {
-  display: flex;
-   flex-direction: row;
-  align-items: center;
-  justify-content:flex-start;
-}
-// 多列标签右对齐上下居中
-@mixin row-right-col-align {
-  display: flex;
-   flex-direction: row;
-  align-items: center;
-  justify-content:flex-end;
-}
-// 多行标签左对齐上下居中
-@mixin col-left-col-align {
-  display: flex;
-   flex-direction: col;
-  align-items: flex-start;
-  justify-content:center;
-}
-// 多行标签右对齐上下居中
-@mixin col-right-col-align {
-  display: flex;
-   flex-direction: col;
-  align-items: flex-end;
-  justify-content:center;
-}
+
