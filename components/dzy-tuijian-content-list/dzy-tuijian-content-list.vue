@@ -4,24 +4,24 @@
 		<view class="grid grid-col-2 tuijian-content-list">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center">
 				<navigator class="img-navigator" url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-				 <image class="img" :src="val.imgUrl" ></image>
+				 <image class="img" :src="serverUrl+'public/uploads/'+JSON.parse(val.h_uploads)[0]" ></image>
 				  </navigator>
 				<view class="description">
 					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-					<view class="v1">{{val.title}}</view>
+					<view class="v1">{{val.h_state+'.'+val.h_qv+' '+val.h_shi+'居室.'+val.h_ting+'厅.'+val.h_wei+'卫'}}</view>
 					<view class="v2">
-						<text class="t1">{{val.area}}</text>
-						 <text class="t2">{{val.floor}}</text> 
-						 <text class="t3">{{val.towards}}</text> <br>
-						 <text class="t4">{{val.subwayDistance}}</text>
+						<text class="t1">{{val.h_space+'㎡'}}</text>
+						 <text class="t2">{{val.h_addr+'/'+val.h_floor+'层'}}</text> 
+						 <text class="t3">{{'朝'+val.h_xiang}}</text> <br>
+						 <text class="t4">{{'距'+val.h_metro_no+'线地铁'+val.h_metro_length+'m'}}</text>
 					</view>
 					<view class="v3">
-						<text class="t1">{{val.pledge}}</text>
-						 <text class="t2">{{val.subway}}</text> 
-						 <text class="t3">{{val.veranda}}</text>
+						<text class="t1">{{val.h_rule}}</text>
+						 <text class="t2">{{val.h_metro_length<2000?'离地铁近':''}}</text> 
+						 <text class="t3">{{JSON.parse(val.h_config).yangtai==1?'有阳台':''}}</text>
 					</view>
 					<view class="v4">
-						<text class="t1">{{val.monthPrice}}</text>
+						<text class="t1">{{val.h_money}}</text>
 						 <text class="t2">元/月</text>
 					</view>
 					 </navigator>
@@ -34,7 +34,14 @@
 
 <script>
 	export default {
-		props:['tuijianContent']
+		props:['tuijianContent'],
+		data() {
+			return {
+				//获取自定义$commonConfig对象中的服务器地址
+				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
+			}
+		}
 	}
 </script>
 

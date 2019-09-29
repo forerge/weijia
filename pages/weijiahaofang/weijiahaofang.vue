@@ -336,6 +336,26 @@
 				console.log('获取了用户选择----->' + JSON.stringify(res));
 			}
 		  },
+		  
+		  onLoad() {
+		  	//执行uni-app提供的类似ajax异步加载
+		  	uni.request({ 
+		  		url: this.serverUrl+'home/house/kuai_list', //请求url
+		  		method: 'POST',               //请求方式
+		  		data: {},                     //传递的数据
+		  		success: res => {   //成功执行回调函数
+		  			if(res.statusCode==200){
+		  				this.tuijianContent= res.data;
+		  			}else{
+		  				console.log(res);
+		  			}
+		  			
+		  		},
+		  		fail: () => {},
+		  		complete: () => {}
+		  	});
+		  }, 
+		  
 		  //计算属性
 		   computed:{//滑块最大值时，显示不限
 				rangeValueEnd:function(){

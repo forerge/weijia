@@ -131,43 +131,7 @@
 				serverUrl:this.$commonConfig.serverUrl,
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//推荐内容
-				tuijianContent:[
-					{
-						
-					// imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					// title:'合租.天通苑北二区 3居室.1厅.1卫',
-					// area:'15m²',
-					// floor:'12/18层',
-					// towards:'朝南',
-					// subwayDistance:'距5号线800m',
-					// pledge:'押一付一',
-					// subway:'离地铁近',
-					// veranda:'有阳台',
-					// monthPrice:'2300'
-					},{
-					// imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					// title:'合租.天通苑北二区 3居室.1厅.1卫',
-					// area:'15m²',
-					// floor:'12/18层',
-					// towards:'朝南',
-					// subwayDistance:'距5号线800m',
-					// pledge:'押一付一',
-					// subway:'离地铁近',
-					// veranda:'有阳台',
-					// monthPrice:'2300'
-					},{
-					// imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					// title:'合租.天通苑北二区 3居室.1厅.1卫',
-					// area:'15m²',
-					// floor:'12/18层',
-					// towards:'朝南',
-					// subwayDistance:'距5号线800m',
-					// pledge:'押一付一',
-					// subway:'离地铁近',
-					// veranda:'有阳台',
-					// monthPrice:'2300'
-					}
-				],
+				tuijianContent:[],
 				//获取定位城市处->上下图标切换
 				downUpImg:"xiala-down.png",
 				
@@ -198,49 +162,50 @@
 		onLoad() {
 			//执行uni-app提供的类似ajax异步加载
 			uni.request({ 
-				url: this.serverUrl+'home/house/hot', //请求url
+				url: this.serverUrl+'home/house/kuai_hot', //请求url
 				method: 'POST',               //请求方式
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						console.log(JSON.parse(res.data[0].h_uploads)[0]);//获取服务器数据，并赋值
-						console.log(res.data[0].h_config);//获取服务器数据，并赋值
-						this.tuijianContent=[
-							{
-							imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[0].h_uploads)[0],
-							title:res.data[0].h_state+'.'+res.data[0].h_qv+' '+res.data[0].h_shi+'居室.'+res.data[0].h_ting+'厅.'+res.data[0].h_wei+'卫',
-							area:res.data[0].h_space+'㎡',
-							floor:res.data[0].h_addr+'/'+res.data[0].h_floor+'层',
-							towards:'朝'+res.data[0].h_xiang,
-							subwayDistance:'距'+res.data[0].h_metro_no+'线地铁'+res.data[0].h_metro_length+'m',
-							pledge:res.data[0].h_rule,
-							subway:res.data[0].h_metro_length<2000?'离地铁近':'',
-							veranda:JSON.parse(res.data[0].h_config).yangtai==1?'有阳台':'',
-							monthPrice:res.data[0].h_money
-							},{
-							imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[1].h_uploads)[0],
-							title:res.data[1].h_state+'.'+res.data[1].h_qv+' '+res.data[1].h_shi+'居室.'+res.data[1].h_ting+'厅.'+res.data[1].h_wei+'卫',
-							area:res.data[1].h_space+'㎡',
-							floor:res.data[1].h_addr+'/'+res.data[1].h_floor+'层',
-							towards:'朝'+res.data[1].h_xiang,
-							subwayDistance:'距'+res.data[1].h_metro_no+'线地铁'+res.data[1].h_metro_length+'m',
-							pledge:res.data[1].h_rule,
-							subway:res.data[1].h_metro_length<2000?'离地铁近':'',
-							veranda:JSON.parse(res.data[1].h_config).yangtai==1?'有阳台':'',
-							monthPrice:res.data[1].h_money
-							},{
-							imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[2].h_uploads)[0],
-							title:res.data[2].h_state+'.'+res.data[2].h_qv+' '+res.data[2].h_shi+'居室.'+res.data[2].h_ting+'厅.'+res.data[2].h_wei+'卫',
-							area:res.data[2].h_space+'㎡',
-							floor:res.data[2].h_addr+'/'+res.data[2].h_floor+'层',
-							towards:'朝'+res.data[2].h_xiang,
-							subwayDistance:'距'+res.data[2].h_metro_no+'线地铁'+res.data[2].h_metro_length+'m',
-							pledge:res.data[2].h_rule,
-							subway:res.data[2].h_metro_length<2000?'离地铁近':'',
-							veranda:JSON.parse(res.data[2].h_config).yangtai==1?'有阳台':'',
-							monthPrice:res.data[2].h_money
-							}
-						]
+						// console.log(JSON.parse(res.data[0].h_uploads)[0]);//获取服务器数据，并赋值
+						// console.log(res.data[0].h_config);//获取服务器数据，并赋值
+						this.tuijianContent= res.data;
+						// this.tuijianContent=[
+						// 	{
+						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[0].h_uploads)[0],
+						// 	title:res.data[0].h_state+'.'+res.data[0].h_qv+' '+res.data[0].h_shi+'居室.'+res.data[0].h_ting+'厅.'+res.data[0].h_wei+'卫',
+						// 	area:res.data[0].h_space+'㎡',
+						// 	floor:res.data[0].h_addr+'/'+res.data[0].h_floor+'层',
+						// 	towards:'朝'+res.data[0].h_xiang,
+						// 	subwayDistance:'距'+res.data[0].h_metro_no+'线地铁'+res.data[0].h_metro_length+'m',
+						// 	pledge:res.data[0].h_rule,
+						// 	subway:res.data[0].h_metro_length<2000?'离地铁近':'',
+						// 	veranda:JSON.parse(res.data[0].h_config).yangtai==1?'有阳台':'',
+						// 	monthPrice:res.data[0].h_money
+						// 	},{
+						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[1].h_uploads)[0],
+						// 	title:res.data[1].h_state+'.'+res.data[1].h_qv+' '+res.data[1].h_shi+'居室.'+res.data[1].h_ting+'厅.'+res.data[1].h_wei+'卫',
+						// 	area:res.data[1].h_space+'㎡',
+						// 	floor:res.data[1].h_addr+'/'+res.data[1].h_floor+'层',
+						// 	towards:'朝'+res.data[1].h_xiang,
+						// 	subwayDistance:'距'+res.data[1].h_metro_no+'线地铁'+res.data[1].h_metro_length+'m',
+						// 	pledge:res.data[1].h_rule,
+						// 	subway:res.data[1].h_metro_length<2000?'离地铁近':'',
+						// 	veranda:JSON.parse(res.data[1].h_config).yangtai==1?'有阳台':'',
+						// 	monthPrice:res.data[1].h_money
+						// 	},{
+						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[2].h_uploads)[0],
+						// 	title:res.data[2].h_state+'.'+res.data[2].h_qv+' '+res.data[2].h_shi+'居室.'+res.data[2].h_ting+'厅.'+res.data[2].h_wei+'卫',
+						// 	area:res.data[2].h_space+'㎡',
+						// 	floor:res.data[2].h_addr+'/'+res.data[2].h_floor+'层',
+						// 	towards:'朝'+res.data[2].h_xiang,
+						// 	subwayDistance:'距'+res.data[2].h_metro_no+'线地铁'+res.data[2].h_metro_length+'m',
+						// 	pledge:res.data[2].h_rule,
+						// 	subway:res.data[2].h_metro_length<2000?'离地铁近':'',
+						// 	veranda:JSON.parse(res.data[2].h_config).yangtai==1?'有阳台':'',
+						// 	monthPrice:res.data[2].h_money
+						// 	}
+						// ]
 					}else{
 						console.log(res);
 					}
