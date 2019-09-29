@@ -232,68 +232,7 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverUrl:this.$commonConfig.serverUrl,
 				//我的收藏
-				tuijianContent:[
-					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},
-					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},
-					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},
-					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},
-					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					}
-				],
+				tuijianContent:[],
 				 min:500,
 				 max:10000,
 				 rangeValue: [3000, 8000], //滑块区间默认值
