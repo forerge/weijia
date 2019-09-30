@@ -4,8 +4,8 @@
 		<view class="grid grid-col-2 head">
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
 				<text class="title grid-line-clamp-1">合租.运河新村 3居室.1厅.1卫</text>
-				<text class="price">2300 元/月</text>
-				<text class="pay-way">押一付一</text>
+				<text class="price">{{house_detail.h_money}} 元/月</text>
+				<text class="pay-way">{{house_detail.h_rule}}</text>
 			</view>
 		</view>
 		
@@ -15,28 +15,28 @@
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center summarize">
 				<text class="text text1">首次出租</text>
-				<text class="text text2">离地铁近</text>
+				<text class="text text2">{{house_detail.h_metro_length<2000?'离地铁近':''}}</text>
 				<text class="text text3">有阳台</text>
 			</view>
 			<view class="grid-list grid-row-align-left-center base-parameter">
 				<text class="text1">面积：</text>
-				<text class="text2">15m/80m²</text>
+				<text class="text2">{{house_detail.h_space}}㎡</text>
 			</view>
 			<view class="grid-list grid-row-align-left-center base-parameter">
 				<text class="text1">朝向：</text>
-				<text class="text2">3室1厅1卫</text>
+				<text class="text2">{{house_detail.h_xiang}}</text>
 			</view>
 			<view class="grid-list grid-row-align-left-center base-parameter">
 				<text class="text1">楼层：</text>
-				<text class="text2">12/18层</text>
+				<text class="text2">{{house_detail.h_floor}}层</text>
 			</view>
 			<view class="grid-list grid-row-align-left-center base-parameter">
 				<text class="text1">户型：</text>
-				<text class="text2">3室1厅1卫</text>
+				<text class="text2">{{house_detail.h_shi+'室'+house_detail.h_ting+'厅'+house_detail.h_wei+'卫'}}</text>
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
 				<text class="text1">电梯：</text>
-				<text class="text2">有</text>
+				<text class="text2">{{house_detail.h_elevator}}</text>
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
 				<text class="text1">看房时间：</text>
@@ -44,12 +44,12 @@
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
 				<text class="text1">入住日期：</text>
-				<text class="text2">可立即入住</text>
+				<text class="text2">即可入住</text>
 			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
+			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
 				<text class="text1">房屋状态：</text>
 				<text class="text2">可预约</text>
-			</view>
+			</view> -->
 		</view>
 		
 		<view class="peizhishebei">
@@ -57,56 +57,57 @@
 				<text>配置设施</text>
 			</view>
 			<view class="grid grid-col-5 grid-fixed-width">
-				<view class="grid-list grid-col-align-center active">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-01.png'"></image>
+				<!-- <view class="grid-list grid-col-align-center {{house_config['kuandai'] == 1?'active':''}} "> -->
+				<view class="grid-list grid-col-align-center active ">
+					<image class="img" :src="serverImgUrl+'peizhisheshi-01.png'"></image>
 					<text class="text">WiFi</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-02.png'"></image>
+				<view class="grid-list grid-col-align-center  active">
+					<image class="img" :src="serverImgUrl+'peizhisheshi-02.png'"></image>
 					<text class="text">床</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-03.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-03.png'"></image>
 					<text class="text">衣柜</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-04.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-04.png'"></image>
 					<text class="text">沙发</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-05.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-05.png'"></image>
 					<text class="text">桌椅</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-06.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-06.png'"></image>
 					<text class="text">洗衣机</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-07.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-07.png'"></image>
 					<text class="text">冰箱</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-08.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-08.png'"></image>
 					<text class="text">暖气</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-09.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-09.png'"></image>
 					<text class="text">热水器</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-10.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-10.png'"></image>
 					<text class="text">可做饭</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-11.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-11.png'"></image>
 					<text class="text">电视</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-12.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-12.png'"></image>
 					<text class="text">空调</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-13.png'"></image>
+					<image class="img" :src="serverImgUrl+'peizhisheshi-13.png'"></image>
 					<text class="text">阳台</text>
 				</view>
 			</view>
@@ -137,10 +138,10 @@
 		<view class="grid grid-col-2 footer">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<view class="left grid-col-align-center">
-					<image class="img" :src="serverImgUrl+'static/images/xinxing.png'" ></image>
+					<image class="img" :src="serverImgUrl+'xinxing.png'" ></image>
 					<text>收藏</text>
 				</view>
-				<navigator class="center" url="../yuyuefangyuan/yuyuefangyuan">预约房源</navigator>
+				<navigator class="center" :url="'../yuyuefangyuan/yuyuefangyuan?id='+house_detail['h_id']">预约房源</navigator>
 				<text class="right">电话咨询</text>
 			</view>
 		</view>
@@ -160,39 +161,43 @@
 		data() {
 			return {
 				serverImgUrl:this.$commonConfig.serverImgUrl,
+				serverApiUrl:this.$commonConfig.serverApiUrl,
+
 				//头部滑块图片url
-				goodsDetailsImg:[
-					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png",
-					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png",
-					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png"
-				],
-				//推荐内容
-				tuijianContent:[
-					{
-					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},{
-					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					}
-				],
+				goodsDetailsImg:[],
+				house_detail:[],        //房源详情参数
+				tuijianContent:[],      //推荐内容
+				house_config:[],        //房源设施
+				house_inmoney:[],       //房源包含费用
+				house_ask:[],           //房源包含费用
 			};
+		},
+		//2.页面加载完成、页面卸载事件
+		onLoad(e) {
+			uni.request({
+				url: this.serverApiUrl+'home/house/kuai_detail', //请求url
+				method: 'POST',               //请求方式 
+				data: e ,                    //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						this.tuijianContent= res.data.same;
+						delete res.data.same;
+						this.goodsDetailsImg = res.data.h_uploads;
+						this.house_config = JSON.parse(res.data.h_config);
+						this.house_inmoney = JSON.parse(res.data.h_inmoney);
+						this.house_ask = JSON.parse(res.data.h_ask);
+						delete res.data.h_config;
+						delete res.data.h_ask;
+						delete res.data.inmoney;
+						this.house_detail = res.data;
+					}else{ 
+						// console.log(res);
+					}
+					
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		},
 		methods:{
 			

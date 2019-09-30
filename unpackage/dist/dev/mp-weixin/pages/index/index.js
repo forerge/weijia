@@ -360,10 +360,11 @@ var citySelect = function citySelect() {return __webpack_require__.e(/*! import(
   onLoad: function onLoad() {var _this = this; //执行uni-app提供的类似ajax异步加载
     uni.request({ url: this.serverApiUrl + 'home/house/kuai_hot', //请求url
       method: 'POST', //请求方式 
-      dataType: 'json', //如果设为 json，会尝试对返回的数据做一次 JSON.parse
       data: {}, //传递的数据
       success: function success(res) {//成功执行回调函数
-        if (res.statusCode == 200) {console.log(res.data);_this.tuijianContent = res.data;} else {console.log(res);}}, fail: function fail() {}, complete: function complete() {} });}, //3.事件以及自定义方法存放处
+        if (res.statusCode == 200) {// console.log(res.data);
+          _this.tuijianContent = res.data;} else {// console.log(res);
+        }}, fail: function fail() {}, complete: function complete() {} });}, //3.事件以及自定义方法存放处
   methods: { showCitySelect: function showCitySelect() {this.downUpImg = "xiala-up.png"; //切换上下图标
       this.isActive = true;}, hideCitySelect: function hideCitySelect() {this.downUpImg = "xiala-down.png"; //切换上下图标
       this.isActive = false;}, chooseItem: function chooseItem(item) {this.downUpImg = "xiala-down.png"; //切换上下图标

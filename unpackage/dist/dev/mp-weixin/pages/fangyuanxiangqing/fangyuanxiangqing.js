@@ -105,7 +105,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var goodsDetailsImgSlide = function goodsDetailsImgSlide() {return __webpack_require__.e(/*! import() | components/dzy-goods-details-img-slide/dzy-goods-details-img-slide */ "components/dzy-goods-details-img-slide/dzy-goods-details-img-slide").then(__webpack_require__.bind(null, /*! @/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue */ 406));};var showMarkersMap = function showMarkersMap() {return __webpack_require__.e(/*! import() | components/dzy-show-markers-map/dzy-show-markers-map */ "components/dzy-show-markers-map/dzy-show-markers-map").then(__webpack_require__.bind(null, /*! @/components/dzy-show-markers-map/dzy-show-markers-map.vue */ 413));};var tuijianContentList = function tuijianContentList() {return __webpack_require__.e(/*! import() | components/dzy-tuijian-content-list/dzy-tuijian-content-list */ "components/dzy-tuijian-content-list/dzy-tuijian-content-list").then(__webpack_require__.bind(null, /*! @/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue */ 342));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var goodsDetailsImgSlide = function goodsDetailsImgSlide() {return __webpack_require__.e(/*! import() | components/dzy-goods-details-img-slide/dzy-goods-details-img-slide */ "components/dzy-goods-details-img-slide/dzy-goods-details-img-slide").then(__webpack_require__.bind(null, /*! @/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue */ 406));};var showMarkersMap = function showMarkersMap() {return __webpack_require__.e(/*! import() | components/dzy-show-markers-map/dzy-show-markers-map */ "components/dzy-show-markers-map/dzy-show-markers-map").then(__webpack_require__.bind(null, /*! @/components/dzy-show-markers-map/dzy-show-markers-map.vue */ 413));};var tuijianContentList = function tuijianContentList() {return __webpack_require__.e(/*! import() | components/dzy-tuijian-content-list/dzy-tuijian-content-list */ "components/dzy-tuijian-content-list/dzy-tuijian-content-list").then(__webpack_require__.bind(null, /*! @/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue */ 342));};var _default =
+
 
 
 
@@ -267,41 +268,46 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   data: function data() {
     return {
       serverImgUrl: this.$commonConfig.serverImgUrl,
+      serverApiUrl: this.$commonConfig.serverApiUrl,
+
       //头部滑块图片url
-      goodsDetailsImg: [
-      this.$commonConfig.serverImgUrl + "static/images/tuijian-thumbnail.png",
-      this.$commonConfig.serverImgUrl + "static/images/tuijian-thumbnail.png",
-      this.$commonConfig.serverImgUrl + "static/images/tuijian-thumbnail.png"],
+      goodsDetailsImg: [],
+      house_detail: [], //房源详情参数
+      tuijianContent: [], //推荐内容
+      house_config: [], //房源设施
+      house_inmoney: [], //房源包含费用
+      house_ask: [] //房源包含费用
+    };
+  },
+  //2.页面加载完成、页面卸载事件
+  onLoad: function onLoad(e) {var _this = this;
+    uni.request({
+      url: this.serverApiUrl + 'home/house/kuai_detail', //请求url
+      method: 'POST', //请求方式 
+      data: e, //传递的数据
+      success: function success(res) {//成功执行回调函数
+        if (res.statusCode == 200) {
+          _this.tuijianContent = res.data.same;
+          delete res.data.same;
+          _this.goodsDetailsImg = res.data.h_uploads;
+          _this.house_config = JSON.parse(res.data.h_config);
+          _this.house_inmoney = JSON.parse(res.data.h_inmoney);
+          _this.house_ask = JSON.parse(res.data.h_ask);
+          delete res.data.h_config;
+          delete res.data.h_ask;
+          delete res.data.inmoney;
+          _this.house_detail = res.data;
+        } else {
+          // console.log(res);
+        }
 
-      //推荐内容
-      tuijianContent: [
-      {
-        imgUrl: this.$commonConfig.serverImgUrl + 'static/images/tuijian-thumbnail.png',
-        title: '合租.天通苑北二区 3居室.1厅.1卫',
-        area: '15m²',
-        floor: '12/18层',
-        towards: '朝南',
-        subwayDistance: '距5号线800m',
-        pledge: '押一付一',
-        subway: '离地铁近',
-        veranda: '有阳台',
-        monthPrice: '2300' },
-      {
-        imgUrl: this.$commonConfig.serverImgUrl + 'static/images/tuijian-thumbnail.png',
-        title: '合租.天通苑北二区 3居室.1厅.1卫',
-        area: '15m²',
-        floor: '12/18层',
-        towards: '朝南',
-        subwayDistance: '距5号线800m',
-        pledge: '押一付一',
-        subway: '离地铁近',
-        veranda: '有阳台',
-        monthPrice: '2300' }] };
-
-
+      },
+      fail: function fail() {},
+      complete: function complete() {} });
 
   },
   methods: {} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

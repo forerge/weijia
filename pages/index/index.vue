@@ -164,14 +164,13 @@
 			uni.request({ 
 				url: this.serverApiUrl+'home/house/kuai_hot', //请求url
 				method: 'POST',               //请求方式 
-				dataType:'json',             //如果设为 json，会尝试对返回的数据做一次 JSON.parse
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						console.log(res.data);
+						// console.log(res.data);
 						this.tuijianContent= res.data;
 					}else{ 
-						console.log(res);
+						// console.log(res);
 					}
 					
 				},

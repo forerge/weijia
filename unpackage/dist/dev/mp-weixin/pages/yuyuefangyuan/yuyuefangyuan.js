@@ -105,8 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var bigButonYellow = function bigButonYellow() {return __webpack_require__.e(/*! import() | components/yw-big-buton-yellow/yw-big-buton-yellow */ "components/yw-big-buton-yellow/yw-big-buton-yellow").then(__webpack_require__.bind(null, /*! @/components/yw-big-buton-yellow/yw-big-buton-yellow.vue */ 349));};var tuijianContentList = function tuijianContentList() {return __webpack_require__.e(/*! import() | components/dzy-tuijian-content-list/dzy-tuijian-content-list */ "components/dzy-tuijian-content-list/dzy-tuijian-content-list").then(__webpack_require__.bind(null, /*! @/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue */ 342));};var textareaColumnFrame = function textareaColumnFrame() {return __webpack_require__.e(/*! import() | components/dzy-textarea-column-frame/dzy-textarea-column-frame */ "components/dzy-textarea-column-frame/dzy-textarea-column-frame").then(__webpack_require__.bind(null, /*! @/components/dzy-textarea-column-frame/dzy-textarea-column-frame.vue */ 375));};var timePicker = function timePicker() {return __webpack_require__.e(/*! import() | components/uni-time-picker/uni-time-picker */ "components/uni-time-picker/uni-time-picker").then(__webpack_require__.bind(null, /*! @/components/uni-time-picker/uni-time-picker.vue */ 382));};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var bigButonYellow = function bigButonYellow() {return __webpack_require__.e(/*! import() | components/yw-big-buton-yellow/yw-big-buton-yellow */ "components/yw-big-buton-yellow/yw-big-buton-yellow").then(__webpack_require__.bind(null, /*! @/components/yw-big-buton-yellow/yw-big-buton-yellow.vue */ 349));};var textareaColumnFrame = function textareaColumnFrame() {return __webpack_require__.e(/*! import() | components/dzy-textarea-column-frame/dzy-textarea-column-frame */ "components/dzy-textarea-column-frame/dzy-textarea-column-frame").then(__webpack_require__.bind(null, /*! @/components/dzy-textarea-column-frame/dzy-textarea-column-frame.vue */ 375));};var timePicker = function timePicker() {return __webpack_require__.e(/*! import() | components/uni-time-picker/uni-time-picker */ "components/uni-time-picker/uni-time-picker").then(__webpack_require__.bind(null, /*! @/components/uni-time-picker/uni-time-picker.vue */ 382));};var _default =
 
 
 
@@ -138,7 +137,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   components: {
     bigButonYellow: bigButonYellow,
-    tuijianContentList: tuijianContentList,
     textareaColumnFrame: textareaColumnFrame,
     timePicker: timePicker },
 
@@ -146,31 +144,43 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     return {
       //获取自定义$commonConfig对象中的服务器地址
       serverImgUrl: this.$commonConfig.serverImgUrl,
+      serverApiUrl: this.$commonConfig.serverApiUrl,
       //我的收藏
-      tuijianContent: [
-      {
-        imgUrl: this.$commonConfig.serverImgUrl + 'static/images/tuijian-thumbnail.png',
-        title: '1合租.天通苑北二区 3居室.1厅.1卫',
-        area: '15m²',
-        floor: '12/18层',
-        towards: '朝南',
-        subwayDistance: '距5号线800m',
-        pledge: '押一付一',
-        subway: '离地铁近',
-        veranda: '有阳台',
-        monthPrice: '2300' }],
-
-
       time: '', //格式化时间，2019-09-05 00：00：00
       timestamp: '' //时间戳，
     };
   },
+
+  onLoad: function onLoad(e) {
+    uni.request({
+      url: this.serverApiUrl + 'home/meet/kuai_user', //请求url
+      method: 'POST', //请求方式 
+      data: e, //传递的数据
+      success: function success(res) {//成功执行回调函数
+        if (res.statusCode == 200) {
+          if (res.data == 444) {
+            uni.switchTab({ //navigateTo跳转到非导航页面，对于导航页面跳转可以用uni.switchTab
+              // url: '../info/info?id='+id
+              url: '../info/info' });
+
+          }
+        } else {
+          // console.log(res);
+        }
+
+      },
+      fail: function fail() {},
+      complete: function complete() {} });
+
+  },
+
   methods: {
     getTime: function getTime(time, timestamp) {
       //time是传出来的格式化时间，timestamp是传出来的时间戳
       this.time = time;
       this.timestamp = timestamp;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
