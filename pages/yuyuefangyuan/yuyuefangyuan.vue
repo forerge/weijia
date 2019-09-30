@@ -45,26 +45,6 @@
 		},
 		
 		onLoad(e) {
-			uni.request({
-				url: this.serverApiUrl+'home/meet/kuai_user', //请求url
-				method: 'POST',               //请求方式 
-				data: e ,                    //传递的数据
-				success: res => {   //成功执行回调函数
-					if(res.statusCode==200){
-						if(res.data == 444){
-							uni.switchTab({ //navigateTo跳转到非导航页面，对于导航页面跳转可以用uni.switchTab
-												// url: '../info/info?id='+id
-												url: '../info/info'
-											});
-						}
-					}else{ 
-						// console.log(res);
-					}
-					
-				},
-				fail: () => {},
-				complete: () => {}
-			});
 		},
 		
 		methods: {

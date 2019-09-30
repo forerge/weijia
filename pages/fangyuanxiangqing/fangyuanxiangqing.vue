@@ -156,7 +156,8 @@
 					<image class="img" :src="serverImgUrl + 'xinxing.png'"></image>
 					<text>收藏</text>
 				</view>
-				<navigator class="center" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator>
+				<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
+				<view class="center" @click="golook" >预约房源</view>
 				<text class="right">电话咨询</text>
 			</view>
 		</view>
@@ -214,7 +215,37 @@ export default {
 			complete: () => {}
 		});
 	},
-	methods: {}
+	methods: {
+		golook(){
+			uni.request({
+				url: this.serverApiUrl + 'home/login/goon', //请求url
+				method: 'POST', //请求方式
+				data: {}, //传递的数据
+				success: res => {
+					//成功执行回调函数
+					if (res.statusCode == 200) {
+						if(res.data == 448){
+							console.log(res);
+							uni.redirectTo({
+							    url: '../login/login'
+							});
+						}else{
+							uni.redirectTo({
+								url: "../yuyuefangyuan/yuyuefangyuan"
+							});
+						}
+						
+					} else {
+						console.log(111);
+					}
+				},
+				fail: () => {},
+				complete: () => {}
+			});
+				
+		},
+		
+	}
 };
 </script>
 
