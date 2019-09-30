@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "房源详情",
-  "usingComponents": {
-    "goods-details-img-slide": "/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide",
-    "show-markers-map": "/components/dzy-show-markers-map/dzy-show-markers-map",
-    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list"
-  }
-}

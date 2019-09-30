@@ -1,1 +1,0 @@
-<view><picker mode="multiSelector" range="{{range}}" data-event-opts="{{[['change',[['bindPickerChange',['$event']]]]]}}" bindchange="__e"><slot name="html"></slot></picker></view>

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "唯家首页",
-  "usingComponents": {
-    "city-select": "/components/uni-city-select/uni-city-select",
-    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list"
-  }
-}

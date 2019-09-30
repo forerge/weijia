@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "个人中心——房东",
-  "usingComponents": {
-    "column-title": "/components/dzy-column-title/dzy-column-title"
-  }
-}

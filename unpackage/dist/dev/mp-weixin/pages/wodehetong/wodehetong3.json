@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我的合同",
-  "usingComponents": {
-    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list"
-  }
-}

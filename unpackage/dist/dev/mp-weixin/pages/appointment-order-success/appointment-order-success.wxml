@@ -1,1 +1,0 @@
-<view><view class="yuyue_success_img"><image class="img" src="{{serverImgUrl+'static/images/weijia_yuyue.png'}}" mode="widthFix"></image></view><view class="yuyue_success_litter">该预约单稍后将以短息的形式发送给你</view><big-buton-yellow vue-id="1" big_button_yellow="继续找房" bind:__l="__l"></big-buton-yellow><view class="big_button_while">查看订单</view></view>

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "房东委托",
-  "usingComponents": {
-    "column-title": "/components/dzy-column-title/dzy-column-title",
-    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
-  }
-}

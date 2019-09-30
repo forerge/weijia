@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "室友详情",
-  "usingComponents": {
-    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list"
-  }
-}
