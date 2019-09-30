@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "找室友",
+  "usingComponents": {
+    "multi-selector-picker": "/components/dzy-multiSelector-picker/dzy-multiSelector-picker"
+  }
+}

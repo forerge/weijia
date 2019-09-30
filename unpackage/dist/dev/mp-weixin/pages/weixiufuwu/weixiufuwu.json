@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "维修服务",
+  "usingComponents": {
+    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list",
+    "textarea-column-frame": "/components/dzy-textarea-column-frame/dzy-textarea-column-frame",
+    "column-title": "/components/dzy-column-title/dzy-column-title",
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

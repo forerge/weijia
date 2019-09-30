@@ -3,7 +3,7 @@
 		<view class="house-person" >房源需认证才可展示，任意选一种即可</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/renzheng01.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/renzheng01.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >认证房本</view>
@@ -13,7 +13,7 @@
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/renzheng02.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/renzheng02.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >100元保证金</view>
@@ -30,7 +30,7 @@
 		
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl
+				serverImgUrl:this.$commonConfig.serverImgUrl
 			}
 		} 
 	}

@@ -38,11 +38,11 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//我的收藏
 				tuijianContent:[
 					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
 					title:'1合租.天通苑北二区 3居室.1厅.1卫',
 					area:'15m²',
 					floor:'12/18层',

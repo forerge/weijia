@@ -1,7 +1,7 @@
 <template>
 	<view>
 	
-		<image class="img" :src="serverUrl+'static/images/no-contract.png'" mode="widthFix"></image>
+		<image class="img" :src="serverImgUrl+'static/images/no-contract.png'" mode="widthFix"></image>
 		
 		<view class="text">亲你目前暂无履行中的合同</view>
 	</view>
@@ -13,7 +13,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				
 			};
 		}

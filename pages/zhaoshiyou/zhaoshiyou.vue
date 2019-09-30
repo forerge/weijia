@@ -78,7 +78,7 @@
 		<view class="grid grid-col-3 zhaoshiyou  grid-right-space">
 			<view class="grid-list grid-combine-col-3 grid-row-align-left-bottom row1">
 				<navigator url="./zhaoshiyou-xiangqing" class="grid-row-align-left-center" hover-class="none">
-				<image class="head" :src="serverUrl+'static/images/head.png'"></image>
+				<image class="head" :src="serverImgUrl+'static/images/head.png'"></image>
 				<view class="my">
 					<view class="nickname">昵称</view>
 					<view class="time">一小时前</view>
@@ -90,7 +90,7 @@
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center row2">
 				<text class="title">有房.找一个合得来的室友</text>
 				<view class="dingwei grid-row-align-left-center">
-					<image class="icon" :src="serverUrl+'static/images/dingwei.png'"></image>
+					<image class="icon" :src="serverImgUrl+'static/images/dingwei.png'"></image>
 					<text class="address">奉贤.运河小区    男女不限</text>
 				</view>
 			</view>
@@ -99,12 +99,12 @@
 			</view>
 			<view class="grid-list grid-combine-col-3 row3">
 				<scroll-view scroll-x="true" class="scroll-left-right">
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
 				 </scroll-view>
 			</view>
 			
@@ -116,7 +116,7 @@
 		<view class="grid grid-col-3 zhaoshiyou  grid-right-space">
 			<view class="grid-list grid-combine-col-3 grid-row-align-left-bottom row1">
 				<navigator url="./zhaoshiyou-xiangqing" class="grid-row-align-left-center" hover-class="none">
-				<image class="head" :src="serverUrl+'static/images/head.png'"></image>
+				<image class="head" :src="serverImgUrl+'static/images/head.png'"></image>
 				<view class="my">
 					<view class="nickname">昵称</view>
 					<view class="time">一小时前</view>
@@ -128,7 +128,7 @@
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center row2">
 				<text class="title">有房.找一个合得来的室友</text>
 				<view class="dingwei grid-row-align-left-center">
-					<image class="icon" :src="serverUrl+'static/images/dingwei.png'"></image>
+					<image class="icon" :src="serverImgUrl+'static/images/dingwei.png'"></image>
 					<text class="address">奉贤.运河小区    男女不限</text>
 				</view>
 			</view>
@@ -137,12 +137,12 @@
 			</view>
 			<view class="grid-list grid-combine-col-3 row3">
 				<scroll-view scroll-x="true" class="scroll-left-right">
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-				<image class="fang-img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="fang-img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
 				 </scroll-view>
 			</view>
 			
@@ -162,7 +162,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				 curTitleActive:0,
 				 curIndex:0,
 				 youfangwufang:[['不限','有房找室友','无房找室友']],

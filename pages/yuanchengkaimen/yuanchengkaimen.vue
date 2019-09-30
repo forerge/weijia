@@ -2,7 +2,7 @@
 	<view>
 		<view class="grid grid-col-3 pro-order">
 					<view class="grid-list grid-row-align-left-center">
-					<image class="col1 row1 img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+					<image class="col1 row1 img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 					</view>
 					<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
 						<view  class="col2 row1 grid-line-clamp-1">合租.运河小区 3居室 1厅1卫</view>
@@ -22,7 +22,7 @@
 		},
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 			};
 		}
 	}

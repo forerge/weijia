@@ -10,7 +10,7 @@
 		<view class="grid grid-col-2 wodeyuyue-list" :class="{active:activeIndex==0||activeIndex==1}">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center title-box">
 				<view class="grid-row-align-left-center text success">
-					<image class="img" :src="serverUrl+'static/images/time-green.png'" ></image><text>预约成功</text>
+					<image class="img" :src="serverImgUrl+'static/images/time-green.png'" ></image><text>预约成功</text>
 					</view>
 				<text class="text">06.30  12:00</text>
 			</view>
@@ -27,7 +27,7 @@
 		<view class="grid grid-col-2 wodeyuyue-list" :class="{active:activeIndex==0||activeIndex==2}">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center title-box">
 				<view class="grid-row-align-left-center text no">
-					<image class="img" :src="serverUrl+'static/images/time-red.png'" ></image><text>预约失败</text>
+					<image class="img" :src="serverImgUrl+'static/images/time-red.png'" ></image><text>预约失败</text>
 					</view>
 				<text class="text">06.30  12:00</text>
 			</view> 
@@ -50,7 +50,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				activeIndex:0
 			} 
 		},

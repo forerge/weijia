@@ -11,7 +11,7 @@
 		<!-- 未使用券 -->
 		<view class="contents" :class="{active:curIndex==0}">
 			<view class="list">
-				<image class="img" :src="serverUrl+'static/images/yellow-bg.png'" ></image>
+				<image class="img" :src="serverImgUrl+'static/images/yellow-bg.png'" ></image>
 				<view class="grid grid-col-2">
 					<view class="grid-list grid-combine-col-2 grid-row-align-left-bottom">
 						未使用
@@ -27,7 +27,7 @@
 				</view>
 			</view>
 			<view class="list">
-				<image class="img" :src="serverUrl+'static/images/yellow-bg.png'" ></image>
+				<image class="img" :src="serverImgUrl+'static/images/yellow-bg.png'" ></image>
 				<view class="grid grid-col-2">
 					<view class="grid-list grid-combine-col-2 grid-row-align-left-bottom">
 						未使用
@@ -46,7 +46,7 @@
 		<!-- 已使用券 -->
 		<view class="contents unused" :class="{active:curIndex==1}">
 			<view class="list">
-				<image class="img" :src="serverUrl+'static/images/gray-bg.png'" ></image>
+				<image class="img" :src="serverImgUrl+'static/images/gray-bg.png'" ></image>
 				<view class="grid grid-col-2">
 					<view class="grid-list grid-combine-col-2 grid-row-align-left-bottom">
 						已使用
@@ -62,7 +62,7 @@
 				</view>
 			</view>
 			<view class="list">
-				<image class="img" :src="serverUrl+'static/images/gray-bg.png'" ></image>
+				<image class="img" :src="serverImgUrl+'static/images/gray-bg.png'" ></image>
 				<view class="grid grid-col-2">
 					<view class="grid-list grid-combine-col-2 grid-row-align-left-bottom">
 						已使用
@@ -81,7 +81,7 @@
 		<!-- 已赠送券 -->
 		<view class="contents" :class="{active:curIndex==2}">
 			<view class="list">
-				<image class="img" :src="serverUrl+'static/images/gray-bg.png'" ></image>
+				<image class="img" :src="serverImgUrl+'static/images/gray-bg.png'" ></image>
 				<view class="grid grid-col-2">
 					<view class="grid-list grid-combine-col-2 grid-row-align-left-bottom">
 						已赠送
@@ -111,7 +111,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				curIndex:0
 			};
 		},

@@ -90,9 +90,9 @@
 		<view class="grid-list">
 			<navigator url="../wodehetong/wodehetong2" hover-class="none">
 			<image :src="serverImgUrl+'nav011.png'" ></image>
-			<text>我的合同</text>
+			<text>我的合同</text> 
 			 </navigator>
-		</view>
+		</view> 
 		<view class="grid-list">
 			<navigator url="../wodeqianbao/wodeqianbao" hover-class="none">
 			<image :src="serverImgUrl+'nav012.png'" ></image>
@@ -128,8 +128,8 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
 				serverImgUrl:this.$commonConfig.serverImgUrl,
+				serverApiUrl:this.$commonConfig.serverApiUrl,
 				//推荐内容
 				tuijianContent:[],
 				//获取定位城市处->上下图标切换
@@ -162,51 +162,15 @@
 		onLoad() {
 			//执行uni-app提供的类似ajax异步加载
 			uni.request({ 
-				url: this.serverUrl+'home/house/kuai_hot', //请求url
-				method: 'POST',               //请求方式
+				url: this.serverApiUrl+'home/house/kuai_hot', //请求url
+				method: 'POST',               //请求方式 
+				dataType:'json',             //如果设为 json，会尝试对返回的数据做一次 JSON.parse
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						// console.log(JSON.parse(res.data[0].h_uploads)[0]);//获取服务器数据，并赋值
-						// console.log(res.data[0].h_config);//获取服务器数据，并赋值
+						console.log(res.data);
 						this.tuijianContent= res.data;
-						// this.tuijianContent=[
-						// 	{
-						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[0].h_uploads)[0],
-						// 	title:res.data[0].h_state+'.'+res.data[0].h_qv+' '+res.data[0].h_shi+'居室.'+res.data[0].h_ting+'厅.'+res.data[0].h_wei+'卫',
-						// 	area:res.data[0].h_space+'㎡',
-						// 	floor:res.data[0].h_addr+'/'+res.data[0].h_floor+'层',
-						// 	towards:'朝'+res.data[0].h_xiang,
-						// 	subwayDistance:'距'+res.data[0].h_metro_no+'线地铁'+res.data[0].h_metro_length+'m',
-						// 	pledge:res.data[0].h_rule,
-						// 	subway:res.data[0].h_metro_length<2000?'离地铁近':'',
-						// 	veranda:JSON.parse(res.data[0].h_config).yangtai==1?'有阳台':'',
-						// 	monthPrice:res.data[0].h_money
-						// 	},{
-						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[1].h_uploads)[0],
-						// 	title:res.data[1].h_state+'.'+res.data[1].h_qv+' '+res.data[1].h_shi+'居室.'+res.data[1].h_ting+'厅.'+res.data[1].h_wei+'卫',
-						// 	area:res.data[1].h_space+'㎡',
-						// 	floor:res.data[1].h_addr+'/'+res.data[1].h_floor+'层',
-						// 	towards:'朝'+res.data[1].h_xiang,
-						// 	subwayDistance:'距'+res.data[1].h_metro_no+'线地铁'+res.data[1].h_metro_length+'m',
-						// 	pledge:res.data[1].h_rule,
-						// 	subway:res.data[1].h_metro_length<2000?'离地铁近':'',
-						// 	veranda:JSON.parse(res.data[1].h_config).yangtai==1?'有阳台':'',
-						// 	monthPrice:res.data[1].h_money
-						// 	},{
-						// 	imgUrl:this.serverUrl+'public/uploads/'+JSON.parse(res.data[2].h_uploads)[0],
-						// 	title:res.data[2].h_state+'.'+res.data[2].h_qv+' '+res.data[2].h_shi+'居室.'+res.data[2].h_ting+'厅.'+res.data[2].h_wei+'卫',
-						// 	area:res.data[2].h_space+'㎡',
-						// 	floor:res.data[2].h_addr+'/'+res.data[2].h_floor+'层',
-						// 	towards:'朝'+res.data[2].h_xiang,
-						// 	subwayDistance:'距'+res.data[2].h_metro_no+'线地铁'+res.data[2].h_metro_length+'m',
-						// 	pledge:res.data[2].h_rule,
-						// 	subway:res.data[2].h_metro_length<2000?'离地铁近':'',
-						// 	veranda:JSON.parse(res.data[2].h_config).yangtai==1?'有阳台':'',
-						// 	monthPrice:res.data[2].h_money
-						// 	}
-						// ]
-					}else{
+					}else{ 
 						console.log(res);
 					}
 					

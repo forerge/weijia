@@ -2,7 +2,7 @@
 	<view>
 		<view class="grid grid-col-9 pro-order">
 			<view class="grid-list grid-combine-col-3 grid-row-align-left-center">
-				<image class="img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+				<image class="img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 			</view>
 			<view class="grid-list grid-combine-col-4 grid-col-align-right-space-between">
 				<view class="grid-line-clamp-1"><text class="text1">姓　　名：</text><text class="text2">新一</text></view>
@@ -16,7 +16,7 @@
 		
 		<view class="grid grid-col-9 pro-order">
 			<view class="grid-list grid-combine-col-3 grid-row-align-left-center">
-				<image class="img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+				<image class="img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 			</view>
 			<view class="grid-list grid-combine-col-4 grid-col-align-right-space-between">
 				<view><text class="text1">姓　　名：</text><text class="text2">新一</text></view>
@@ -34,7 +34,7 @@
 	export default {
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl
+				serverImgUrl:this.$commonConfig.serverImgUrl
 			} 
 		}
 		

@@ -1,6 +1,6 @@
 <template>
 	<view >
-		<image class="banner" :src="serverUrl+'static/images/jingjirenjiaru-banner.png'" />
+		<image class="banner" :src="serverImgUrl+'static/images/jingjirenjiaru-banner.png'" />
 		<view class="grid grid-col-2 content">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center-bottom title">
 					<text>免费加入经纪人</text>
@@ -44,7 +44,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				address:'点击选择地址'
 			};
 		},

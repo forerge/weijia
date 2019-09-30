@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="yuyue_success_img">
-			<image class="img" :src="serverUrl+'static/images/weijia_yuyue.png'"  mode="widthFix"></image>
+			<image class="img" :src="serverImgUrl+'static/images/weijia_yuyue.png'"  mode="widthFix"></image>
 		</view>
 		<view class="yuyue_success_litter" >该预约单稍后将以短息的形式发送给你</view>
 		<bigButonYellow big_button_yellow="继续找房"/>
@@ -17,7 +17,7 @@
 		},
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 			}
 		},
 		methods: {

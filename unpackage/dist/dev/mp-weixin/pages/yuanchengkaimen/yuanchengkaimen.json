@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "远程开门",
+  "usingComponents": {
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

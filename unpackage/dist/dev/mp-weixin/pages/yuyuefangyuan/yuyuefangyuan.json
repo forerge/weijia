@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "预约房源",
+  "usingComponents": {
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow",
+    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list",
+    "textarea-column-frame": "/components/dzy-textarea-column-frame/dzy-textarea-column-frame",
+    "time-picker": "/components/uni-time-picker/uni-time-picker"
+  }
+}

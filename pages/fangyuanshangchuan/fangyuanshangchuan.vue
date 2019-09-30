@@ -1,13 +1,13 @@
 <template>
 	<view>
 		<view class="house-warning row-items-left-center">
-			<image class="house-warning-img" :src="serverUrl+'static/images/lingdang.png'" mode="widthFix"></image>
+			<image class="house-warning-img" :src="serverImgUrl+'static/images/lingdang.png'" mode="widthFix"></image>
 			<text class="house-warning-word">温馨提示：请正确选择发布信息的分类，分类错误会导致信息违规下架</text>
 		</view>
 		<view class="house-person" >居民住房</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/nav02.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/nav02.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >整租</view>
@@ -19,7 +19,7 @@
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/nav03.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/nav03.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >合租</view>
@@ -31,7 +31,7 @@
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/nav07.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/nav07.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >房东委托</view>
@@ -43,7 +43,7 @@
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverUrl+'static/images/nav010.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'static/images/nav010.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >找室友</view>
@@ -61,7 +61,7 @@
 		
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl
+				serverImgUrl:this.$commonConfig.serverImgUrl
 			}
 		} 
 	}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "整租发布",
+  "usingComponents": {
+    "column-title": "/components/dzy-column-title/dzy-column-title",
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow",
+    "multi-selector-picker": "/components/dzy-multiSelector-picker/dzy-multiSelector-picker",
+    "textarea-column-frame": "/components/dzy-textarea-column-frame/dzy-textarea-column-frame",
+    "checkbox-column-frame": "/components/dzy-checkbox-column-frame/dzy-checkbox-column-frame"
+  }
+}

@@ -55,7 +55,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				renshu:[['1人','2人','3人','4人','5人','6人','7人','8人']],
 				pickerValue:[] //当前选中值对应索引
 			};

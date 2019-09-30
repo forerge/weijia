@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "base-classes": "/components/uni-city-select/base-classes"
+  },
+  "component": true
+}

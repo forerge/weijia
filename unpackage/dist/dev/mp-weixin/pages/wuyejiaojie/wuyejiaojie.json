@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "物业交接",
+  "usingComponents": {
+    "textarea-column-frame": "/components/dzy-textarea-column-frame/dzy-textarea-column-frame",
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="wodeqianbao-banner">
-			<image class="banner" :src="serverUrl+'static/images/wodeqianbao-banner.png'" mode="widthFix"></image>
+			<image class="banner" :src="serverImgUrl+'static/images/wodeqianbao-banner.png'" mode="widthFix"></image>
 			<view class="grid grid-col-2 yuer">
 				<view class="grid-list grid-combine-col-2 grid-col-align-left-center">
 					<text class="title">当前余额（元）</text>
@@ -55,7 +55,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 			};
 		}
 	}

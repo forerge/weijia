@@ -3,7 +3,7 @@
 		
 	<view class="grid grid-col-3 zhaoshiyou  grid-right-space">
 		<view class="grid-list grid-combine-col-3 grid-row-align-left-center row1">
-			<image class="head" :src="serverUrl+'static/images/head.png'"></image>
+			<image class="head" :src="serverImgUrl+'static/images/head.png'"></image>
 			<view class="my">
 				<view class="nickname">新一 <text class="shiming">已实名</text></view>
 				<view class="time">男/19岁/巨蟹座/湖南省岳阳市/岳阳富岳外语</view>
@@ -16,9 +16,9 @@
 			<text class="text">跑步</text>
 		</view>
 		<view class="grid-list grid-combine-col-3 grid-row-align-space-between-center row3">
-			<image class="img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-			<image class="img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
-			<image class="img" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+			<image class="img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+			<image class="img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+			<image class="img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
 		</view>
 		<view class="grid-list grid-combine-col-3 grid-col-align-left-center row4">
 		<text class="text1">TA希望你</text>
@@ -32,10 +32,10 @@
 		<!-- 轮播图板块 start -->
 		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000"  :circular="true" class="lunbo" >
 			<swiper-item>
-				<image class="lunboimg" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="lunboimg" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
 			</swiper-item>
 			<swiper-item>
-				<image class="lunboimg" :src="serverUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
+				<image class="lunboimg" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'" mode="widthFix"></image>
 			</swiper-item> 
 		</swiper>
 		  <!-- 轮播图板块 end -->
@@ -68,7 +68,7 @@
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-col-align-left-center row2">
 					<view class="head-box">
-						<image class="head" :src="serverUrl+'static/images/head.png'"></image>
+						<image class="head" :src="serverImgUrl+'static/images/head.png'"></image>
 						<view class="text">新一</view>
 					</view>
 				</view>
@@ -82,7 +82,7 @@
 		<view class="grid grid-col-2 footer">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<view class="left grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/xinxing.png'" ></image>
+					<image class="img" :src="serverImgUrl+'static/images/xinxing.png'" ></image>
 					<text>收藏</text>
 				</view>
 				<text class="center">预约房源</text>
@@ -101,11 +101,11 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//推荐内容
 				tuijianContent:[
 					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
 					title:'合租.天通苑北二区 3居室.1厅.1卫',
 					area:'15m²',
 					floor:'12/18层',
@@ -116,7 +116,7 @@
 					veranda:'有阳台',
 					monthPrice:'2300'
 					},{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
 					title:'合租.天通苑北二区 3居室.1厅.1卫',
 					area:'15m²',
 					floor:'12/18层',

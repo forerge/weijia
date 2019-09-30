@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "转发到青年公寓",
+  "usingComponents": {
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

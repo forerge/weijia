@@ -1,0 +1,1 @@
+<view><picker mode="multiSelector" range="{{range}}" value="{{value}}" iniIndex="{{iniIndex}}" data-event-opts="{{[['change',[['bindPickerChange',['$event']]]],['columnchange',[['columnchange',['$event']]]]]}}" bindchange="__e" bindcolumnchange="__e"><slot name="show-province-city-area"></slot></picker></view>

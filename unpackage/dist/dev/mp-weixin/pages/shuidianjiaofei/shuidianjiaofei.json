@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "水电缴费",
+  "usingComponents": {
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow",
+    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "经纪人",
+  "usingComponents": {
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow",
+    "province-city-area": "/components/dzy-province-city-area/dzy-province-city-area"
+  }
+}

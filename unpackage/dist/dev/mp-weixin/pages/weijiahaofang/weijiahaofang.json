@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "唯家好房",
+  "usingComponents": {
+    "tuijian-content-list": "/components/dzy-tuijian-content-list/dzy-tuijian-content-list",
+    "number-range-slider": "/components/uni-number-range-slider/uni-number-range-slider",
+    "provinces-select": "/components/uni-provinces-select/uni-provinces-select"
+  }
+}

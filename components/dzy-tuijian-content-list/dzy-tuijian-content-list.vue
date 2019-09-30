@@ -3,8 +3,8 @@
 		<block v-for="(val,index) in tuijianContent" :key="index">
 		<view class="grid grid-col-2 tuijian-content-list">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center">
-				<navigator class="img-navigator" url="../fangyuanxiangqing/fangyuanxiangqing?id=val.h_id" hover-class="none">
-					<image class="img" :src="serverUrl+'public/uploads/'+JSON.parse(val.h_uploads)[0]" ></image>
+					<navigator class="img-navigator" url="../fangyuanxiangqing/fangyuanxiangqing?id=val.h_id" hover-class="none">
+						<image class="img" :src="val.h_img" ></image>
 			    </navigator>
 				<view class="description">
 					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
@@ -17,7 +17,7 @@
 					</view>
 					<view class="v3">
 						<text class="t1">{{val.h_rule}}</text>
-						 <text class="t2">{{val.h_metro_length<2000?'离地铁近':''}}</text> 
+						 <text class="t2">{{val.h_metro_length < 2000?'离地铁近':''}}</text> 
 						 <text class="t3">{{JSON.parse(val.h_config).yangtai==1?'有阳台':''}}</text>
 					</view>
 					<view class="v4">
@@ -37,9 +37,6 @@
 		props:['tuijianContent'],
 		data() {
 			return {
-				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
-				serverImgUrl:this.$commonConfig.serverImgUrl,
 			}
 		}
 	}

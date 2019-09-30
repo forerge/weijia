@@ -2,7 +2,7 @@
 	<view>
 			<view class="grid grid-col-2 wodeshiyou">
 				<view class="grid-list grid-combine-col-2 grid-row-align-left-center">
-						<image class="img" :src="serverUrl+'static/images/head.png'" ></image>
+						<image class="img" :src="serverImgUrl+'static/images/head.png'" ></image>
 						<view class="xinxi-box grid-col-align-left-space-around">
 							<view class="xinxi-list">
 								<text class="text">姓　　名：</text><text class="text">新一</text>
@@ -17,7 +17,7 @@
 				</view>
 				
 				<view class="grid-list grid-combine-col-2 grid-row-align-left-center">
-						<image class="img" :src="serverUrl+'static/images/head.png'" ></image>
+						<image class="img" :src="serverImgUrl+'static/images/head.png'" ></image>
 						<view class="xinxi-box grid-col-align-left-space-around">
 							<view class="xinxi-list">
 								<text class="text">姓　　名：</text><text class="text">新一</text>
@@ -32,7 +32,7 @@
 				</view>
 				
 				<view class="grid-list grid-combine-col-2 grid-row-align-left-center">
-						<image class="img" :src="serverUrl+'static/images/head.png'" ></image>
+						<image class="img" :src="serverImgUrl+'static/images/head.png'" ></image>
 						<view class="xinxi-box grid-col-align-left-space-around">
 							<view class="xinxi-list">
 								<text class="text">姓　　名：</text><text class="text">新一</text>
@@ -54,7 +54,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				 serverUrl:this.$commonConfig.serverUrl,
+				 serverImgUrl:this.$commonConfig.serverImgUrl,
 			};
 		}
 	}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "房东委托",
+  "usingComponents": {
+    "checkbox-column-frame": "/components/dzy-checkbox-column-frame/dzy-checkbox-column-frame",
+    "textarea-column-frame": "/components/dzy-textarea-column-frame/dzy-textarea-column-frame",
+    "big-buton-yellow": "/components/yw-big-buton-yellow/yw-big-buton-yellow"
+  }
+}

@@ -58,55 +58,55 @@
 			</view>
 			<view class="grid grid-col-5 grid-fixed-width">
 				<view class="grid-list grid-col-align-center active">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-01.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-01.png'"></image>
 					<text class="text">WiFi</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-02.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-02.png'"></image>
 					<text class="text">床</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-03.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-03.png'"></image>
 					<text class="text">衣柜</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-04.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-04.png'"></image>
 					<text class="text">沙发</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-05.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-05.png'"></image>
 					<text class="text">桌椅</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-06.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-06.png'"></image>
 					<text class="text">洗衣机</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-07.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-07.png'"></image>
 					<text class="text">冰箱</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-08.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-08.png'"></image>
 					<text class="text">暖气</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-09.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-09.png'"></image>
 					<text class="text">热水器</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-10.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-10.png'"></image>
 					<text class="text">可做饭</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-11.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-11.png'"></image>
 					<text class="text">电视</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-12.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-12.png'"></image>
 					<text class="text">空调</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/peizhisheshi-13.png'"></image>
+					<image class="img" :src="serverImgUrl+'static/images/peizhisheshi-13.png'"></image>
 					<text class="text">阳台</text>
 				</view>
 			</view>
@@ -137,7 +137,7 @@
 		<view class="grid grid-col-2 footer">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<view class="left grid-col-align-center">
-					<image class="img" :src="serverUrl+'static/images/xinxing.png'" ></image>
+					<image class="img" :src="serverImgUrl+'static/images/xinxing.png'" ></image>
 					<text>收藏</text>
 				</view>
 				<navigator class="center" url="../yuyuefangyuan/yuyuefangyuan">预约房源</navigator>
@@ -159,17 +159,17 @@
 		},
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//头部滑块图片url
 				goodsDetailsImg:[
-					this.$commonConfig.serverUrl+"static/images/tuijian-thumbnail.png",
-					this.$commonConfig.serverUrl+"static/images/tuijian-thumbnail.png",
-					this.$commonConfig.serverUrl+"static/images/tuijian-thumbnail.png"
+					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png",
+					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png",
+					this.$commonConfig.serverImgUrl+"static/images/tuijian-thumbnail.png"
 				],
 				//推荐内容
 				tuijianContent:[
 					{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
 					title:'合租.天通苑北二区 3居室.1厅.1卫',
 					area:'15m²',
 					floor:'12/18层',
@@ -180,7 +180,7 @@
 					veranda:'有阳台',
 					monthPrice:'2300'
 					},{
-					imgUrl:this.$commonConfig.serverUrl+'static/images/tuijian-thumbnail.png',
+					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
 					title:'合租.天通苑北二区 3居室.1厅.1卫',
 					area:'15m²',
 					floor:'12/18层',

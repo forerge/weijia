@@ -230,7 +230,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				//我的收藏
 				tuijianContent:[],
 				 min:500,
@@ -279,7 +279,7 @@
 		  onLoad() {
 		  	//执行uni-app提供的类似ajax异步加载
 		  	uni.request({ 
-		  		url: this.serverUrl+'home/house/kuai_list', //请求url
+		  		url: this.serverImgUrl+'home/house/kuai_list', //请求url
 		  		method: 'POST',               //请求方式
 		  		data: {},                     //传递的数据
 		  		success: res => {   //成功执行回调函数

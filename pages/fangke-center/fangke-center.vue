@@ -3,7 +3,7 @@
 		<view class="user-base-msg fangke" >
 					<view class="grid grid-col-2">
 						<view class="grid-list grid-row-align-left-center">
-							<image class="img" :src="serverUrl+'static/images/head.png'"></image>
+							<image class="img" :src="serverImgUrl+'static/images/head.png'"></image>
 							<text class="text">昵称</text>
 						</view>
 						<view class="grid-list grid-row-align-right-center">
@@ -16,9 +16,9 @@
 					</view>
 					<!-- 波浪 -->
 					<view class="water-group">
-			<view class="water water1" :style="'background-image: url('+serverUrl+'static/images/wave-yellow.png)'"></view>
-			<view class="water water2" :style="'background-image: url('+serverUrl+'static/images/wave-yellow.png)'"></view>
-			<view class="water water3" :style="'background-image: url('+serverUrl+'static/images/wave-yellow.png)'"></view>
+			<view class="water water1" :style="'background-image: url('+serverImgUrl+'static/images/wave-yellow.png)'"></view>
+			<view class="water water2" :style="'background-image: url('+serverImgUrl+'static/images/wave-yellow.png)'"></view>
+			<view class="water water3" :style="'background-image: url('+serverImgUrl+'static/images/wave-yellow.png)'"></view>
 					</view>
 					
 		</view>
@@ -44,51 +44,51 @@
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu01.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu01.png'"></image>
 				<text class="text">预约看房</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu02.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu03.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu03.png'"></image>
 				<text class="text">我的钱包</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu04.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu04.png'"></image>
 				<text class="text">远程开门</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu05.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu05.png'"></image>
 				<text class="text">我的福利券</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu06.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu06.png'"></image>
 				<text class="text">我的水电</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu07.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu07.png'"></image>
 				<text class="text">维修服务</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu08.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu08.png'"></image>
 				<text class="text">保洁服务</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu09.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu09.png'"></image>
 				<text class="text">到期交租</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu010.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu010.png'"></image>
 				<text class="text">找室友</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu011.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu011.png'"></image>
 				<text class="text">个人认证</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverUrl+'static/images/fangke-gerenfuwu012.png'"></image>
+				<image  class="img" :src="serverImgUrl+'static/images/fangke-gerenfuwu012.png'"></image>
 				<text class="text">账单查询</text>
 			</view>
 		</view>
@@ -138,7 +138,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				active:false
 			}
 		},

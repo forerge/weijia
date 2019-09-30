@@ -5,7 +5,7 @@
 			<columnTitle columnTitle="基本信息(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
 			<view class="uploadImg row-items-center">
 				<view class="uploadImgBtn col-items-center">
-					<image :src="serverUrl+'static/images/xiangji.png'" mode="widthFix"></image>
+					<image :src="serverImgUrl+'static/images/xiangji.png'" mode="widthFix"></image>
 					<text>上传图片</text>
 				</view> 
 			</view>
@@ -129,7 +129,7 @@
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 				chewei:[['有车位','无车位']],
 				dianti:[['有电梯','无电梯']],
 				chaoxiang:[['东','南','西','北']],

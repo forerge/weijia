@@ -2,7 +2,7 @@
 	<view>
 		<view class="grid grid-col-3 jiankong-list">
 			<view class="grid-list grid-row-align-left">
-			<image class="col1 row1 img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+			<image class="col1 row1 img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
 				<text  class="text grid-line-clamp-1">丽江苑 2室一厅一卫</text>
@@ -12,7 +12,7 @@
 		
 		<view class="grid grid-col-3 jiankong-list">
 			<view class="grid-list grid-row-align-left">
-			<image class="col1 row1 img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+			<image class="col1 row1 img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
 				<text  class="text grid-line-clamp-1">丽江苑 2室一厅一卫</text>
@@ -22,7 +22,7 @@
 		
 		<view class="grid grid-col-3 jiankong-list">
 			<view class="grid-list grid-row-align-left">
-			<image class="col1 row1 img" :src="serverUrl+'static/images/tuijian-thumbnail.png'"></image>
+			<image class="col1 row1 img" :src="serverImgUrl+'static/images/tuijian-thumbnail.png'"></image>
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
 				<text  class="text grid-line-clamp-1">丽江苑 2室一厅一卫</text>
@@ -36,7 +36,7 @@
 	export default {
 		data() {
 			return {
-				serverUrl:this.$commonConfig.serverUrl,
+				serverImgUrl:this.$commonConfig.serverImgUrl,
 			};
 		}
 	}
