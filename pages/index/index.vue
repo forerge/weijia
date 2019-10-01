@@ -177,6 +177,8 @@
 				fail: () => {},
 				complete: () => {}
 			});
+			uni.setStorageSync('weijia_pro', '');
+			uni.setStorageSync('weijia_status', false);
 		}, 
 		
 		//3.事件以及自定义方法存放处

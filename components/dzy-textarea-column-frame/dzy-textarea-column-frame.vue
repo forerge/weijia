@@ -1,8 +1,8 @@
 <template>
 	<view>
-<columnTitle :columnTitle="columnTitle" :borderTopHide="titleBorderTopHide" :borderTopColor="borderTopColor" :inputShow="inputShow" :inputPlaceholder="inputPlaceholder" />
+		<columnTitle :columnTitle="columnTitle" :borderTopHide="titleBorderTopHide" :borderTopColor="borderTopColor" :inputShow="inputShow" :inputPlaceholder="inputPlaceholder" />
 			<view class="textareaColumnFrame">
-			<textarea class="textarea"  :placeholder="placeholder" placeholder-style="font-size:12px;color:#A8A8A8;"/>
+			<textarea class="textarea" name="content"  :placeholder="placeholder" placeholder-style="font-size:12px;color:#A8A8A8;"/>
 			</view>
 		</view>
 </template>

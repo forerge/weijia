@@ -1,25 +1,28 @@
 <template>
 	<view>
-		<tuijianContentList :tuijianContent="tuijianContent"/>
-		<view class="grid grid-col-2 yuyue-input">
-			<view class="grid-list grid-combine-col-2 grid-row-align-left-center">
-				<text>填写预约信息</text>
+		<form @submit="yuyue" >
+			<tuijianContentList :tuijianContent="tuijianContent"/>
+			<view class="grid grid-col-2 yuyue-input">
+				<view class="grid-list grid-combine-col-2 grid-row-align-left-center">
+					<text>填写预约信息</text>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+						<text class="text1">预约时间</text>
+						<timePicker sTime="8" cTime="20" interval="10" @changeTime="getTime">
+						  <view slot="pCon">
+						   <input type="text" name="time" :value="time||''" placeholder="请选择预约时间"/>
+						  </view>
+						</timePicker>
+				</view>
+				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+					<text  class="text1">联系方式</text><input type="text" value="" placeholder="请填写联系方式"/>
+				</view> -->
 			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="text1">预约时间</text>
-					<timePicker sTime="8" cTime="20" interval="10" @changeTime="getTime">
-					  <view slot="pCon">
-					   <input type="text" :value="time||''" placeholder="请选择预约时间"/>
-					  </view>
-					</timePicker>
-					
+			<textareaColumnFrame columnTitle="其它" borderTopColor="#fff" placeholder="如有其他问题请在此留言哦"/>
+			<view style="padding:1em 0;background:#fff;">
+				<button form-type="submit" class="big_button_yellow" >登录</button>
 			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<text  class="text1">联系方式</text><input type="text" value="" placeholder="请填写联系方式"/>
-			</view>
-		</view>
-		<textareaColumnFrame columnTitle="其它" borderTopColor="#fff" placeholder="如有其他问题请在此留言哦"/>
-		 <bigButonYellow big_button_yellow="确定"/>
+		</form>
 	</view>
 </template>
 
@@ -40,11 +43,14 @@
 				serverApiUrl:this.$commonConfig.serverApiUrl,
 				//我的收藏
 				time:'',//格式化时间，2019-09-05 00：00：00
-				timestamp:''//时间戳，
+				timestamp:'',//时间戳，
+				h_id:'',
+				u_id:uni.getStorageSync('weijia_pro').u_id
 			};
 		},
 		
 		onLoad(e) {
+			this.h_id = e.id;
 		},
 		
 		methods: {
@@ -52,7 +58,11 @@
 				//time是传出来的格式化时间，timestamp是传出来的时间戳
 				this.time = time;
 				this.timestamp = timestamp;
-			  }
+			},
+			yuyue(e){
+				console.log(e.detail);
+			}
+			  
 	}
 }
 </script>
@@ -68,4 +78,16 @@
 		}
 	}
 }
+.big_button_yellow{
+		height:64rpx;
+		font-size: 16px;
+		line-height: 64rpx;
+		width:475rpx;
+		margin:0 auto;
+		color:#362F0C;
+		background:#FDE648;
+		border-radius: 30px;
+		text-align: center;
+		margin-bottom: 32rpx;
+	}
 </style>

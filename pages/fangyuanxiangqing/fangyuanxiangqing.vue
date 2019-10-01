@@ -217,32 +217,17 @@ export default {
 	},
 	methods: {
 		golook(){
-			uni.request({
-				url: this.serverApiUrl + 'home/login/goon', //请求url
-				method: 'POST', //请求方式
-				data: {}, //传递的数据
-				success: res => {
-					//成功执行回调函数
-					if (res.statusCode == 200) {
-						if(res.data == 448){
-							console.log(res);
-							uni.redirectTo({
-							    url: '../login/login'
-							});
-						}else{
-							uni.redirectTo({
-								url: "../yuyuefangyuan/yuyuefangyuan"
-							});
-						}
-						
-					} else {
-						console.log(111);
-					}
-				},
-				fail: () => {},
-				complete: () => {}
-			});
-				
+			var weijia_status = uni.getStorageSync('weijia_status');
+			if(weijia_status == false){
+				uni.navigateTo({
+				    url: '../login/login'
+				});
+			}else{
+				uni.navigateTo({
+					url: "../yuyuefangyuan/yuyuefangyuan?id="+this.house_detail['h_id']
+				});
+			}
+			
 		},
 		
 	}
