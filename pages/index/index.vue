@@ -167,8 +167,8 @@
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						// console.log(res.data);
-						this.tuijianContent= res.data;
+						console.log(res.data);
+						this.tuijianContent= res.data['house'];
 					}else{ 
 						// console.log(res);
 					}
@@ -177,8 +177,8 @@
 				fail: () => {},
 				complete: () => {}
 			});
-			uni.setStorageSync('weijia_pro', '');
-			uni.setStorageSync('weijia_status', false);
+			// uni.setStorageSync('weijia_pro', '');
+			// uni.setStorageSync('weijia_status', false);
 		}, 
 		
 		//3.事件以及自定义方法存放处

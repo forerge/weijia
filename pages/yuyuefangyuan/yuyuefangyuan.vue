@@ -18,9 +18,9 @@
 					<text  class="text1">联系方式</text><input type="text" value="" placeholder="请填写联系方式"/>
 				</view> -->
 			</view>
-			<textareaColumnFrame columnTitle="其它" borderTopColor="#fff" placeholder="如有其他问题请在此留言哦"/>
+			<textareaColumnFrame  ref="textareaColumnFrameEle" columnTitle="其它" borderTopColor="#fff" placeholder="如有其他问题请在此留言哦" />
 			<view style="padding:1em 0;background:#fff;">
-				<button form-type="submit" class="big_button_yellow" >登录</button>
+				<button form-type="submit" class="big_button_yellow"  >立即预约</button>
 			</view>
 		</form>
 	</view>
@@ -45,12 +45,14 @@
 				time:'',//格式化时间，2019-09-05 00：00：00
 				timestamp:'',//时间戳，
 				h_id:'',
-				u_id:uni.getStorageSync('weijia_pro').u_id
+				u_id:uni.getStorageSync('weijia_pro').u_id,
+				// content:this.$refs.textareaColumnFrameEle.textareaVal,   //预约留言内容
 			};
 		},
 		
 		onLoad(e) {
 			this.h_id = e.id;
+			// console.log(e.id);
 		},
 		
 		methods: {
@@ -60,7 +62,33 @@
 				this.timestamp = timestamp;
 			},
 			yuyue(e){
-				console.log(e.detail);
+				// console.log(this.$refs.textareaColumnFrameEle.textareaVal);
+				// console.log(e.detail);
+				uni.request({
+					url: this.serverApiUrl+'home/meet/add', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						u_id:this.u_id,
+						h_id:this.h_id,
+						content:this.$refs.textareaColumnFrameEle.textareaVal,
+						time:this.timestamp,
+						},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == 1){
+								uni.navigateTo({
+								    url: '../weijiahaofang/weijiahaofang'
+								});
+							}
+	
+						}else{ 
+							// console.log(res);
+						}
+						
+					},
+					fail: () => {},
+					complete: () => {}
+				});
 			}
 			  
 	}

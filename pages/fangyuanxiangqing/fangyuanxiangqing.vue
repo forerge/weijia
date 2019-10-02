@@ -223,7 +223,9 @@ export default {
 				    url: '../login/login'
 				});
 			}else{
+				// console.log(this.house_detail['h_id']);
 				uni.navigateTo({
+					
 					url: "../yuyuefangyuan/yuyuefangyuan?id="+this.house_detail['h_id']
 				});
 			}
