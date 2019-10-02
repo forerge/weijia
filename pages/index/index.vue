@@ -16,9 +16,12 @@
 		
 		<!-- 轮播图板块 start -->
 		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000"  :circular="true" class="lunbo" >
-			<swiper-item>
-				<image class="lunboimg" :src="serverImgUrl+'banner1.png'" mode="widthFix"></image>
-			</swiper-item>
+			<block v-for="(val,index) in banner" :key="index">
+				<swiper-item>
+					<image class="lunboimg" :src="val['i_img']" mode="widthFix"></image>
+				</swiper-item>
+			</block>
+			
 			<swiper-item>
 				<image class="lunboimg" :src="serverImgUrl+'banner2.png'" mode="widthFix"></image>
 			</swiper-item> 
@@ -34,16 +37,16 @@
 			 </navigator>
 		</view>
 		<view class="grid-list">
-			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
-			<image :src="serverImgUrl+'nav02.png'" ></image>
-			<text>整租</text>
-			</navigator>
+			<view @click="zhengzu" hover-class="none">
+				<image :src="serverImgUrl+'nav02.png'" ></image>
+				<text>整租</text>
+			</view>
 		</view>
 		<view class="grid-list">
-			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
-			<image :src="serverImgUrl+'nav03.png'" ></image>
-			<text>合租</text>
-			 </navigator>
+			<view @click="hezu" hover-class="none">
+				<image :src="serverImgUrl+'nav03.png'" ></image>
+				<text>合租</text>
+			</view>
 		</view>
 		<view class="grid-list">
 			<navigator url="../fangyuanshangchuan/fangyuanshangchuan" open-type="switchTab" hover-class="none">
@@ -51,23 +54,23 @@
 			<text>上传房源</text>
 			 </navigator>
 		</view>
-		<view class="grid-list">
-			<navigator url="javascript:void(0)" hover-class="none">
-			<image :src="serverImgUrl+'nav05.png'" ></image>
-			<text>职业房东</text>
-			 </navigator>
+		<view class="grid-list" @click="zhiyefangdong">
+			<view hover-class="none">
+				<image :src="serverImgUrl+'nav05.png'" ></image>
+				<text>职业房东</text>
+			</view>
 		</view>
-		<view class="grid-list">
-			<navigator url="../jingjirenjiaru/jingjirenjiaru" hover-class="none">
-			<image :src="serverImgUrl+'nav06.png'" ></image>
-			<text>职业经纪人</text>
-			 </navigator>
+		<view class="grid-list" @click="jingjiren" >
+			<view hover-class="none">
+				<image :src="serverImgUrl+'nav06.png'" ></image>
+				<text>职业经纪人</text>
+			</view>
 		</view>
 		<view class="grid-list">
 			<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
 			<image :src="serverImgUrl+'nav07.png'" ></image>
 			<text>房东委托</text>
-			 </navigator>
+			</navigator>
 		</view>
 		<view class="grid-list">
 			<navigator url="../yuyuekanfang/yuyuekanfang" hover-class="none">
@@ -134,6 +137,7 @@
 				tuijianContent:[],
 				//获取定位城市处->上下图标切换
 				downUpImg:"xiala-down.png",
+				banner:[],
 				
 				//获取定位城市
 				cityName:'上海',//默认定位城市
@@ -167,8 +171,9 @@
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						console.log(res.data);
+						// console.log(res.data);
 						this.tuijianContent= res.data['house'];
+						this.banner = res.data['banner']
 					}else{ 
 						// console.log(res);
 					}
@@ -196,6 +201,38 @@
 				this.isActive=false; //隐藏城市面板
 				this.cityName=item; //赋值给当前定位城市
 				this.quickPanelData[0].data=[item]; //赋值给面板当前城市
+			},
+			zhengzu(){
+				uni.navigateTo({
+				    url: '../weijiahaofang/weijiahaofang?state=1'
+				});
+			},
+			hezu(){
+				uni.navigateTo({
+				    url: '../weijiahaofang/weijiahaofang?state=2'
+				});
+			},
+			jingjiren(){
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../jingjirenjiaru/jingjirenjiaru?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
+			},
+			zhiyefangdong(){
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../zhiyefangdongruzhu/zhiyefangdongruzhu?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
 			}
 		}, 
 	

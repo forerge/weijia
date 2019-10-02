@@ -1,74 +1,110 @@
 <template >
 	<view>
-		<view class="grid grid-col-2 content">
-			<view class="grid-list grid-combine-col-2 grid-row-align-center-bottom title">
-					<text>免费加入职业房东</text>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
-					<input class="input" type="text" value=""  placeholder="请输入姓名"/>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
-				<provinceCityArea class="input-select" :iniIndex="[8,0,0]" v-on:provinceCityAreaChange="provinceCityAreaChange" >
-				<input slot="show-province-city-area" class="input input-select" type="text" :value="address"  placeholder="请选择所在省市区："/>
-				</provinceCityArea>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
-					<input class="input" type="text" value=""  placeholder="请输入公寓名称"/>
-			</view>
-			
-			<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
-				<input class="input" type="text" value=""  placeholder="请输入公寓数量"/>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
-					
-			</view>
-			
-			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between upload-title">
-				<text class="text1" >请上传身份证</text>
-				<text class="text2" >（上传身份证信息以便我们审核）</text>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-around-center upload-box">
-				<view class="upload-btn grid-col-align-center">
-						<text class="plus">+</text>
-						<text class="text">身份证正面</text>
+		<form @submit="zhiyefangdong">
+			<view class="grid grid-col-2 content">
+				<view class="grid-list grid-combine-col-2 grid-row-align-center-bottom title">
+						<text>免费加入职业房东</text>
 				</view>
-				<view class="upload-btn grid-col-align-center">
-						<text class="plus">+</text>
-						<text class="text">身份证反面</text>
+				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+						<input class="input" name="name" type="text" value=""  placeholder="请输入姓名"/>
+				</view>
+				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+					<provinceCityArea class="input-select" :iniIndex="[8,0,0]" v-on:provinceCityAreaChange="provinceCityAreaChange" >
+					<input slot="show-province-city-area" class="input input-select" type="text" :value="address"  placeholder="请选择所在省市区："/>
+					</provinceCityArea>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+						<input class="input" type="text" value=""  placeholder="请输入公寓名称"/>
+				</view>
+				
+				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+					<input class="input" type="text" value=""  placeholder="请输入公寓数量"/>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+						
+				</view> -->
+				
+				<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between upload-title">
+					<text class="text1" >请上传身份证</text>
+					<text class="text2" >（上传身份证信息以便我们审核）</text>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-around-center upload-box">
+					<view class="upload-btn grid-col-align-center">
+							<text class="plus">+</text>
+							<text class="text">身份证正面</text>
+					</view>
+					<view class="upload-btn grid-col-align-center">
+							<text class="plus">+</text>
+							<text class="text">身份证反面</text>
+					</view>
+				</view>
+				<view class="grid-list grid-combine-col-2">
+					<view style="padding:1em 0;background:#fff;">
+						<button class="big_button_yellow" form-type="submit" >限时免费入住</button>
+					</view>
 				</view>
 			</view>
-			<view class="grid-list grid-combine-col-2">
-				<bigButonYellow big_button_yellow="限时免费入住"/>
-			</view>
-		</view>
+		</form>
 	</view>
 </template>
 
 <script>
-	import bigButonYellow from "@/components/yw-big-buton-yellow/yw-big-buton-yellow.vue";
 	import provinceCityArea from "@/components/dzy-province-city-area/dzy-province-city-area.vue";
 	export default {
 		components:{
-			bigButonYellow,
 			provinceCityArea
 		},
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
-				address:''
+				serverApiUrl: this.$commonConfig.serverApiUrl,
+				address:'',
+				u_id:''
 			};
+		},
+		onLoad(e) {
+			this.u_id = e.id;
 		},
 		methods: {
 			provinceCityAreaChange: function (data) {
 				this.address=data.join('');//逗号将数组拼接为字符串
 				//console.log(data);
 			},
+			zhiyefangdong(e){
+				// console.log(e);
+				uni.request({
+					url: this.serverApiUrl+'home/shenqing/shenqing', //请求url
+					method: 'POST',               //请求方式 
+					data: {id:this.u_id,name:e.detail.value.name,level:1},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							console.log(res.data);
+						}else{ 
+							// console.log(res);
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.big_button_yellow{
+		height:64rpx;
+		font-size: 16px;
+		line-height: 64rpx;
+		width:475rpx;
+		margin:0 auto;
+		color:#362F0C;
+		background:#FDE648;
+		border-radius: 30px;
+		text-align: center;
+		margin-bottom: 32rpx;
+	}
 .content{
 	width:90%;
 	margin:1em  auto 3em;

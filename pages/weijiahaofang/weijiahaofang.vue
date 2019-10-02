@@ -277,12 +277,13 @@
 			}
 		  },
 		  
-		  onLoad() {
+		  onLoad(e) {
+			  console.log(e);
 		  	//执行uni-app提供的类似ajax异步加载
 		  	uni.request({ 
 		  		url: this.serverApiUrl+'home/house/kuai_list', //请求url
 		  		method: 'POST',               //请求方式
-		  		data: {},                     //传递的数据
+		  		data: {state:e.state},                     //传递的数据
 		  		success: res => {   //成功执行回调函数
 		  			if(res.statusCode==200){
 		  				this.tuijianContent= res.data;
