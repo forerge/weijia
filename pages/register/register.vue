@@ -59,6 +59,7 @@
 							// console.log(result);
 							uni.setStorageSync('weijia_pro', result);
 							uni.setStorageSync('weijia_status', true);
+							uni.setStorageSync('weijia_role', 1);
 							uni.navigateBack({
 							    delta: 1
 							});

@@ -72,11 +72,11 @@
 			<text>房东委托</text>
 			</navigator>
 		</view>
-		<view class="grid-list">
-			<navigator url="../yuyuekanfang/yuyuekanfang" hover-class="none">
-			<image :src="serverImgUrl+'nav08.png'" ></image>
-			<text>预约看房</text>
-			 </navigator>
+		<view class="grid-list" @click="wodeyuyue">
+			<view hover-class="none">
+				<image :src="serverImgUrl+'nav08.png'" ></image>
+				<text>我的预约</text>
+			</view>
 		</view>
 		<view class="grid-list">
 			<navigator url="../wuyejiaojie/wuyejiaojie" hover-class="none">
@@ -182,7 +182,7 @@
 				fail: () => {},
 				complete: () => {}
 			});
-			// uni.setStorageSync('weijia_pro', '');
+			// uni.setStorageSync('weijia_role', 1);
 			// uni.setStorageSync('weijia_status', false);
 		}, 
 		
@@ -231,6 +231,17 @@
 				}else{
 					uni.navigateTo({
 						url: '../zhiyefangdongruzhu/zhiyefangdongruzhu?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
+			},
+			wodeyuyue(){
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
 					});
 				}
 			}
