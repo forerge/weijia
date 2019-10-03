@@ -150,17 +150,19 @@
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
 		<!-- 底部 -->
-		<view class="grid grid-col-2 footer">
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<view class="left grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'xinxing.png'"></image>
-					<text>收藏</text>
+		<form @submit="queren">
+			<view class="grid grid-col-2 footer">
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+					<view class="left grid-col-align-center">
+						<image class="img" :src="serverImgUrl + 'xinxing.png'"></image>
+						<text>收藏</text>
+					</view>
+					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
+					<button class="center" form-type="submit" >确认租房</button>
+					<text class="right">合同详情</text>
 				</view>
-				<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
-				<view class="center" @click="order" >确认租房</view>
-				<text class="right">合同详情</text>
 			</view>
-		</view>
+		</form>
 	</view>
 </template>
 
@@ -185,7 +187,8 @@ export default {
 			tuijianContent: [], //推荐内容
 			house_config: [], //房源设施
 			house_inmoney: [], //房源包含费用
-			house_ask: [] //房源包含费用
+			house_ask: [] ,//房源包含费用
+			order:''
 		};
 	},
 	//2.页面加载完成、页面卸载事件
@@ -216,20 +219,35 @@ export default {
 		});
 	},
 	methods: {
-		order(){
-			var weijia_status = uni.getStorageSync('weijia_status');
-			if(weijia_status == false){
-				uni.navigateTo({
-				    url: '../login/login'
-				});
-			}else{
-				// console.log(this.house_detail['h_id']);
-				uni.navigateTo({
+		queren(e){
+			// console.log(uni.getStorageSync('weijia_pro')['u_id']);
+			this.order = e.detail.value
+			uni.request({
+				url: this.serverApiUrl+'home/order/kuai_order', //请求url
+				method: 'POST',               //请求方式 
+				data: {
+					uid:uni.getStorageSync('weijia_pro')['u_id'],
+					hid:this.house_detail.h_id,
+					huid:this.house_detail.hu_id,
+					money:1000,
+					ymoney:200,
+					zmoney:300,
+				},                     //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						if(res.data == '1'){
+							uni.switchTab({
+							    url: '/pages/index/index'
+							});
+						}
+					}else{ 
+						console.log(res);
+					}
 					
-					url: "../yuyuefangyuan/yuyuefangyuan?id="+this.house_detail['h_id']
-				});
-			}
-			
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		},
 		
 	}
