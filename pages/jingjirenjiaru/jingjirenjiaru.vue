@@ -22,9 +22,13 @@
 					<text class="text2" >（至少请上传3张图片，禁止含有第三方水印照片）</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
-					<view class="upload-btn grid-row-align-center">
-							<text class="plus">+</text>
-					</view>
+					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')">
+						<view class="grid-row-align-center v1" slot="img-upload" id="imgUploadView1" >
+							<view class="grid-row-align-center circle">
+								+
+							</view>
+						</view>
+					</imgUpload>
 				</view>
 				<view class="grid-list grid-combine-col-2">
 					<view style="padding:1em 0;background:#fff;">
@@ -40,17 +44,21 @@
 
 <script>
 	import provinceCityArea from "@/components/dzy-province-city-area/dzy-province-city-area.vue";
+	import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 	export default {
 		components:{
-			provinceCityArea
+			provinceCityArea,
+			imgUpload
 		},
+
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl: this.$commonConfig.serverApiUrl,
 				address:'点击选择地址',
-				u_id:''
+				u_id:'',
+				imgSaveUrl:{}
 			};
 		},
 		onLoad(e) {
@@ -78,6 +86,17 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			uploadImg(eleid){	//调用子组件上传函数
+				if(eleid=='imgUploadView1'){
+					this.$refs.imgUploadView1.upload(eleid);
+				}else if(eleid=='imgUploadView2'){
+					this.$refs.imgUploadView2.upload(eleid);
+				}
+			},
+			//获取上传图片的存储路径
+			getImgSaveUrl(){
+				console.log(this.imgSaveUrl);
 			}
 		}
 	}
