@@ -7,10 +7,10 @@
 							<text class="text">昵称</text>
 						</view>
 						<view class="grid-list grid-row-align-right-center">
-							<view class="turnBtn">
-								<navigator url="../fangdong-center/fangdong-center" hover-class="none">
-									转换房东	
-								</navigator>
+							<view class="turnBtn" @tap="showRoleTurn">
+								<text>
+									切换身份	
+								</text>
 							</view>
 						</view>
 					</view>
@@ -113,7 +113,7 @@
 		</radio-group>
 		
 		<!-- 联系客服弹框-->
-		<view class="mask" :class="{active:active}">
+		<view class="mask kefu" :class="{active:active}">
 			<view class="grid grid-col-2 contact-waiter">
 				<view class="grid-list grid-combine-col-2 grid-row-align-center">
 					123-4567-789
@@ -126,14 +126,19 @@
 				</view>
 			</view>
 		</view>
+		
+		<!-- 切换身份弹框-->
+		   <roleTurn :showRoleTurn="roleTurn" />
 	</view>
 </template>
 
 <script>
 	import columnTitle from "../../components/dzy-column-title/dzy-column-title.vue";
+	import roleTurn from "../../components/dzy-role-turn/dzy-role-turn.vue";
 	export default {
 		components:{
-			columnTitle
+			columnTitle,
+			roleTurn
 		},
 		data() {
 			return {
@@ -143,12 +148,39 @@
 				active:false
 			}
 		},
+		onLoad() {
+			if(uni.getStorageSync('weijia_status') == false){
+				uni.redirectTo({
+					url: '../login/login'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 1){
+				uni.redirectTo({
+					url: '../wode/wode'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 2){
+				uni.redirectTo({
+					url: '../fangdong-center/fangdong-center'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 3){
+				uni.redirectTo({
+					url: '../zhiyefangdong/zhiyefangdong'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 4){
+				uni.redirectTo({
+					url: '../login/login'
+				});
+			}
+		}, 
 		methods: {
 			hideMask(){
 				this.active=false;
 			},
 			showMask(){
 				this.active=true;
+			},
+			//显示切换身份弹框
+			showRoleTurn(){
+				this.roleTurn=true;
 			},
 			baojie(){
 				uni.navigateTo({

@@ -152,7 +152,7 @@
 		},
 		methods: {
 			//简单处理点击客服手机号，弹框显示隐藏
-			hideMask(){
+			hideMask(){ 
 				this.active=false;
 			},
 			showMask(){
