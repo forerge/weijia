@@ -78,11 +78,11 @@
 				<text>我的预约</text>
 			</view>
 		</view>
-		<view class="grid-list">
-			<navigator url="../wuyejiaojie/wuyejiaojie" hover-class="none">
+		<view class="grid-list" @click="wuyejiaojie">
+			<view hover-class="none">
 			<image :src="serverImgUrl+'nav09.png'" ></image>
 			<text>物业交接</text>
-			 </navigator>
+			 </view>
 		</view>
 		<view class="grid-list">
 			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
@@ -96,11 +96,11 @@
 			<text>我的合同</text> 
 			 </navigator>
 		</view> 
-		<view class="grid-list">
-			<navigator url="../wodeqianbao/wodeqianbao" hover-class="none">
+		<view class="grid-list" @click="qianbao">
+			<view hover-class="none">
 			<image :src="serverImgUrl+'nav012.png'" ></image>
 			<text>我的钱包</text>
-			 </navigator>
+			</view>
 		</view>
 	</view>
 	<!-- 导航栏板块 end-->
@@ -164,6 +164,7 @@
 		
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
+			console.log(uni.getStorageSync('weijia_pro'));
 			//执行uni-app提供的类似ajax异步加载
 			uni.request({ 
 				url: this.serverApiUrl+'home/house/kuai_hot', //请求url
@@ -249,6 +250,16 @@
 						url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
 					});
 				}
+			},
+			qianbao(){
+				uni.navigateTo({
+				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			wuyejiaojie(){
+				uni.navigateTo({
+				    url: '../wuyejiaojie/wuyejiaojie?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
 			}
 		}, 
 	

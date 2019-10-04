@@ -15,12 +15,12 @@
 					房东<text class="icon" :class="{active:curRoleUrl=='../fangdong-center/fangdong-center'}">✔</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center" 
-				@tap="checkRole('../fangdong-center/fangdong-center888888888')">
-				职业房东<text class="icon" :class="{active:curRoleUrl=='../fangdong-center/fangdong-center888888888'}">✔</text>
+				@tap="checkRole('../zhiyefangdong/zhiyefangdong')">
+				职业房东<text class="icon" :class="{active:curRoleUrl=='../zhiyefangdong/zhiyefangdong'}">✔</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center clearBottomBorder" 
-				@tap="checkRole('../fangdong-center/fangdong-center888888888')">
-				职业经纪人<text class="icon" :class="{active:curRoleUrl=='../fangdong-center/fangdong-center888888888'}">✔</text>
+				@tap="checkRole('../zhiyejingjiren/zhiyejingjiren')">
+				职业经纪人<text class="icon" :class="{active:curRoleUrl=='../zhiyejingjiren/zhiyejingjiren'}">✔</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center btn-box" >
 					<text class="btn" @tap="jumpRole">

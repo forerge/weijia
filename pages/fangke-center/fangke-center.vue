@@ -43,27 +43,27 @@
 		<!-- 个人服务 -->
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">预约看房</text>
+				<text class="text">我的预约</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="hetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="qianbao">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu03.png'"></image>
 				<text class="text">我的钱包</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="yuanchengkaimen">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu04.png'"></image>
 				<text class="text">远程开门</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="fuliquan">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu05.png'"></image>
 				<text class="text">我的福利券</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="shuidianfei">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu06.png'"></image>
 				<text class="text">我的水电</text>
 			</view>
@@ -71,11 +71,11 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu07.png'"></image>
 				<text class="text">维修服务</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="baojie">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu08.png'"></image>
 				<text class="text">保洁服务</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="daoqijiaozu">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu09.png'"></image>
 				<text class="text">到期交租</text>
 			</view>
@@ -83,9 +83,9 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu010.png'"></image>
 				<text class="text">找室友</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="renzheng">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu011.png'"></image>
-				<text class="text">个人认证</text>
+				<text class="text">我的认证</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu012.png'"></image>
@@ -94,7 +94,7 @@
 		</view>
 		<radio-group>
 		<view class="grid grid-col-2 roleSelect">
-			<view class="grid-list grid-row-align-left-center">
+			<!-- <view class="grid-list grid-row-align-left-center">
 				职业房东
 			</view>
 			<view class="grid-list grid-col-align-right-center">
@@ -105,7 +105,7 @@
 			</view>
 			<view class="grid-list grid-col-align-right-center">
 				<radio value="v2"  color="#F97F36" />
-			</view>
+			</view> -->
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center" @tap="showMask">
 				联系客服
 			</view>
@@ -150,9 +150,24 @@
 				roleTurn:false
 			}
 		},
+		onLoad() {
+			if(uni.getStorageSync('weijia_role') == 2){
+				uni.redirectTo({
+					url: '../fangdong-center/fangdong-center'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 3){
+				uni.redirectTo({
+					url: '../zhiyefangdong/zhiyefangdong'
+				});
+			}else if(uni.getStorageSync('weijia_role') == 4){
+				uni.redirectTo({
+					url: '../zhiyejingjiren/zhiyejingjiren'
+				});
+			}
+		}, 
 		methods: {
 			//简单处理点击客服手机号，弹框显示隐藏
-			hideMask(){
+			hideMask(){ 
 				this.active=false;
 			},
 			showMask(){
@@ -161,6 +176,58 @@
 			//显示切换身份弹框
 			showRoleTurn(){
 				this.roleTurn=true;
+			},
+			wodeyuyue(){
+				uni.navigateTo({
+				    url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			baojie(){
+				uni.navigateTo({
+				    url: '../baojie-order/baojie-order?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			hetong(){
+				uni.navigateTo({
+				    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			renzheng(){
+				uni.navigateTo({
+				    url: '../woderenzheng/woderenzheng?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			qianbao(){
+				uni.navigateTo({
+				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			yuanchengkaimen(){
+				uni.navigateTo({
+				    url: '../yuanchengkaimen/yuanchengkaimen?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			fuliquan(){
+				uni.navigateTo({
+				    url: '../fuliquan/fuliquan-unused?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			shuidianfei(){
+				uni.navigateTo({
+				    url: '../shuidianjiaofei/shuidianjiaofei?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			daoqijiaozu(){
+				uni.navigateTo({
+				    url: '../jiaozu-order/jiaozu-order?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			}
+		},
+		onshow(){
+			if(uni.getStorageSync('weijia_status') == false){
+				uni.redirectTo({
+				    url: '../login/login'
+				});
 			}
 		}
 	}
