@@ -3,22 +3,22 @@
 		<view class="user-base-msg fangdong">
 					<view class="grid grid-col-2">
 						<view class="grid-list grid-row-align-left-center">
-							<image class="img" :src="serverImgUrl+'static/images/head.png'"></image>
+							<image class="img" :src="serverImgUrl+'head.png'"></image>
 							<text class="text">昵称</text>
 						</view>
 						<view class="grid-list grid-row-align-right-center">
-							<view class="turnBtn">
-								<navigator url="../fangke-center/fangke-center" hover-class="none">
-									转换租客
-								</navigator>
+							<view class="turnBtn" @tap="showRoleTurn">
+								<text  >
+									切换身份	
+								</text>
 							</view>
 						</view>
 					</view>
 					<!-- 波浪 -->
 					<view class="water-group">
-						<view class="water water1" :style="'background-image: url('+serverImgUrl+'static/images/wave.png)'"></view>
-						<view class="water water2" :style="'background-image: url('+serverImgUrl+'static/images/wave.png)'"></view>
-						<view class="water water3" :style="'background-image: url('+serverImgUrl+'static/images/wave.png)'"></view>
+						<view class="water water1" :style="'background-image: url('+serverImgUrl+'wave.png)'"></view>
+						<view class="water water2" :style="'background-image: url('+serverImgUrl+'wave.png)'"></view>
+						<view class="water water3" :style="'background-image: url('+serverImgUrl+'wave.png)'"></view>
 					</view>
 		</view>
 		<view class="grid grid-col-4 user-record">
@@ -43,27 +43,27 @@
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu01.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu01.png'"></image>
 				<text class="text">我的监控</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu02.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu02.png'"></image>
 				<text class="text">业主托管</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu03.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu03.png'"></image>
 				<text class="text">预约管理</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu04.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu04.png'"></image>
 				<text class="text">物业交接</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu05.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu05.png'"></image>
 				<text class="text">我的认证</text>
 			</view>
 			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'static/images/fangdong-gerenfuwu06.png'"></image>
+				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu06.png'"></image>
 				<text class="text">我的钱包</text>
 			</view>
 		</view>
@@ -88,7 +88,7 @@
 		</radio-group>
 		
 		<!-- 联系客服弹框-->
-		<view class="mask" :class="{active:active}">
+		<view class="mask kefu" :class="{active:active}">
 			<view class="grid grid-col-2 contact-waiter">
 				<view class="grid-list grid-combine-col-2 grid-row-align-center">
 					123-4567-789
@@ -101,20 +101,27 @@
 				</view>
 			</view>
 		</view>
+		
+		<!-- 切换身份弹框-->
+		   <roleTurn :showRoleTurn="roleTurn" />
 	</view>
 </template>
 
 <script>
 	import columnTitle from "../../components/dzy-column-title/dzy-column-title.vue";
+	import roleTurn from "../../components/dzy-role-turn/dzy-role-turn.vue";
 	export default {
 		components:{
-			columnTitle
+			columnTitle,
+			roleTurn
 		},
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
-				active:false
+				serverApiUrl:this.$commonConfig.serverApiUrl,
+				active:false,
+				roleTurn:false
 			}
 		},
 		methods: {
@@ -123,6 +130,10 @@
 			},
 			showMask(){
 				this.active=true;
+			},
+			//显示切换身份弹框
+			showRoleTurn(){
+				this.roleTurn=true;
 			}
 		}
 	}
