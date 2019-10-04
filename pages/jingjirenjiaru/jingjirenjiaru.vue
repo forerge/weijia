@@ -22,9 +22,11 @@
 					<text class="text2" >（至少请上传3张图片，禁止含有第三方水印照片）</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
-					<view class="upload-btn grid-row-align-center">
+					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
+						<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
 							<text class="plus">+</text>
-					</view>
+						</view>
+					</imgUpload>
 				</view>
 				<view class="grid-list grid-combine-col-2">
 					<view style="padding:1em 0;background:#fff;">
@@ -33,24 +35,27 @@
 				</view>
 			</view>
 		</form>
-		<!-- <image class="banner" :src="serverImgUrl+'static/images/jingjirenjiaru-banner.png'" /> -->
-		
 	</view>
 </template>
 
 <script>
 	import provinceCityArea from "@/components/dzy-province-city-area/dzy-province-city-area.vue";
+	import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 	export default {
 		components:{
-			provinceCityArea
+			provinceCityArea,
+			imgUpload
 		},
+
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl: this.$commonConfig.serverApiUrl,
 				address:'点击选择地址',
-				u_id:''
+				u_id:'',
+				imgSaveUrl:{},
+				model:'shenqing'
 			};
 		},
 		onLoad(e) {
@@ -62,11 +67,11 @@
 				//console.log(data);
 			},
 			shenqing(e){
-				// console.log(e);
+				console.log(this.imgSaveUrl);
 				uni.request({
 					url: this.serverApiUrl+'home/shenqing/shenqing', //请求url
 					method: 'POST',               //请求方式 
-					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:2},                     //传递的数据
+					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:2,img:this.imgSaveUrl,model:this.model},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
 							console.log(res.data);
@@ -78,6 +83,13 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			uploadImg(eleid){	//调用子组件上传函数
+				this.$refs.imgUploadView1.upload(eleid);
+			},
+			//获取上传图片的存储路径
+			getImgSaveUrl(){
+				console.log(this.imgSaveUrl);
 			}
 		}
 	}

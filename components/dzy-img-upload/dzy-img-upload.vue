@@ -28,6 +28,10 @@
 <script>
 	var _self;
     export default {
+<<<<<<< HEAD
+=======
+		props:['path_url'],
+>>>>>>> 076620438b08b15e321c9513f1079fde7de75bb7
 			 data() {
 			 	return {
 						//获取自定义$commonConfig对象中的服务器地址
@@ -39,6 +43,10 @@
 						imgSaveUrl:[] ,//存放上传的图片url
 						images:[],   //图片预览尺寸
 						imgUploadViewHeight:0 //父组件图片视图高度
+<<<<<<< HEAD
+=======
+						
+>>>>>>> 076620438b08b15e321c9513f1079fde7de75bb7
 			 	}
 			 },
 			methods : {
@@ -60,7 +68,11 @@
 							 tempFilePaths.forEach(function(value,index){ //index可以省略不写
 											//执行图片上传
 										 uploadTask[index]=uni.uploadFile({
+<<<<<<< HEAD
 																		url : 'http://www.itinhs.com/upload/index.php',
+=======
+																		url : _self.serverApiUrl+'home/index/uploads?url='+_self.path_url,
+>>>>>>> 076620438b08b15e321c9513f1079fde7de75bb7
 																		filePath: value, //每个图片临时路径
 																		name: 'file'+index,  //每个图片key
 																		success: function (uploadFileRes) {//图片上传成功
@@ -76,7 +88,11 @@
 										}); 
 							 }); 
 							 //输出图片存储路径
+<<<<<<< HEAD
 							// console.log(_self.imgSaveUrl);
+=======
+							console.log(_self.imgSaveUrl);
+>>>>>>> 076620438b08b15e321c9513f1079fde7de75bb7
 							// 图片存储路径赋值到父组件
 							 _self.$set(_self.$parent.imgSaveUrl,curEleId,_self.imgSaveUrl)  
 							 
