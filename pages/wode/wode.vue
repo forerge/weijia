@@ -43,11 +43,11 @@
 		<!-- 个人服务 -->
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">预约看房</text>
+				<text class="text">我的预约</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="wodehetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
 			</view>
@@ -71,7 +71,7 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu07.png'"></image>
 				<text class="text">维修服务</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="baojie">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu08.png'"></image>
 				<text class="text">保洁服务</text>
 			</view>
@@ -149,6 +149,21 @@
 			},
 			showMask(){
 				this.active=true;
+			},
+			baojie(){
+				uni.navigateTo({
+				    url: '../baojie-order/baojie-order'
+				});
+			},
+			wodeyuyue(){
+				uni.navigateTo({
+				    url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
+			},
+			wodehetong(){
+				uni.navigateTo({
+				    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
+				});
 			}
 		}
 	}

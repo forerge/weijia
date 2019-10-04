@@ -28,7 +28,7 @@
 					<text class="text1" >请上传身份证</text>
 					<text class="text2" >（上传身份证信息以便我们审核）</text>
 				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-around-center upload-box">
+				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-space-around-center upload-box">
 					<view class="upload-btn grid-col-align-center">
 							<text class="plus">+</text>
 							<text class="text">身份证正面</text>
@@ -37,7 +37,22 @@
 							<text class="plus">+</text>
 							<text class="text">身份证反面</text>
 					</view>
+				</view> -->
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-around-center upload-box">
+					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
+						<view class="upload-btn grid-col-align-center"  slot="img-upload" id="imgUploadView1">
+								<text class="plus">+</text>
+								<text class="text">身份证正面</text>
+						</view>
+					</imgUpload>
 				</view>
+				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
+					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
+						<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
+							<text class="plus">+</text>
+						</view>
+					</imgUpload>
+				</view> -->
 				<view class="grid-list grid-combine-col-2">
 					<view style="padding:1em 0;background:#fff;">
 						<button class="big_button_yellow" form-type="submit" >限时免费入住</button>
@@ -50,9 +65,11 @@
 
 <script>
 	import provinceCityArea from "@/components/dzy-province-city-area/dzy-province-city-area.vue";
+	import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 	export default {
 		components:{
-			provinceCityArea
+			provinceCityArea,
+				imgUpload
 		},
 		data() {
 			return {
@@ -60,7 +77,9 @@
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl: this.$commonConfig.serverApiUrl,
 				address:'',
-				u_id:''
+				u_id:'',
+				imgSaveUrl:{},
+				model:'shenqing'
 			};
 		},
 		onLoad(e) {
@@ -76,10 +95,13 @@
 				uni.request({
 					url: this.serverApiUrl+'home/shenqing/shenqing', //请求url
 					method: 'POST',               //请求方式 
-					data: {id:this.u_id,name:e.detail.value.name,level:1},                     //传递的数据
+					// data: {id:this.u_id,name:e.detail.value.name,level:1},                     //传递的数据
+					data: {id:this.u_id,name:e.detail.value.name,level:1,img:this.imgSaveUrl,model:this.model}, 
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
-							console.log(res.data);
+							uni.switchTab({
+							    url: '/pages/index/index'
+							});
 						}else{ 
 							// console.log(res);
 						}
@@ -87,6 +109,13 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			uploadImg(eleid){	//调用子组件上传函数
+				this.$refs.imgUploadView1.upload(eleid);
+			},
+			//获取上传图片的存储路径
+			getImgSaveUrl(){
+				console.log(this.imgSaveUrl);
 			}
 		}
 	}

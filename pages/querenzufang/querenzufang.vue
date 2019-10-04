@@ -146,42 +146,63 @@
 				全天采光。让您时刻感受温暖的阳光。精品装修，卧室宽大家具可任意摆设，空气流通性好;家具齐全可拎包入住;阳台视野开阔，可鸟瞰小区全貌小区环境幽静,绿化率达60%。
 			</view>
 		</view>
-		<!-- 确认租房参数填写 -->
-		<view class="grid grid-col-2 sure-zhufang-attr">
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-			<text class="title">支付金额</text> 
-			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="支付金额" />￥</view>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-			<text class="title">押金</text> 
-			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="押金" />￥</view>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-			<text class="title">实际月租金</text> 
-			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="实际月租金" />￥</view>
-			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-			<text class="title">租入时长</text> 
-			<view class="input-box grid-row-align-center"><input type="text" value="" placeholder="租入时长" />月</view>
-			</view>
-		</view>
 		
-		<view class="grid grid-col-2  uploadimg">
-				<view class="grid-list grid-combine-col-2">
-					<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
-					<view class="grid-row-align-center v1">
-						<view class="grid-row-align-center circle">
-							+
-						</view>
-					</view>
-				</view>
-		</view>
+		
 		
 		<!-- 同小区房源 -->
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
 		<!-- 底部 -->
 		<form @submit="queren">
+			<!-- 确认租房参数填写 -->
+			<view class="grid grid-col-2 sure-zhufang-attr">
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="title">支付金额</text> 
+				<view class="input-box red grid-row-align-center"><input type="text" name='money' value="" placeholder="支付金额" />￥</view>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="title">押金</text> 
+				<view class="input-box red grid-row-align-center"><input type="text" name="ymoney" value="" placeholder="押金" />￥</view>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="title">实际月租金</text> 
+				<view class="input-box red grid-row-align-center"><input type="text" name="zmoney" value="" placeholder="实际月租金" />￥</view>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="title">租入时长</text> 
+				<view class="input-box grid-row-align-center"><input type="text" name="long" value="" placeholder="租入时长" />月</view>
+				</view>
+			</view>
+			
+			<!-- <view class="grid grid-col-2  uploadimg">
+					<view class="grid-list grid-combine-col-2">
+						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
+						<view class="grid-row-align-center v1">
+							<view class="grid-row-align-center circle">
+								+
+							</view>
+						</view>
+					</view>
+			</view> -->
+			<view class="grid grid-col-2  uploadimg">
+				<view class="grid-list grid-combine-col-2">
+					<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
+					<!-- <view class="grid-row-align-center v1"> -->
+						<imgUpload  class="grid-row-align-center v1" ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='license'>
+							<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
+								<text class="plus">+</text>
+							</view>
+						</imgUpload>
+					<!-- </view> -->
+				</view>
+			</view>
+			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
+				<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
+					<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
+						<text class="plus">+</text>
+					</view>
+				</imgUpload>
+			</view> -->
 			<view class="grid grid-col-2 footer">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
@@ -197,11 +218,13 @@
 import goodsDetailsImgSlide from '@/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue';
 import showMarkersMap from '@/components/dzy-show-markers-map/dzy-show-markers-map.vue';
 import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
+import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 export default {
 	components: {
 		goodsDetailsImgSlide,
 		showMarkersMap,
-		tuijianContentList
+		tuijianContentList,
+		imgUpload
 	},
 	data() {
 		return {
@@ -215,7 +238,8 @@ export default {
 			house_config: [], //房源设施
 			house_inmoney: [], //房源包含费用
 			house_ask: [] ,//房源包含费用
-			order:''
+			order:'',
+			imgSaveUrl:{},
 		};
 	},
 	//2.页面加载完成、页面卸载事件
@@ -256,9 +280,11 @@ export default {
 					uid:uni.getStorageSync('weijia_pro')['u_id'],
 					hid:this.house_detail.h_id,
 					huid:this.house_detail.hu_id,
-					money:1000,
-					ymoney:200,
-					zmoney:300,
+					money:e.detail.value.money,
+					ymoney:e.detail.value.ymoney,
+					zmoney:e.detail.value.zmoney,
+					long:e.detail.value.long,
+					img:this.imgSaveUrl
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
@@ -276,7 +302,13 @@ export default {
 				complete: () => {}
 			});
 		},
-		
+		uploadImg(eleid){	//调用子组件上传函数
+			this.$refs.imgUploadView1.upload(eleid);
+		},
+		//获取上传图片的存储路径
+		getImgSaveUrl(){
+			console.log(this.imgSaveUrl);
+		}
 	}
 };
 </script>

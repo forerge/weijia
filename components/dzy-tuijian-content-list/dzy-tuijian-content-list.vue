@@ -11,7 +11,7 @@
 					<view class="v1">{{val.h_state+'.'+val.h_qv+' '+val.h_shi+'居室.'+val.h_ting+'厅.'+val.h_wei+'卫'}}</view>
 					<view class="v2">
 						<text class="t1">{{val.h_space+'㎡'}}</text>
-						 <text class="t2">{{val.h_addr+'/'+val.h_floor+'层'}}</text> 
+						 <text class="t2">{{val.h_floor+'层'}}</text> 
 						 <text class="t3">{{'朝'+val.h_xiang}}</text> <br>
 						 <text class="t4">{{'距'+val.h_metro_no+'线地铁'+val.h_metro_length+'m'}}</text>
 					</view>

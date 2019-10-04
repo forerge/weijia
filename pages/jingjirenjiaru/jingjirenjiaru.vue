@@ -74,7 +74,9 @@
 					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:2,img:this.imgSaveUrl,model:this.model},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
-							console.log(res.data);
+							uni.switchTab({
+							    url: '/pages/index/index'
+							});
 						}else{ 
 							// console.log(res);
 						}

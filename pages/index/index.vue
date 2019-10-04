@@ -90,7 +90,7 @@
 			<text>找室友</text>
 			 </navigator>
 		</view>
-		<view class="grid-list">
+		<view class="grid-list" @click="wodehetong">
 			<navigator url="../wodehetong/wodehetong2" hover-class="none">
 			<image :src="serverImgUrl+'nav011.png'" ></image>
 			<text>我的合同</text> 
@@ -182,7 +182,7 @@
 				fail: () => {},
 				complete: () => {}
 			});
-			// uni.setStorageSync('weijia_role', 1);
+			// uni.setStorageSync('weijia_wode', 'pages/wode/wode');
 			// uni.setStorageSync('weijia_status', false);
 		}, 
 		
@@ -210,6 +210,11 @@
 			hezu(){
 				uni.navigateTo({
 				    url: '../weijiahaofang/weijiahaofang?state=2'
+				});
+			},
+			wodehetong(){
+				uni.navigateTo({
+				    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
 				});
 			},
 			jingjiren(){
