@@ -59,6 +59,12 @@
 				display: block;
 				font-size:$uni-font-size-base;
 				color:#A4A4A4;
+				&.input{
+					border:1px solid #E9E9E9;
+					border-radius: 12px;
+					padding-left:0.5em;
+					text-align: center;
+				}
 				.select-btn-reminder{
 					position: absolute;
 					padding:1px 6px;

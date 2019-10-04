@@ -6,18 +6,23 @@
 			<view class="grid grid-col-3 top-picker-view" >
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">看房时间</text>
-					<text class="text">请选择</text>
+					 <picker mode="date"  @change="bindKanfangDateChange">
+								<text class="text">{{kanfangDate||'请选择'}}</text>
+					  </picker>
+					
 				</view>
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">宜住人数</text>
 					<multiSelectorPicker :range="renshu" @bindChange="bindChange">
-						<text class="text" slot="html">{{renshu[0][pickerValue[0]]||'请选择'}}</text>
+						<text class="text" slot="html">{{renshu[0][renshuIndex[0]]||'请选择'}}</text>
 					</multiSelectorPicker>
 					
 				</view>
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">入住时间</text>
-					<text class="text">请选择</text>
+					<picker mode="date"  @change="bindRuzhuDateChange">
+													<text class="text">{{ruzhuDate||'请选择'}}</text>
+					 </picker>
 				</view>
 			</view>
 		</view>
@@ -57,13 +62,21 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				renshu:[['1人','2人','3人','4人','5人','6人','7人','8人']],
-				pickerValue:[] //当前选中值对应索引
+				renshuIndex:[] ,//当前选中值对应索引
+				kanfangDate:"",
+				ruzhuDate:""
 			};
 		},
 		methods:{
 				bindChange: function(value) {
-				 this.pickerValue = value
-				 }	
+				 this.renshuIndex = value
+				 },
+				 bindKanfangDateChange(e){
+					 this.kanfangDate=e.detail.value;
+				 },
+				 bindRuzhuDateChange(e){
+				 	this.ruzhuDate=e.detail.value;
+				 }
 		}
 	}
 </script>

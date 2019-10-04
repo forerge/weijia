@@ -30,46 +30,46 @@
 			<view class="grid grid-col-4 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-4">
 						<text class="select-title">小区</text>
-						<text class="select-btn">填写小区名称</text>
+						<input class="select-btn input" type="text" value="" placeholder="填写小区名称"/>
 				</view>
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
 						<text class="select-title">面积</text>
-						<text class="select-btn">请填写</text>
+						<input class="select-btn input" type="text" value="" placeholder="填写小区名称"/>
 				</view>
 				<view class="grid-list grid-col-align-center">
 						<text class="select-title">厅室</text>
-						<multiSelectorPicker :range="tingshi" @bindChange="bindChange">
+						<multiSelectorPicker :range="tingshi" @bindChange="bindChange($event,'tingshi')">
 							<text class="select-btn" slot="html">
-							{{tingshi[0][pickerValue[0]]||'请选择'}}{{tingshi[1][pickerValue[1]]||''}}
-							{{tingshi[2][pickerValue[2]]||''}}
+							{{tingshi[0][tingshiIndex[0]]||'请选择'}}{{tingshi[1][tingshiIndex[1]]||''}}
+							{{tingshi[2][tingshiIndex[2]]||''}}
 							</text>
 						</multiSelectorPicker>
 						<view class="right-short-line"></view>
 				</view>
 				<view class="grid-list grid-col-align-center grid-combine-col-2">
 						<text class="select-title">朝向</text>
-						<multiSelectorPicker :range="chaoxiang" @bindChange="bindChange">
-							<text class="select-btn" slot="html">{{chaoxiang[0][pickerValue[0]]||'请选择'}}</text>
+						<multiSelectorPicker :range="chaoxiang" @bindChange="bindChange($event,'chaoxiang')">
+							<text class="select-btn" slot="html">{{chaoxiang[0][chaoxiangIndex[0]]||'请选择'}}</text>
 						</multiSelectorPicker>
 						<view class="right-short-line"></view>
 				</view>
 				<view class="grid-list grid-col-align-center">
 						<text class="select-title">楼层</text>
-						<multiSelectorPicker :range="louceng" @bindChange="bindChange">
-							<text class="select-btn" slot="html">{{louceng[0][pickerValue[0]]||'请选择'}}</text>
+						<multiSelectorPicker :range="louceng" @bindChange="bindChange($event,'louceng')">
+							<text class="select-btn" slot="html">{{louceng[0][loucengIndex[0]]||'请选择'}}</text>
 						</multiSelectorPicker>
 				</view>
 				<view class="grid-list grid-col-align-center grid-combine-col-2" >
 						<text class="select-title">车位</text>
-						<multiSelectorPicker :range="chewei" @bindChange="bindChange">
-							<text class="select-btn" slot="html">{{chewei[0][pickerValue[0]]||'有无车位'}}</text>
+						<multiSelectorPicker :range="chewei" @bindChange="bindChange($event,'chewei')">
+							<text class="select-btn" slot="html">{{chewei[0][cheweiIndex[0]]||'有无车位'}}</text>
 						</multiSelectorPicker>
 						<view class="right-short-line"></view>
 				</view>
 				<view class="grid-list grid-col-align-center grid-combine-col-2" >
 						<text class="select-title">电梯</text>
-						<multiSelectorPicker :range="dianti" @bindChange="bindChange">
-							<text class="select-btn" slot="html">{{dianti[0][pickerValue[0]]||'有无电梯'}}</text>
+						<multiSelectorPicker :range="dianti" @bindChange="bindChange($event,'dianti')">
+							<text class="select-btn" slot="html">{{dianti[0][diantiIndex[0]]||'有无电梯'}}</text>
 						</multiSelectorPicker>
 				</view>
 			</view>
@@ -78,29 +78,29 @@
 			<view class="grid grid-col-2 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-2">
 						<text class="select-title">月租金</text>
-						<multiSelectorPicker :range="yuezhujin" @bindChange="bindChange">
-							<text class="select-btn" slot="html">{{yuezhujin[0][pickerValue[0]]||'请选择'}}</text>
+						<multiSelectorPicker :range="yuezhujin" @bindChange="bindChange($event,'yuezhujin')">
+							<text class="select-btn" slot="html">{{yuezhujin[0][yuezhujinIndex[0]]||'请选择'}}</text>
 						</multiSelectorPicker>
 				</view>
 				<view class="grid-list grid-col-align-center  grid-combine-col-2">
 						<text class="select-title">租金包含费用（物业费等）</text>
-						<text class="select-btn">请选择</text>
+						<text class="select-btn" @tap="showdMultiCheckScroll">{{checkedVal||'获取值'}}</text>
 				</view>
 			</view>
 			<!-- 联系人 -->
 			<columnTitle columnTitle="联系人"/>
 			<view class="grid grid-col-4 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-2">
-						<text class="select-btn">请填写姓名</text>
+						<input class="select-btn" type="text" value="" placeholder="请填写姓名"/>
 				</view>
 				<view class="grid-list grid-row-align-center grid-combine-col-2">
-						<label class="radio active">
+						<label class="radio" :class="{active:gender==0}" @tap="checkedRadio(0)">
 							男士
-							<radio value="男士" checked=true />
+							<radio value="男士" />
 						</label>
-						<label class="radio">
+						<label class="radio" :class="{active:gender==1}" @tap="checkedRadio(1)">
 							女士
-							<radio value="女士" checked=false />
+							<radio value="女士" />
 						</label>
 				</view>
 				<view class="grid-list grid-col-align-center grid-combine-col-4">
@@ -116,7 +116,7 @@
 						<text class="select-btn">开启后将有效减少中介来电</text>
 				</view> 
 				<view class="grid-list grid-row-align-right-center">
-						<radio value="yes" checked=true color="#F7A00C"/>
+						<checkbox value="yes" checked=true color="#F7A00C"/>
 				</view>
 				<view class="grid-list grid-col-align-left-center grid-combine-col-3">
 						<text class="select-title">接听时段</text>
@@ -133,6 +133,12 @@
 				</view>
 			</view>
 		</form>
+		
+		<!-- 租金包含费用弹框	 -->
+		<multiCheckScroll
+		multiCheckTitle="租金包含费用"
+		:checkArray="['水费','电费','燃气费','宽带费','物业费','有线电视费','停车费']" 
+		@multiCheckDone="checkBoxDone" :show="showMultiCheck" />       
 	</view>
 </template>
 
@@ -140,27 +146,39 @@
 	import columnTitle from "@/components/dzy-column-title/dzy-column-title.vue";
     import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 	import multiSelectorPicker from "@/components/dzy-multiSelector-picker/dzy-multiSelector-picker.vue";
+	import multiCheckScroll from "@/components/dzy-multi-check-scroll/dzy-multi-check-scroll.vue";
 	export default {
 		components:{
 			columnTitle,
 			imgUpload,
-			multiSelectorPicker
+			multiSelectorPicker,
+			multiCheckScroll
 		},
 		
 		data() {
 			return {
+				// 租金包含费用弹框参数
+				showMultiCheck:false,
+				checkedVal:"",
+				
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				chewei:[['有车位','无车位']],
+				cheweiIndex:[],
 				dianti:[['有电梯','无电梯']],
+				diantiIndex:[],
 				chaoxiang:[['东','南','西','北']],
+				chaoxiangIndex:[],
 				tingshi:[['1室','2室','3室','4室'],['1厅'],['1卫','2卫']],
+				tingshiIndex:[],
 				yuezhujin:[['押一付一','押一付三','半年付']],
+				yuezhujinIndex:[],
 				louceng:[
 					['-2层','-1层','1层','2层','3层','4层','5层','6层','7层','8层','9层','10层','11层','12层','13层','14层','15层','16层','17层','18层','19层','20层','21层']
 					],
-				pickerValue:[],
-				 u_id:'',
+					gender:0, //性别默认选项
+					loucengIndex:[],
+					u_id:'',
 				 imgSaveUrl:{},//当前选中值对应索引,
 				 house_data:{    //房源上传当前数据的缓存
 					 house:'',
@@ -172,8 +190,45 @@
 			this.u_id = uni.getStorageSync('weijia_pro')['u_id'];
 		},
 		methods:{
-			bindChange: function(value) {
-				this.pickerValue = value 
+			bindChange: function(e,title) {
+				switch(title) {
+				     case 'chewei':
+				        this.cheweiIndex=e;
+				        break;
+				     case 'dianti':
+				         this.diantiIndex=e;
+				        break;
+							case 'dianti':
+							    this.diantiIndex=e;
+							   break;
+							case 'chaoxiang':
+							    this.chaoxiangIndex=e;
+							   break;
+							case 'tingshi':
+							    this.tingshiIndex=e;
+							   break;
+							case 'yuezhujin':
+							    this.yuezhujinIndex=e;
+							   break;
+							case 'louceng':
+							    this.loucengIndex=e;
+							   break;
+				     default:
+				        break;
+				} 
+			},
+			//性别选择
+			checkedRadio(index){
+				this.gender=index;
+			},
+			//点击弹框"完成"按钮时触发
+			checkBoxDone(checkArrayVal){
+				this.showMultiCheck=false;//关闭多选弹框
+				this.checkedVal=checkArrayVal.toString();//获取选中值
+			},
+			//事件显示多选弹框
+			showdMultiCheckScroll(){
+				this.showMultiCheck=true;
 			},
 			zhengzufabu(e){
 				this.house_data.house = e.detail.value;
