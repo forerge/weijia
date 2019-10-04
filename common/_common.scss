@@ -2,6 +2,10 @@
 view{
 	font-size:$uni-font-size-base;
 } 
+image{will-change: transform}
+button{
+	line-height:normal;
+}
 /* 遮罩 */
 .mask{
 	height:100%;

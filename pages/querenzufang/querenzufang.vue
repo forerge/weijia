@@ -146,6 +146,37 @@
 				全天采光。让您时刻感受温暖的阳光。精品装修，卧室宽大家具可任意摆设，空气流通性好;家具齐全可拎包入住;阳台视野开阔，可鸟瞰小区全貌小区环境幽静,绿化率达60%。
 			</view>
 		</view>
+		<!-- 确认租房参数填写 -->
+		<view class="grid grid-col-2 sure-zhufang-attr">
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+			<text class="title">支付金额</text> 
+			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="支付金额" />￥</view>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+			<text class="title">押金</text> 
+			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="押金" />￥</view>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+			<text class="title">实际月租金</text> 
+			<view class="input-box red grid-row-align-center"><input type="text" value="" placeholder="实际月租金" />￥</view>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+			<text class="title">租入时长</text> 
+			<view class="input-box grid-row-align-center"><input type="text" value="" placeholder="租入时长" />月</view>
+			</view>
+		</view>
+		
+		<view class="grid grid-col-2  uploadimg">
+				<view class="grid-list grid-combine-col-2">
+					<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
+					<view class="grid-row-align-center v1">
+						<view class="grid-row-align-center circle">
+							+
+						</view>
+					</view>
+				</view>
+		</view>
+		
 		<!-- 同小区房源 -->
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
@@ -153,10 +184,6 @@
 		<form @submit="queren">
 			<view class="grid grid-col-2 footer">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<view class="left grid-col-align-center">
-						<image class="img" :src="serverImgUrl + 'xinxing.png'"></image>
-						<text>收藏</text>
-					</view>
 					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
 					<button class="center" form-type="submit" >确认租房</button>
 					<text class="right">合同详情</text>
@@ -382,6 +409,7 @@ export default {
 	.right {
 		padding: 6px 12px;
 		border-radius: 6px;
+		line-height:normal;
 	}
 	.center {
 		background: #67e2b3;
@@ -391,5 +419,51 @@ export default {
 		background: #fce649;
 		color: #444337;
 	}
+}
+.grid.sure-zhufang-attr{
+	border-top:6px solid #F4F3F3;
+	margin-top:1em;
+	.grid-list{
+		padding:0.5em 1.5em 0;
+		.title{
+			color:#999999;
+		}
+		.input-box{
+			input[type='text']{
+				border:1px solid #D8D8D8;
+				box-sizing: border-box;
+				padding:0 0.5em;
+			}
+			&.red{
+				color:#FD0101;
+			}
+		}
+	}
+}
+.grid.uploadimg{
+	width:90%;
+	margin:0 auto;
+	.grid-list{
+				.text1{
+					height:40px;
+					.text1-1{
+						color:#FD3E3E;
+					}
+				}
+				.v1{
+					height:250rpx;
+					border:1px solid #EBEBEB;
+					border-radius: 15px;
+					.circle{
+						width:45px;
+						height:45px;
+						border:1px solid #EBEBEB;
+						border-radius: 45px;
+						color:#EBEBEB;
+						font-size:25px;
+						font-weight: 700;
+					}
+				}
+			}
 }
 </style>
