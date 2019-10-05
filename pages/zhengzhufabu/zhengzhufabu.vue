@@ -4,13 +4,6 @@
 		<form @submit="zhengzufabu">
 			<view class="uploadImgFrame">
 				<columnTitle columnTitle="基本信息(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
-				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
-					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
-						<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
-							<text class="plus">+</text>
-						</view>
-					</imgUpload>
-				</view> -->
 				<view class="uploadImg row-items-center">
 					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='house'>
 						<view class="uploadImgBtn col-items-center" slot="img-upload" id="imgUploadView1">
@@ -19,22 +12,16 @@
 						</view>
 					</imgUpload>
 				</view>
-				<!-- <view class="uploadImg row-items-center">
-					<view class="uploadImgBtn col-items-center">
-						<image :src="serverImgUrl+'static/images/xiangji.png'" mode="widthFix"></image>
-						<text>上传图片</text>
-					</view> 
-				</view> -->
 			</view>
 			<columnTitle columnTitle="基本信息"/>
 			<view class="grid grid-col-4 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-4">
 						<text class="select-title">小区</text>
-						<input class="select-btn input" type="text" value="" placeholder="填写小区名称"/>
+						<input class="select-btn input" type="text" name="qv" value="" placeholder="填写小区名称"/>
 				</view>
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
 						<text class="select-title">面积</text>
-						<input class="select-btn input" type="text" value="" placeholder="填写小区名称"/>
+						<input class="select-btn input" type="text" name="space" value="" placeholder="填写小区名称"/>
 				</view>
 				<view class="grid-list grid-col-align-center">
 						<text class="select-title">厅室</text>
@@ -77,10 +64,14 @@
 			<columnTitle columnTitle="租金详情"/>
 			<view class="grid grid-col-2 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-2">
-						<text class="select-title">月租金</text>
+						<text class="select-title">付款规则</text>
 						<multiSelectorPicker :range="yuezhujin" @bindChange="bindChange($event,'yuezhujin')">
 							<text class="select-btn" slot="html">{{yuezhujin[0][yuezhujinIndex[0]]||'请选择'}}</text>
 						</multiSelectorPicker>
+				</view>
+				<view class="grid-list grid-col-align-center grid-combine-col-2">
+						<text class="select-title">月租金</text>
+						<input class="select-btn input" type="text" name="money" value="" placeholder="请输入金额"/>
 				</view>
 				<view class="grid-list grid-col-align-center  grid-combine-col-2">
 						<text class="select-title">租金包含费用（物业费等）</text>
@@ -88,9 +79,9 @@
 				</view>
 			</view>
 			<!-- 联系人 -->
-			<columnTitle columnTitle="联系人"/>
+			<!-- <columnTitle columnTitle="联系人"/> -->
 			<view class="grid grid-col-4 base-msg">
-				<view class="grid-list grid-col-align-center grid-combine-col-2">
+				<!-- <view class="grid-list grid-col-align-center grid-combine-col-2">
 						<input class="select-btn" type="text" value="" placeholder="请填写姓名"/>
 				</view>
 				<view class="grid-list grid-row-align-center grid-combine-col-2">
@@ -110,7 +101,7 @@
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
 						<text class="select-title">为保护隐私，您的真实号码将被隐藏</text>
 						<text class="select-btn">123-****-789<text class="select-btn-reminder">已验证</text></text>
-				</view>
+				</view> -->
 				<view class="grid-list grid-col-align-left-center grid-combine-col-3">
 						<text class="select-title">中介勿扰</text>
 						<text class="select-btn">开启后将有效减少中介来电</text>
@@ -163,9 +154,9 @@
 				
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
-				chewei:[['有车位','无车位']],
+				chewei:[['无车位','有车位']],
 				cheweiIndex:[],
-				dianti:[['有电梯','无电梯']],
+				dianti:[['无电梯','有电梯']],
 				diantiIndex:[],
 				chaoxiang:[['东','南','西','北']],
 				chaoxiangIndex:[],
@@ -231,9 +222,40 @@
 				this.showMultiCheck=true;
 			},
 			zhengzufabu(e){
+				
+				var inmoney = this.checkedVal;
+				var in_money = [];
+				inmoney.indexOf('水费')>-1?in_money.push('shuifei'):'';
+				inmoney.indexOf('电费')>-1?in_money.push('dianfei'):'';
+				inmoney.indexOf('燃气费')>-1?in_money.push('ranqifei'):'';
+				inmoney.indexOf('宽带费')>-1?in_money.push('kuandaifei'):'';
+				inmoney.indexOf('物业费')>-1?in_money.push('wuyefei'):'';
+				inmoney.indexOf('有线电视费')>-1?in_money.push('youxiandianshifei'):'';
+				inmoney.indexOf('停车费')>-1?in_money.push('tingchefei'):'';
+
 				this.house_data.house = e.detail.value;
 				this.house_data.img = this.imgSaveUrl.imgUploadView1;
-				console.log(this.house_data),
+				
+				// console.log(this.diantiIndex);
+				// console.log(this.chaoxiang);
+				// console.log(this.chaoxiangIndex);
+				// console.log(this.tingshiIndex),
+				this.house_data.house.qv = e.detail.value.qv;
+				this.house_data.house.space = e.detail.value.space;
+				
+				this.house_data.house.shi = this.tingshiIndex[0]+1;
+				this.house_data.house.ting = this.tingshiIndex[1];
+				this.house_data.house.wei = this.tingshiIndex[2]+1;
+				this.house_data.house.xiang = this.chaoxiang[0][this.chaoxiangIndex[0]];
+				this.house_data.house.floor = parseInt(this.loucengIndex[0]);
+				this.house_data.house.car =  this.diantiIndex[0];
+				this.house_data.house.elevator = this.diantiIndex[0];
+				this.house_data.house.rule = this.yuezhujinIndex[0];
+				this.house_data.house.money = e.detail.value.money;
+				this.house_data.house.floor = this.loucengIndex[0];
+				this.house_data.house.in_money = in_money;
+				// console.log(this.house_data.house);
+				// debugger;
 				uni.setStorageSync('weijia_house',this.house_data)
 				uni.navigateTo({
 				    url: '../zhengzhufabu/zhengzhufabu2?state=2'
