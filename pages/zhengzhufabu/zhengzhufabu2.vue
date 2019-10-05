@@ -6,10 +6,7 @@
 			<view class="grid grid-col-3 top-picker-view" >
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">看房时间</text>
-					 <picker mode="date"  @change="bindKanfangDateChange">
-								<text class="text">{{kanfangDate||'请选择'}}</text>
-					  </picker>
-					
+								<text class="text">随时</text>
 				</view>
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">宜住人数</text>
@@ -20,9 +17,7 @@
 				</view>
 				<view class="grid-list grid-col-align-center select-btn" >
 					<text class="text">入住时间</text>
-					<picker mode="date"  @change="bindRuzhuDateChange">
-													<text class="text">{{ruzhuDate||'请选择'}}</text>
-					 </picker>
+						<text class="text">随时入住</text>
 				</view>
 			</view>
 		</view>
@@ -70,12 +65,6 @@
 		methods:{
 				bindChange: function(value) {
 				 this.renshuIndex = value
-				 },
-				 bindKanfangDateChange(e){
-					 this.kanfangDate=e.detail.value;
-				 },
-				 bindRuzhuDateChange(e){
-				 	this.ruzhuDate=e.detail.value;
 				 }
 		}
 	}
