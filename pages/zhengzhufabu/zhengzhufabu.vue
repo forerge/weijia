@@ -123,7 +123,7 @@
 						<text class="select-btn">只在所选时间内接收来电</text>
 				</view>
 				<view class="grid-list grid-row-align-right-center">
-						<text class="select-btn">7:00-18:00</text>
+						<text class="select-btn" @tap="timeRangeShow">{{rangeValue[0]}}:00-{{rangeValue[1]}}:00</text>
 				</view>
 			</view>
 			<view url="./zhengzhufabu2" hover-class="none">
@@ -133,6 +133,33 @@
 				</view>
 			</view>
 		</form>
+		
+	
+		<view class="mask" :class="{active:timeRangeMaskactive}">
+					 <view class="grid grid-col-2 time-range-box">
+							<view class="grid-list grid-combine-col-2 grid-row-align-center title-box">
+								 <text class="title">选择时间段</text> <text class="btn" @tap="timeRangeDone">完成</text>
+							</view>
+						
+							<view class="grid-list grid-combine-col-2 ">
+									<!-- 时间滑块 -->
+									<numberRangeSlider
+									  :value="rangeValue"
+									  :min="rangeMin"
+									  :max="rangMax"
+									  :step="1"
+									  :bar-height="3"
+									  :block-size="26"
+										blockColor="#0073BB"
+									  background-color="#EEEEF6"
+									  active-color="#FF6B00"
+									  :format="format"
+									  :decorationVisible="true"
+									  @change="getTimeRange"
+									></numberRangeSlider>
+							</view>
+					 </view>  
+		</view>
 		
 		<!-- 租金包含费用弹框	 -->
 		<multiCheckScroll
@@ -147,12 +174,14 @@
     import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 	import multiSelectorPicker from "@/components/dzy-multiSelector-picker/dzy-multiSelector-picker.vue";
 	import multiCheckScroll from "@/components/dzy-multi-check-scroll/dzy-multi-check-scroll.vue";
+	import numberRangeSlider from '@/components/uni-number-range-slider/uni-number-range-slider.vue'
 	export default {
 		components:{
 			columnTitle,
 			imgUpload,
 			multiSelectorPicker,
-			multiCheckScroll
+			multiCheckScroll,
+			numberRangeSlider
 		},
 		
 		data() {
@@ -160,6 +189,12 @@
 				// 租金包含费用弹框参数
 				showMultiCheck:false,
 				checkedVal:"",
+				
+				 // 时间滑块
+				 rangeMin: 0,
+				 rangMax: 24,
+				rangeValue: [0, 24],
+				timeRangeMaskactive:false,
 				
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
@@ -230,6 +265,19 @@
 			showdMultiCheckScroll(){
 				this.showMultiCheck=true;
 			},
+				// 时间范围选择
+				format(val) {
+			      return val + ':00'
+			    },
+			    getTimeRange(e) {
+			      this.rangeValue = e
+			    },
+					timeRangeShow(){
+						this.timeRangeMaskactive=true;
+					},
+					timeRangeDone(){
+						this.timeRangeMaskactive=false;
+					},
 			zhengzufabu(e){
 				this.house_data.house = e.detail.value;
 				this.house_data.img = this.imgSaveUrl.imgUploadView1;
@@ -252,6 +300,37 @@
 </script>
 
 <style lang="scss" scoped>
+			// 时间滑块
+			.mask{
+				display: none;
+				&.active{
+					display: block;
+				}
+			}
+		 .time-range-box.grid{
+			 height:200px; 
+			 position: absolute;
+			 bottom:0;
+			 left:0;
+			 width:100%;
+			 background: #fff;
+			 .grid-list{
+				 height:50px;
+				 border-top:1px solid #EBEBEB;
+				 &.title-box{
+						position: relative;
+						height:40px;
+						background: #F6F6F6;
+						color:#A9A9A9;
+						border-top:1px solid #EBEBEB;
+					 .btn{
+						 position: absolute;
+						 right:1.5em;
+						 color:#FA3131;
+					 }
+				 }
+			 }
+		 }
 		.uploadImg{
 			width:100%;
 			height:350rpx;
