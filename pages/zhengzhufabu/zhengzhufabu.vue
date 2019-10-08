@@ -313,7 +313,7 @@
 				// debugger;
 				uni.setStorageSync('weijia_house',this.house_data)
 				uni.navigateTo({
-				    url: '../zhengzhufabu/zhengzhufabu2?state=2'
+				    url: '../zhengzhufabu/zhengzhufabu2'
 				});
 			},
 			uploadImg(eleid){	//调用子组件上传函数
