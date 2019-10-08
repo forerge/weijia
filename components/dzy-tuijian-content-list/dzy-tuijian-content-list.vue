@@ -4,7 +4,7 @@
 		<view class="grid grid-col-2 tuijian-content-list">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center">
 					<navigator class="img-navigator" :url="'../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id" hover-class="none">
-						<image class="img" :src="val.h_img" ></image>
+						<image class="img" :src="val.h_uploads[0]" ></image>
 			    </navigator>
 				<view class="description">
 					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">

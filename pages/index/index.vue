@@ -166,14 +166,14 @@
 		
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
-			console.log(uni.getStorageSync('weijia_pro'));
+			// console.log(uni.getStorageSync('weijia_pro'));
 			this.status = uni.getStorageSync('weijia_status')
 			if(this.status == true){
 				this.role = uni.getStorageSync('weijia_role')
 			}
 			
-			console.log(this.role)
-			console.log(this.status)
+			// console.log(this.role)
+			// console.log(this.status)
 			//执行uni-app提供的类似ajax异步加载
 			uni.request({ 
 				url: this.serverApiUrl+'home/house/kuai_hot', //请求url

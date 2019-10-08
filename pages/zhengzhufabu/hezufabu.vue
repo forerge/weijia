@@ -124,7 +124,7 @@
 			<view url="./zhengzhufabu2" hover-class="none">
 					 <!-- <bigButonYellow big_button_yellow="下一步"/> -->
 				<view style="padding:1em 0;background:#fff;">
-					<button class="big_button_yellow" form-type="submit">下一步</button>
+					<button class="big_button_yellow" form-type="submit" >下一步</button>
 				</view>
 			</view>
 		</form>
@@ -209,7 +209,7 @@
 					gender:0, //性别默认选项
 					loucengIndex:[],
 					u_id:'',
-				 imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
+				 imgSaveUrl:{},//当前选中值对应索引,
 				 house_data:{    //房源上传当前数据的缓存
 					 house:'',
 					 img:''
@@ -287,7 +287,11 @@
 
 				this.house_data.house = e.detail.value;
 				this.house_data.img = this.imgSaveUrl.imgUploadView1;
-	
+				
+				// console.log(this.diantiIndex);
+				// console.log(this.chaoxiang);
+				// console.log(this.chaoxiangIndex);
+				// console.log(this.tingshiIndex),
 				this.house_data.house.qv = e.detail.value.qv;
 				this.house_data.house.space = e.detail.value.space;
 				this.house_data.house.addr = e.detail.value.addr;
@@ -302,13 +306,6 @@
 				this.house_data.house.money = e.detail.value.money;
 				this.house_data.house.floor = this.loucengIndex[0]-1;
 				this.house_data.house.in_money = in_money;
-				this.house_data.house.state = 1;
-				this.house_data.house.uid = this.u_id;
-				this.house_data.house.weijia = 2;
-				this.house_data.house.status = 1;
-				this.house_data.house.listen = '';
-				this.house_data.house.uploads = this.imgSaveUrl['imgUploadView1'];
-				this.house_data.house.name = uni.getStorageSync('weijia_pro')['u_tname'];
 				// console.log(this.house_data.house);
 				// debugger;
 				uni.setStorageSync('weijia_house',this.house_data)
@@ -317,10 +314,12 @@
 				});
 			},
 			uploadImg(eleid){	//调用子组件上传函数
-				this.$refs.imgUploadView1.upload(eleid);//执行图片上传
-				// console.log(this.imgSaveUrl);//输出存储路径
+				this.$refs.imgUploadView1.upload(eleid);
+			},
+			//获取上传图片的存储路径
+			getImgSaveUrl(){
+				console.log(this.imgSaveUrl);
 			}
-			
           
 		}
 	}
