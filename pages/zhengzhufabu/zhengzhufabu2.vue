@@ -1,48 +1,42 @@
 <template>
 	<view>
-		<form @submit="fabufangyuan">
-			<columnTitle columnTitle="入住信息"/>
-			<view slot="picker-view-top">
-				<view class="grid grid-col-3 top-picker-view" >
-					<view class="grid-list grid-col-align-center select-btn" >
-						<text class="text">看房时间</text>
-						 <picker mode="date"  @change="bindKanfangDateChange">
-									<text class="text">{{kanfangDate||'请选择'}}</text>
-						  </picker>
-						
-					</view>
-					<view class="grid-list grid-col-align-center select-btn" >
-						<text class="text">宜住人数</text>
-						<multiSelectorPicker :range="renshu" @bindChange="bindChange">
-							<text class="text" slot="html">{{renshu[0][renshuIndex[0]]||'请选择'}}</text>
-						</multiSelectorPicker>
-						
-					</view>
-					<view class="grid-list grid-col-align-center select-btn" >
-						<text class="text">入住时间</text>
-						<picker mode="date"  @change="bindRuzhuDateChange">
-							<text class="text">{{ruzhuDate||'请选择'}}</text>
-						</picker>
-					</view>
+	
+		<columnTitle columnTitle="入住信息"/>
+		<view slot="picker-view-top">
+			<view class="grid grid-col-3 top-picker-view" >
+				<view class="grid-list grid-col-align-center select-btn" >
+					<text class="text">看房时间</text>
+								<text class="text">随时</text>
+				</view>
+				<view class="grid-list grid-col-align-center select-btn" >
+					<text class="text">宜住人数</text>
+					<multiSelectorPicker :range="renshu" @bindChange="bindChange">
+						<text class="text" slot="html">{{renshu[0][renshuIndex[0]]||'请选择'}}</text>
+					</multiSelectorPicker>
+					
+				</view>
+				<view class="grid-list grid-col-align-center select-btn" >
+					<text class="text">入住时间</text>
+						<text class="text">随时入住</text>
 				</view>
 			</view>
-			<checkboxColumnFrame columnTitle="房屋配置" 
-			:checkboxVal="['宽带','床','衣柜','沙发','桌椅','电视','空调','洗衣机','冰箱','热水器','燃气灶','抽烟机','电磁炉','微波炉','独立卫生间','阳台','可做饭']"
-			/>
-			<checkboxColumnFrame columnTitle="房屋亮点"
-			:checkboxVal="['南北通透','有阳台','首次出租']"
-			/>
-			<checkboxColumnFrame columnTitle="出租要求"
-			:checkboxVal="['只限女生','一家人','禁止养宠物','半年起租','一年起租','租户稳定','作息正常','禁烟']"
-			/>
-			<textareaColumnFrame columnTitle="补充几句" placeholder="详细的描述会大大增加快速出租的机会可以介绍房子引人的地方，交通和周边环境，可以入住的时间，对租客的要求。"/>
-			
-			<view hover-class="none">
-				<view style="padding:1em 0;background:#fff;">
-					<button class="big_button_yellow" form-type="submit" >发布房源</button>
-				</view>
-			</view>
-		</form>
+		</view>
+		<checkboxColumnFrame @checkboxChange="checkboxFangwupeizhiChange" columnTitle="房屋配置" 
+		:checkboxVal="['宽带','床','衣柜','沙发','桌椅','电视','空调','洗衣机','冰箱','热水器','燃气灶','抽烟机','电磁炉','微波炉','独立卫生间','阳台','可做饭']"
+		/>
+		<checkboxColumnFrame @checkboxChange="checkboxFangwuliangdianChange" columnTitle="房屋亮点"
+		:checkboxVal="['南北通透','有阳台','首次出租']"
+		/>
+		<checkboxColumnFrame @checkboxChange="checkboxChuzuyaoqiuChange" columnTitle="出租要求"
+		:checkboxVal="['只限女生','一家人','禁止养宠物','半年起租','一年起租','租户稳定','作息正常','禁烟']"
+		/>
+		
+		<!-- 获取值方法：this.$refs.textareaColumnFrame.textareaVal -->
+		<textareaColumnFrame ref="textareaColumnFrame" columnTitle="补充几句" placeholder="详细的描述会大大增加快速出租的机会可以介绍房子引人的地方，交通和周边环境，可以入住的时间，对租客的要求。"/>
+		
+		<navigator url="../wodefabu/wodefabu" hover-class="none">
+				 <bigButonYellow big_button_yellow="确认发布" />
+		</navigator>
 	</view>
 </template>
 
@@ -65,44 +59,28 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				renshu:[['1人','2人','3人','4人','5人','6人','7人','8人']],
-				renshuIndex:[] ,//当前选中值对应索引
-				kanfangDate:"",
-				ruzhuDate:""
+				renshuIndex:[]//当前选中值对应索引
 			};
 		},
 		methods:{
 				bindChange: function(value) {
 				 this.renshuIndex = value
 				 },
-				 bindKanfangDateChange(e){
-					 this.kanfangDate=e.detail.value;
+				 //获取多选选项值
+				 checkboxFangwupeizhiChange(value){
+					 console.log(value);
 				 },
-				 bindRuzhuDateChange(e){
-				 	this.ruzhuDate=e.detail.value;
+				 checkboxFangwuliangdianChange(value){
+					 console.log(value);
 				 },
-				 fangyuanfabu(){
-					var house_data = uni.setStorageSync('weijia_house',this.house_data);
-					uni.switchTab({
-					    url: '/pages/index/index'
-					});
+				 checkboxChuzuyaoqiuChange(value){
+					 console.log(value);
 				 }
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.big_button_yellow{
-		height:64rpx;
-		font-size: 16px;
-		line-height: 64rpx;
-		width:475rpx;
-		margin:0 auto;
-		color:#362F0C;
-		background:#FDE648;
-		border-radius: 30px;
-		text-align: center;
-		margin-bottom: 32rpx;
-	}
 	.top-picker-view{
 		border-top:1px solid #D3D3D3;
 				.grid-list{
