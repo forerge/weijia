@@ -1,57 +1,136 @@
 <template>
 	<view>
-		<tuijianContentList :tuijianContent="tuijianContent"/>
 		<view class="grid grid-col-2 hetong">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">甲 方</text>                                                            
+				<text class="text2">{{uname}}</text>                                                            
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">乙 方</text>                                                            
+				<text class="text2">{{list.hname}}</text>                                                            
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">支付金额</text>                                                            
+				<text class="text2">{{list.money}}</text>                                                            
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">租金（月付）</text>
+				<text class="text2">{{list.zmoney}}</text>   
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">押金</text>
+				<text class="text2">{{list.ymoney}}</text>  
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">开始时间</text>                                                            
+				<text class="text2">{{time}}</text>                                                            
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">租 期</text>                                                            
+				<text class="text2">{{list.long}}个月</text>                                                            
+			</view>
+			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<text class="text1">租 期</text>                                                            
 				<text class="text2">2019-6-25至12-30 </text>                                                            
 			</view>
-					<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-						<text class="text1">租金（月付）</text>
-						<text class="text2">￥2300.00/月 </text>   
-					</view>
-					<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-						<text class="text1">押金</text>
-						<text class="text2">2300.00  </text>  
-					</view>
-					<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-						<text class="text1">物业交接</text>
-						<text class="text2">未交接 </text>                                                      
-					</view>
-					<view class="grid-list grid-combine-col-2 grid-row-align-right-center">
-						<text class="btn">去签约</text>                                                         
-					</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">租 期</text>                                                            
+				<text class="text2">2019-6-25至12-30 </text>                                                            
+			</view> -->
+			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">物业交接</text>
+				<text class="text2">未交接 </text>                                                      
+			</view> -->
+			<view class="grid-list grid-combine-col-2 grid-row-align-right-center">
+				<button class="center" @click="queren" >确认租房</button>
+				<text class="btn" @click="yulan">预览</text>                                                         
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import tuijianContentList from '../../components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue'
 	export default {
-		components:{
-			tuijianContentList
-		},
+		onLoad(e) {
+			this.list = uni.getStorageSync('weijia_order_list');
+			console.log(this.list);
+			if(uni.getStorageSync('weijia_pro')['u_tname'] == ''){
+				this.uname = uni.getStorageSync('weijia_pro')['u_name']
+			}else{
+				this.uname = uni.getStorageSync('weijia_pro')['u_tname']
+			}
+			console.log(this.list);
+			var time_one = new Date();
+			var time = time_one.format('yyyy-MM-dd');
+			
+			// uni.request({ 
+			// 	url: this.serverApiUrl+'home/order/kuai_order_list', //请求url
+			// 	method: 'POST',               //请求方式 
+			// 	data: {
+			// 		uid:this.list.uid,
+			// 		hid:this.list.hid
+			// 	},                     //传递的数据
+			// 	success: res => {   //成功执行回调函数
+			// 		if(res.statusCode==200){
+			// 			console.log(res.data);
+			// 		}else{ 
+			// 			// console.log(res);
+			// 		}
+			// 		
+			// 	},
+			// 	fail: () => {},
+			// 	complete: () => {}
+			// });
+		}, 
 		data() {
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
-				//我的收藏
-				tuijianContent:[
-					{
-					imgUrl:this.$commonConfig.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'1合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					}
-				]
+				serverApiUrl:this.$commonConfig.serverApiUrl,
+				list:'',                  //确认租房页面传递过来的数据
+				order:'',                  //合同详情内容
+				uname:'',                  //当前登录用户的名称
+				time:''                     //租房开始时间
 			};
+		},
+		methods: {
+			yulan(){
+				uni.navigateTo({
+				    url: '../wodehetong/wodehetong-detail',
+				})
+			},
+			queren(e){
+				uni.request({
+					url: this.serverApiUrl+'home/order/kuai_order', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						// uid:uni.getStorageSync('weijia_pro')['u_id'],
+						// hid:this.house_detail.h_id,
+						huid:this.house_detail.hu_id,
+						money:this.money,
+						ymoney:this.ymoney,
+						zmoney:this.zmoney,
+						long:this.long,
+						img:this.imgSaveUrl,
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == '1'){
+								uni.switchTab({
+								    url: '/pages/index/index'
+								});
+							}
+						}else{ 
+							console.log(res);
+						}
+						
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
 		}
+		
 	}
 </script>
 

@@ -153,24 +153,27 @@
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
 		<!-- 底部 -->
-		<form @submit="queren">
 			<!-- 确认租房参数填写 -->
 			<view class="grid grid-col-2 sure-zhufang-attr">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<text class="title">支付金额</text> 
-				<view class="input-box red grid-row-align-center"><input type="text" name='money' value="" placeholder="支付金额" />￥</view>
+					<text class="title">支付金额</text> 
+					<view class="input-box red grid-row-align-center"><input type="text" name='money' :value="money" placeholder="支付金额" @input="o_money" />￥</view>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<text class="title">押金</text> 
-				<view class="input-box red grid-row-align-center"><input type="text" name="ymoney" value="" placeholder="押金" />￥</view>
+					<text class="title">押金</text> 
+					<view class="input-box red grid-row-align-center"><input type="text" name="ymoney" :value="ymoney" @input="o_ymoney" placeholder="押金" />￥</view>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<text class="title">实际月租金</text> 
-				<view class="input-box red grid-row-align-center"><input type="text" name="zmoney" value="" placeholder="实际月租金" />￥</view>
+					<text class="title">实际月租金</text> 
+					<view class="input-box red grid-row-align-center"><input type="text" name="zmoney" :value="zmoney" @input="o_zmoney" placeholder="实际月租金" />￥</view>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<text class="title">租入时长</text> 
-				<view class="input-box grid-row-align-center"><input type="text" name="long" value="" placeholder="租入时长" />月</view>
+					<text class="title">租入时长</text> 
+					<view class="input-box grid-row-align-center"><input type="text" name="long" :value="long" @input="o_long" placeholder="租入时长" />月</view>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+					<text class="title">乙方</text> 
+					<view class="input-box grid-row-align-center"><input type="text" name="long" disabled :value="house_detail.h_hname" @input="o_long" placeholder="没有数据" /></view>
 				</view>
 			</view>
 			
@@ -185,16 +188,16 @@
 					</view>
 			</view> -->
 			<view class="grid grid-col-2  uploadimg">
-				<view class="grid-list grid-combine-col-2">
-					<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
-					<!-- <view class="grid-row-align-center v1"> -->
-						<imgUpload  class="grid-row-align-center v1" ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='license'>
-							<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
-								<text class="plus">+</text>
-							</view>
-						</imgUpload>
-					<!-- </view> -->
-				</view>
+					<view class="grid-list grid-combine-col-2">
+						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
+						<view class="grid-row-align-center v1">
+							<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
+								<view class="upload-btn grid-row-align-center circle" slot="img-upload" id="imgUploadView1">
+									<text class="plus">+</text>
+								</view>
+							</imgUpload>
+						</view>
+					</view>
 			</view>
 			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
 				<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
@@ -206,24 +209,23 @@
 			<view class="grid grid-col-2 footer">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
-					<button class="center" form-type="submit" >确认租房</button>
-					<text class="right">合同详情</text>
+					<button class="center" @click="queren" >确认租房</button>
+					<text class="right" @click="hetongxiangqing">合同详情</text>
 				</view>
 			</view>
-		</form>
 	</view>
 </template>
 
 <script>
 import goodsDetailsImgSlide from '@/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue';
 import showMarkersMap from '@/components/dzy-show-markers-map/dzy-show-markers-map.vue';
-import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
+// import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
 import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 export default {
 	components: {
 		goodsDetailsImgSlide,
 		showMarkersMap,
-		tuijianContentList,
+		// tuijianContentList,
 		imgUpload
 	},
 	data() {
@@ -240,10 +242,19 @@ export default {
 			house_ask: [] ,//房源包含费用
 			order:'',
 			imgSaveUrl:{},
+			money:'',              //支付金额
+			ymoney:'',              //压金额
+			zmoney:'',              //租金金额
+			long:'',                 //租房时长
+			mid:'',                  //当前的预约编号
+			list:''
 		};
 	},
 	//2.页面加载完成、页面卸载事件
 	onLoad(e) {
+		this.mid = e.mid;
+		console.log(e);
+		console.log(this.mid);
 		uni.request({
 			url: this.serverApiUrl + 'home/house/kuai_detail', //请求url
 			method: 'POST', //请求方式
@@ -271,8 +282,6 @@ export default {
 	},
 	methods: {
 		queren(e){
-			// console.log(uni.getStorageSync('weijia_pro')['u_id']);
-			this.order = e.detail.value
 			uni.request({
 				url: this.serverApiUrl+'home/order/kuai_order', //请求url
 				method: 'POST',               //请求方式 
@@ -280,11 +289,12 @@ export default {
 					uid:uni.getStorageSync('weijia_pro')['u_id'],
 					hid:this.house_detail.h_id,
 					huid:this.house_detail.hu_id,
-					money:e.detail.value.money,
-					ymoney:e.detail.value.ymoney,
-					zmoney:e.detail.value.zmoney,
-					long:e.detail.value.long,
-					img:this.imgSaveUrl
+					money:this.money,
+					ymoney:this.ymoney,
+					zmoney:this.zmoney,
+					long:this.long,
+					img:this.imgSaveUrl,
+					mid:this.mid,
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
@@ -308,6 +318,37 @@ export default {
 		//获取上传图片的存储路径
 		getImgSaveUrl(){
 			console.log(this.imgSaveUrl);
+		},
+		
+		o_money(e){
+			this.money = e.detail.value
+		},
+		o_ymoney(e){
+			this.ymoney = e.detail.value
+		},
+		o_zmoney(e){
+			this.zmoney = e.detail.value
+		},
+		o_long(e){
+			this.long = e.detail.value
+		},
+		hetongxiangqing(){
+			console.log(0)
+			var list = {
+				uid:uni.getStorageSync('weijia_pro')['u_id'],
+				hid:this.house_detail.h_id,
+				huid:this.house_detail.hu_id,
+				money:this.money,
+				ymoney:this.ymoney,
+				zmoney:this.zmoney,
+				long:this.long,
+				img:this.imgSaveUrl,
+				hname:this.house_detail.h_hname
+			};
+			uni.setStorageSync('weijia_order_list', list);
+			uni.navigateTo({
+			    url: '../wodehetong/wodehetong2',
+			})
 		}
 	}
 };

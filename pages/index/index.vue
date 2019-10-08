@@ -91,11 +91,11 @@
 			 </navigator>
 		</view>
 		<view class="grid-list" @click="wodehetong">
-			<navigator url="../wodehetong/wodehetong2" hover-class="none">
+			<view hover-class="none">
 			<image :src="serverImgUrl+'nav011.png'" ></image>
 			<text>我的合同</text> 
-			 </navigator>
-		</view> 
+			</view>
+		</view>
 		<view class="grid-list" @click="qianbao">
 			<view hover-class="none">
 			<image :src="serverImgUrl+'nav012.png'" ></image>
@@ -133,6 +133,8 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl:this.$commonConfig.serverApiUrl,
+				status:'',     //登录状态
+				role:'',       //登录角色
 				//推荐内容
 				tuijianContent:[],
 				//获取定位城市处->上下图标切换
@@ -165,6 +167,13 @@
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
 			console.log(uni.getStorageSync('weijia_pro'));
+			this.status = uni.getStorageSync('weijia_status')
+			if(this.status == true){
+				this.role = uni.getStorageSync('weijia_role')
+			}
+			
+			console.log(this.role)
+			console.log(this.status)
 			//执行uni-app提供的类似ajax异步加载
 			uni.request({ 
 				url: this.serverApiUrl+'home/house/kuai_hot', //请求url
@@ -214,9 +223,15 @@
 				});
 			},
 			wodehetong(){
-				uni.navigateTo({
-				    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+					    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
 			},
 			jingjiren(){
 				if(uni.getStorageSync('weijia_status') == false){
@@ -252,14 +267,26 @@
 				}
 			},
 			qianbao(){
-				uni.navigateTo({
-				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+					    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
 			},
 			wuyejiaojie(){
-				uni.navigateTo({
-				    url: '../wuyejiaojie/wuyejiaojie?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+					    url: '../wuyejiaojie/wuyejiaojie?id='+uni.getStorageSync('weijia_pro')['u_id']
+					});
+				}
 			}
 		}, 
 	

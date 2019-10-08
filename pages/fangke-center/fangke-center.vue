@@ -229,7 +229,11 @@
 				    url: '../login/login'
 				});
 			}
+		},
+		onLoad() {
+			console.log(uni.getStorageSync('weijia_status'));
 		}
+		
 	}
 </script>
 
