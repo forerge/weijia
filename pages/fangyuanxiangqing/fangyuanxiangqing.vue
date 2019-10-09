@@ -78,7 +78,7 @@
 			<view class="title"><text>配置设施</text></view>
 			<view class="grid grid-col-5 grid-fixed-width">
 				<!-- <view class="grid-list grid-col-align-center {{house_config['kuandai'] == 1?'active':''}} "> -->
-				<view class="grid-list grid-col-align-center active ">
+				<view class="grid-list grid-col-align-center" :class="{active: house_config['kuandai'] == 1}" >
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-01.png'"></image>
 					<text class="text">WiFi</text>
 				</view>
@@ -123,7 +123,7 @@
 					<text class="text">电视</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-12.png'"></image>
+					<image class="img" :class="{active: house_config['dianshi']}" :src="serverImgUrl + 'peizhisheshi-12.png'"></image>
 					<text class="text">空调</text>
 				</view>
 				<view class="grid-list grid-col-align-center">
@@ -133,17 +133,16 @@
 			</view>
 		</view>
 
-		<view class="weizhi-and-zhoubian">
+		<!-- <view class="weizhi-and-zhoubian">
 			<view class="title"><text>位置及周边</text></view>
-			<!-- 地图组件 -->
+			地图组件 
 			<showMarkersMap latitude="30.924585" longitude="121.468585" address="运河新村" />
-		</view>
+		</view> -->
 
 		<view class="grid grid-col-2 brief">
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center title"><text>房源介绍</text></view>
 			<view class="grid-list grid-combine-col-2  description">
-				东南朝向，3室1厅1卫，
-				全天采光。让您时刻感受温暖的阳光。精品装修，卧室宽大家具可任意摆设，空气流通性好;家具齐全可拎包入住;阳台视野开阔，可鸟瞰小区全貌小区环境幽静,绿化率达60%。
+				{{house_detail.h_content}}
 			</view>
 		</view>
 		<!-- 同小区房源 -->
@@ -190,6 +189,7 @@ export default {
 	},
 	//2.页面加载完成、页面卸载事件
 	onLoad(e) {
+		
 		uni.request({
 			url: this.serverApiUrl + 'home/house/kuai_detail', //请求url
 			method: 'POST', //请求方式
@@ -197,15 +197,16 @@ export default {
 			success: res => {
 				//成功执行回调函数
 				if (res.statusCode == 200) {
+					// console.log(res.data);
 					this.tuijianContent = res.data.same;
-					delete res.data.same;
+					// delete res.data.same;
 					this.goodsDetailsImg = res.data.h_uploads;
 					this.house_config = JSON.parse(res.data.h_config);
 					this.house_inmoney = JSON.parse(res.data.h_inmoney);
 					this.house_ask = JSON.parse(res.data.h_ask);
-					delete res.data.h_config;
-					delete res.data.h_ask;
-					delete res.data.inmoney;
+					// delete res.data.h_config;
+					// delete res.data.h_ask;
+					// delete res.data.inmoney;
 					this.house_detail = res.data;
 				} else {
 					// console.log(res);
@@ -214,6 +215,7 @@ export default {
 			fail: () => {},
 			complete: () => {}
 		});
+		// console.log(this.house_config)
 	},
 	methods: {
 		golook(){

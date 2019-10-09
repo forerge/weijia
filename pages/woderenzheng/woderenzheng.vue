@@ -1,26 +1,31 @@
 <template>
 	<view>
 		<view class="house-person" >房源需认证才可展示，任意选一种即可</view>
-		<view class="house-fenlei" >
-			<view class="house-left">
-				<image class="img" :src="serverImgUrl+'static/images/renzheng01.png'" mode="widthFix"></image>
+		
+		<block v-for="(val,index) in renzheng">
+			<view class="house-fenlei" >
+				<view class="house-left">
+					<image class="img" :src="serverImgUrl+'renzheng01.png'" mode="widthFix"></image>
+				</view>
+				<view class="house-center">
+					<view class="house-c-top" >{{val['s_level']}}</view>
+					<view class="house-c-bottom" v-if="val['s_status'] == '通过'">审核通过</view>
+					<view class="house-c-bottom" v-else-if="val['s_status'] == '拒绝'">{{val['s_refuse']}}</view>
+					<view class="house-c-bottom" v-else>请耐心等待</view>
+				</view>
+				<view class="house-right" >{{val['s_status']}}</view>
 			</view>
-			<view class="house-center">
-				<view class="house-c-top" >认证房本</view>
-				<view class="house-c-bottom">仅供内部审核使用，不会对外展示</view>
-			</view>
-			<view class="house-right" >免费认证</view>
-		</view>
-		<view class="house-fenlei" >
+		</block>
+		<!-- <view class="house-fenlei" >
 			<view class="house-left">
-				<image class="img" :src="serverImgUrl+'static/images/renzheng02.png'" mode="widthFix"></image>
+				<image class="img" :src="serverImgUrl+'renzheng02.png'" mode="widthFix"></image>
 			</view>
 			<view class="house-center">
 				<view class="house-c-top" >100元保证金</view>
 				<view class="house-c-bottom">若无违规，房源下架后将原路退还</view>
 			</view>
 			<view class="house-right" >立即担保</view>
-		</view>
+		</view> -->
 
 	</view>
 </template>
@@ -30,9 +35,33 @@
 		
 		data() {
 			return {
-				serverImgUrl:this.$commonConfig.serverImgUrl
+				serverImgUrl:this.$commonConfig.serverImgUrl,
+				serverApiUrl:this.$commonConfig.serverApiUrl,
+				renzheng:''
 			}
-		} 
+		} ,
+		onLoad(){
+			uni.request({
+				url: this.serverApiUrl+'home/user/kuai_renzheng', //请求url
+				method: 'POST',               //请求方式 
+				data: {
+					uid:uni.getStorageSync('weijia_pro')['u_id']
+				},                     //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						// console.log(res.data)
+						this.renzheng = res.data;
+						// this.tuijianContent= res.data['house'];
+						// this.banner = res.data['banner']
+					}else{ 
+						// console.log(res);
+					}
+					
+				},
+				fail: () => {},
+				complete: () => {}
+			});
+		}
 	}
 </script>
 

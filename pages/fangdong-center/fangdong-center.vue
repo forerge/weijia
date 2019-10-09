@@ -125,19 +125,7 @@
 			}
 		},
 		onLoad() {
-			if(uni.getStorageSync('weijia_role') == 1){
-				uni.redirectTo({
-					url: '../fangke-center/fangke-center'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 3){
-				uni.redirectTo({
-					url: '../zhiyefangdong/zhiyefangdong'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 4){
-				uni.redirectTo({
-					url: '../zhiyejingjiren/zhiyejingjiren'
-				});
-			}
+			uni.setStorageSync('weijia_role',2);
 		}, 
 		methods: {
 			hideMask(){

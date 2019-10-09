@@ -166,7 +166,7 @@
 		
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
-			// console.log(uni.getStorageSync('weijia_pro'));
+			console.log(uni.getStorageSync('weijia_role'));
 			this.status = uni.getStorageSync('weijia_status')
 			if(this.status == true){
 				this.role = uni.getStorageSync('weijia_role')

@@ -262,6 +262,7 @@
 			toHide(){
 				this.curIndex=0;			
 			},
+			//省市区选择
 			changeShow(name) {
 				this.$refs[name].show();
 			},

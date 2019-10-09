@@ -151,19 +151,9 @@
 			}
 		},
 		onLoad() {
-			if(uni.getStorageSync('weijia_role') == 2){
-				uni.redirectTo({
-					url: '../fangdong-center/fangdong-center'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 3){
-				uni.redirectTo({
-					url: '../zhiyefangdong/zhiyefangdong'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 4){
-				uni.redirectTo({
-					url: '../zhiyejingjiren/zhiyejingjiren'
-				});
-			}
+			uni.setStorageSync('weijia_role',1);
+			// console.log(uni.getStorageSync('weijia_role'))
+			// console.log(234)
 		}, 
 		methods: {
 			//简单处理点击客服手机号，弹框显示隐藏
@@ -230,9 +220,6 @@
 				});
 			}
 		},
-		onLoad() {
-			console.log(uni.getStorageSync('weijia_status'));
-		}
 		
 	}
 </script>

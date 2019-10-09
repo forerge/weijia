@@ -45,7 +45,7 @@
 		<view class="grid grid-col-4 grid-fixed-width personserve">
 			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">我的预约</text>
+				<text class="text">我的---预约</text>
 			</view>
 			<view class="grid-list grid-col-align-center" @click="hetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
@@ -151,19 +151,7 @@
 			}
 		},
 		onLoad() {
-			if(uni.getStorageSync('weijia_role') == 1){
-				uni.redirectTo({
-					url: '../fangke-center/fangke-center'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 2){
-				uni.redirectTo({
-					url: '../fangdong-center/fangdong-center'
-				});
-			}else if(uni.getStorageSync('weijia_role') == 3){
-				uni.redirectTo({
-					url: '../zhiyefangdong/zhiyefangdong'
-				});
-			}
+			uni.setStorageSync('weijia_role',4);
 		}, 
 		methods: {
 			//简单处理点击客服手机号，弹框显示隐藏

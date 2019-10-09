@@ -84,6 +84,7 @@
 		},
 		onLoad(e) {
 			this.u_id = e.id;
+			uni.setStorageSync('weijia_role',3);
 		},
 		methods: {
 			provinceCityAreaChange: function (data) {

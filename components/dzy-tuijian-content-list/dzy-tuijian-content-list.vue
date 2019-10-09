@@ -7,7 +7,7 @@
 						<image class="img" :src="val.h_uploads[0]" ></image>
 			    </navigator>
 				<view class="description">
-					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
+					<navigator url="../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id" hover-class="none">
 					<view class="v1">{{val.h_state+'.'+val.h_qv+' '+val.h_shi+'居室.'+val.h_ting+'厅.'+val.h_wei+'卫'}}</view>
 					<view class="v2">
 						<text class="t1">{{val.h_space+'㎡'}}</text>

@@ -11,11 +11,11 @@
 				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
 					<input class="input" name="ma" type="text" value=""  placeholder="请输入推荐码："/>
 				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+				<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
 						<provinceCityArea :iniIndex="[8,0,0]" v-on:provinceCityAreaChange="provinceCityAreaChange" >
 						<text class="input-select grid-row-align-center" slot="show-province-city-area">{{address}}</text>
 						</provinceCityArea>
-				</view>
+				</view> -->
 				
 				<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between upload-title">
 					<text class="text1" >请上传工作证</text>

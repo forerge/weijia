@@ -27,6 +27,33 @@
 						<text class="select-title">面积</text>
 						<input class="select-btn input" type="text" name="space" value="" placeholder="填写面积"/>
 				</view>
+				
+				<view class="grid-list grid-col-align-center  grid-combine-col-4">
+						<text class="select-title">最近地铁</text>
+						<multiSelectorPicker :range="ditie" @bindChange="bindChange($event,'ditie')">
+							<text class="select-btn" slot="html">
+							{{ditie[0][ditieIndex[0]]||'请选择'}}
+							</text>
+						</multiSelectorPicker>
+				</view>
+				
+				<view class="grid-list grid-col-align-center  grid-combine-col-4">
+						<text class="select-title">面积</text>
+						<input class="select-btn input" type="text" name="space" value="" placeholder="填写面积"/>
+				</view>
+				
+				<view class="grid-list grid-col-align-center  grid-combine-col-4">
+							<text class="select-title">地区选择</text>
+							<!-- 省市区组件 -->
+							<provinceCityArea  @provinceCityAreaChange="getProvinceCityArea" :iniIndex="[8,0,0]">
+								<text class="select-btn" slot="show-province-city-area">
+								请选择
+								</text>
+							</provinceCityArea>
+							
+							
+				</view>
+				
 				<view class="grid-list grid-col-align-center">
 						<text class="select-title">厅室</text>
 						<multiSelectorPicker :range="tingshi" @bindChange="bindChange($event,'tingshi')">
@@ -160,7 +187,9 @@
 		<multiCheckScroll
 		multiCheckTitle="租金包含费用"
 		:checkArray="['水费','电费','燃气费','宽带费','物业费','有线电视费','停车费']" 
-		@multiCheckDone="checkBoxDone" :show="showMultiCheck" />       
+		@multiCheckDone="checkBoxDone" :show="showMultiCheck" />     
+		  
+		
 	</view>
 </template>
 
@@ -170,13 +199,15 @@
 	import multiSelectorPicker from "@/components/dzy-multiSelector-picker/dzy-multiSelector-picker.vue";
 	import multiCheckScroll from "@/components/dzy-multi-check-scroll/dzy-multi-check-scroll.vue";
 	import numberRangeSlider from '@/components/uni-number-range-slider/uni-number-range-slider.vue'
+	import provinceCityArea from '@/components/dzy-province-city-area/dzy-province-city-area.vue'
 	export default {
 		components:{
 			columnTitle,
 			imgUpload,
 			multiSelectorPicker,
 			multiCheckScroll,
-			numberRangeSlider
+			numberRangeSlider,
+			provinceCityArea
 		},
 		
 		data() {
@@ -206,14 +237,17 @@
 				louceng:[
 					['-2层','-1层','1层','2层','3层','4层','5层','6层','7层','8层','9层','10层','11层','12层','13层','14层','15层','16层','17层','18层','19层','20层','21层']
 					],
-					gender:0, //性别默认选项
 					loucengIndex:[],
+					ditie:[['1号线','2号线','3号线']],
+					ditieIndex:[],
+					gender:0, //性别默认选项
 					u_id:'',
 				 imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
 				 house_data:{    //房源上传当前数据的缓存
 					 house:'',
 					 img:''
-				 }
+				 },
+				
 			};
 		},
 		onLoad(e) {
@@ -243,6 +277,9 @@
 							case 'louceng':
 							    this.loucengIndex=e;
 							   break;
+						   case 'ditie':
+							this.ditieIndex=e;
+						   break;
 				     default:
 				        break;
 				} 
@@ -319,6 +356,10 @@
 			uploadImg(eleid){	//调用子组件上传函数
 				this.$refs.imgUploadView1.upload(eleid);//执行图片上传
 				// console.log(this.imgSaveUrl);//输出存储路径
+			},
+			//省市区选择
+			getProvinceCityArea(e){
+				console.log(e);
 			}
 			
           
