@@ -72,7 +72,7 @@
 			},
 			hezu(){
 				uni.navigateTo({
-				    url: '../hezufabu/hezufabu'
+				    url: '../zhengzhufabu/hezufabu'
 				});
 			},
 			
