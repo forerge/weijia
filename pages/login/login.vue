@@ -58,8 +58,8 @@
 								uni.setStorageSync('weijia_status', true);
 								uni.setStorageSync('weijia_role', 1);
 							}
-							uni.navigateBack({
-								delta: 1
+							uni.switchTab({
+							    url: '/pages/index/index'
 							});
 						} else {
 							// console.log(res);

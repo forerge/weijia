@@ -1,13 +1,13 @@
 <template>
 	<view>
 		<block v-for="(val,index) in tuijianContent" :key="index">
-		<view class="grid grid-col-2 tuijian-content-list">
+		<navigator class="grid grid-col-2 tuijian-content-list" :url="'../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center">
-					<navigator class="img-navigator" :url="'../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id" hover-class="none">
+					<view class="img-navigator"  hover-class="none">
 						<image class="img" :src="val.h_uploads[0]" ></image>
-			    </navigator>
+			    </view>
 				<view class="description">
-					<navigator url="../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id" hover-class="none">
+					<view hover-class="none">
 					<view class="v1">{{val.h_state+'.'+val.h_qv+' '+val.h_shi+'居室.'+val.h_ting+'厅.'+val.h_wei+'卫'}}</view>
 					<view class="v2">
 						<text class="t1">{{val.h_space+'㎡'}}</text>
@@ -18,16 +18,16 @@
 					<view class="v3">
 						<text class="t1">{{val.h_rule}}</text>
 						 <text class="t2">{{val.h_metro_length < 2000?'离地铁近':''}}</text> 
-						 <text class="t3">{{JSON.parse(val.h_config).yangtai==1?'有阳台':''}}</text>
+						 <!-- <text class="t3">{{JSON.parse(val.h_liangdian)['yangtai']?'有阳台':''}}</text> -->
 					</view>
 					<view class="v4">
 						<text class="t1">{{val.h_money}}</text>
 						 <text class="t2">元/月</text>
 					</view>
-					 </navigator>
+					 </view>
 				</view>
 			</view> 
-		</view>
+		</navigator>
 		</block>
 	</view>
 </template>

@@ -25,7 +25,7 @@
 				</view>
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
 						<text class="select-title">面积</text>
-						<input class="select-btn input" type="text" name="space" value="" placeholder="填写面积"/>
+						<input class="select-btn input" type="text" name="space" value="" placeholder="填写面积"/>㎡
 				</view>
 				
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
@@ -38,8 +38,8 @@
 				</view>
 				
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
-						<text class="select-title">面积</text>
-						<input class="select-btn input" type="text" name="space" value="" placeholder="填写面积"/>
+						<text class="select-title">地铁站距离</text>
+						<input class="select-btn input" type="text" name="metro_length" value="" placeholder="地铁站距离"/>m
 				</view>
 				
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
@@ -234,19 +234,21 @@
 				tingshiIndex:[],
 				yuezhujin:[['押一付一','押一付三','半年付']],
 				yuezhujinIndex:[],
-				louceng:[
-					['-2层','-1层','1层','2层','3层','4层','5层','6层','7层','8层','9层','10层','11层','12层','13层','14层','15层','16层','17层','18层','19层','20层','21层']
-					],
-					loucengIndex:[],
-					ditie:[['1号线','2号线','3号线']],
-					ditieIndex:[],
-					gender:0, //性别默认选项
-					u_id:'',
-				 imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
-				 house_data:{    //房源上传当前数据的缓存
-					 house:'',
-					 img:''
-				 },
+				louceng:[['-2层','-1层','1层','2层','3层','4层','5层','6层','7层','8层','9层','10层','11层',
+				          '12层','13层','14层','15层','16层','17层','18层','19层','20层','21层']],
+				loucengIndex:[],
+				ditie:[['无','1号线','2号线','3号线','4号线','5号线','6号线','7号线','8号线','9号线','10号线',
+						'11号线','12号线','13号线','14号线','15号线','16号线','17号线','18号线','19号线','20号线']],
+				ditieIndex:[],
+				gender:0, //性别默认选项
+				u_id:'',
+				imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
+				house_data:{    //房源上传当前数据的缓存
+				house:'',
+				metro_no:'',           //靠近几号线地铁
+				city:'',                 //省、市、区、、地址
+				img:''
+				},
 				
 			};
 		},
@@ -320,7 +322,7 @@
 				inmoney.indexOf('宽带费')>-1?in_money.push('kuandaifei'):'';
 				inmoney.indexOf('物业费')>-1?in_money.push('wuyefei'):'';
 				inmoney.indexOf('有线电视费')>-1?in_money.push('youxiandianshifei'):'';
-				inmoney.indexOf('停车费')>-1?in_money.push('tingchefei'):'';
+				inmoney.indexOf('停车费')>-1?in_money.push('tingche'):'';
 
 				this.house_data.house = e.detail.value;
 				this.house_data.img = this.imgSaveUrl.imgUploadView1;
@@ -332,22 +334,25 @@
 				this.house_data.house.ting = this.tingshiIndex[1]+1;
 				this.house_data.house.wei = this.tingshiIndex[2]+1;
 				this.house_data.house.xiang = this.chaoxiang[0][this.chaoxiangIndex[0]];
-				this.house_data.house.floor = parseInt(this.loucengIndex[0]);
+				this.house_data.house.floor = parseInt(this.loucengIndex[0])-1;
 				this.house_data.house.car =  this.cheweiIndex[0];
 				this.house_data.house.elevator = this.diantiIndex[0];
 				this.house_data.house.rule = this.yuezhujinIndex[0]+1;
 				this.house_data.house.money = e.detail.value.money;
-				this.house_data.house.floor = this.loucengIndex[0]-1;
+				this.house_data.house.h_province = this.city[0];
+				this.house_data.house.h_city = this.city[1];
+				this.house_data.house.h_area = this.city[2];
 				this.house_data.house.in_money = in_money;
 				this.house_data.house.state = 1;
 				this.house_data.house.uid = this.u_id;
+				this.house_data.house.metro_no = this.ditieIndex[0];
+				this.house_data.house.metro_length = e.detail.value.metro_length;
 				this.house_data.house.weijia = 2;
 				this.house_data.house.status = 1;
 				this.house_data.house.listen = '';
 				this.house_data.house.uploads = this.imgSaveUrl['imgUploadView1'];
 				this.house_data.house.name = uni.getStorageSync('weijia_pro')['u_tname'];
-				// console.log(this.house_data.house);
-				// debugger;
+				
 				uni.setStorageSync('weijia_house',this.house_data)
 				uni.navigateTo({
 				    url: '../zhengzhufabu/zhengzhufabu2'
@@ -359,6 +364,7 @@
 			},
 			//省市区选择
 			getProvinceCityArea(e){
+				this.city = e;
 				console.log(e);
 			}
 			

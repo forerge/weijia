@@ -280,6 +280,7 @@
 		  
 		  onLoad(e) {
 			  console.log(e);
+			  console.log(this.tuijianContent);
 		  	//执行uni-app提供的类似ajax异步加载
 		  	uni.request({ 
 		  		url: this.serverApiUrl+'home/house/kuai_list', //请求url

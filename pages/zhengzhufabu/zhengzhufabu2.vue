@@ -22,7 +22,7 @@
 		</view>
 		
 		<checkboxColumnFrame @checkboxChange="checkboxFangwupeizhiChange" columnTitle="房屋配置" 
-		:checkboxVal="['宽带','床','衣柜','沙发','桌椅','电视','空调','洗衣机','冰箱','热水器','燃气灶','抽烟机','电磁炉','微波炉','独立卫生间','阳台','可做饭']"
+		:checkboxVal="['宽带','床','衣柜','沙发','桌椅','电视','空调','洗衣机','冰箱','热水器','燃气灶','抽烟机','电磁炉','微波炉','独立卫生间','可做饭']"
 		/>
 		<checkboxColumnFrame @checkboxChange="checkboxFangwuliangdianChange" columnTitle="房屋亮点"
 		:checkboxVal="['南北通透','有阳台','首次出租']"
