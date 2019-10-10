@@ -21,10 +21,6 @@
 					<image class="lunboimg" :src="val['i_img']" mode="widthFix"></image>
 				</swiper-item>
 			</block>
-			
-			<swiper-item>
-				<image class="lunboimg" :src="serverImgUrl+'banner2.png'" mode="widthFix"></image>
-			</swiper-item> 
 		</swiper>
       <!-- 轮播图板块 end -->
 		
@@ -181,9 +177,12 @@
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						// console.log(res.data);
+						// var result = JSON.parse(res.data)
+						// console.log();
+						// console.log(res.data['house']);
 						this.tuijianContent= res.data['house'];
 						this.banner = res.data['banner']
+						
 					}else{ 
 						// console.log(res);
 					}

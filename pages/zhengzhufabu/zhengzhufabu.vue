@@ -247,6 +247,7 @@
 				house:'',
 				metro_no:'',           //靠近几号线地铁
 				city:'',                 //省、市、区、、地址
+				// state:'',                //1：整租，2：合租
 				img:''
 				},
 				
@@ -254,6 +255,7 @@
 		},
 		onLoad(e) {
 			this.u_id = uni.getStorageSync('weijia_pro')['u_id'];
+			// this.state = e.state;
 		},
 		methods:{
 			bindChange: function(e,title) {

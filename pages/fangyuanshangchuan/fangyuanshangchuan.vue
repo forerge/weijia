@@ -5,7 +5,7 @@
 			<text class="house-warning-word">温馨提示：请正确选择发布信息的分类，分类错误会导致信息违规下架</text>
 		</view>
 		<view class="house-person" >居民住房</view>
-		<view class="house-fenlei" >
+		<view class="house-fenlei" @click="zhengzu" >
 			<view class="house-left">
 				<image class="img" :src="serverImgUrl+'nav02.png'" mode="widthFix"></image>
 			</view>
@@ -13,11 +13,11 @@
 				<view class="house-c-top" >整租</view>
 				<view class="house-c-bottom">一整套房子，也包括房间</view>
 			</view>
-			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
+			<!-- <navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none"> -->
 			<view class="house-right" >＞</view>
-			</navigator>
+			<!-- </navigator> -->
 		</view>
-		<view class="house-fenlei" >
+		<view class="house-fenlei" @click="hezu" >
 			<view class="house-left">
 				<image class="img" :src="serverImgUrl+'nav03.png'" mode="widthFix"></image>
 			</view>
@@ -25,9 +25,9 @@
 				<view class="house-c-top" >合租</view>
 				<view class="house-c-bottom">一个房间</view>
 			</view>
-			<navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none">
+			<!-- <navigator url="../zhengzhufabu/zhengzhufabu" hover-class="none"> -->
 			<view class="house-right" >＞</view>
-				</navigator>
+				<!-- </navigator> -->
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
@@ -63,7 +63,21 @@
 			return {
 				serverImgUrl:this.$commonConfig.serverImgUrl
 			}
-		} 
+		} ,
+		methods: {
+			zhengzu(){
+				uni.navigateTo({
+				    url: '../zhengzhufabu/zhengzhufabu'
+				});
+			},
+			hezu(){
+				uni.navigateTo({
+				    url: '../hezufabu/hezufabu'
+				});
+			},
+			
+			
+		}
 	}
 </script>
 
