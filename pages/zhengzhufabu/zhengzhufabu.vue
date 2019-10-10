@@ -315,17 +315,6 @@
 						this.timeRangeMaskactive=false;
 					},
 			zhengzufabu(e){
-				
-				var inmoney = this.checkedVal;
-				var in_money = [];
-				inmoney.indexOf('水费')>-1?in_money.push('shuifei'):'';
-				inmoney.indexOf('电费')>-1?in_money.push('dianfei'):'';
-				inmoney.indexOf('燃气费')>-1?in_money.push('ranqifei'):'';
-				inmoney.indexOf('宽带费')>-1?in_money.push('kuandaifei'):'';
-				inmoney.indexOf('物业费')>-1?in_money.push('wuyefei'):'';
-				inmoney.indexOf('有线电视费')>-1?in_money.push('youxiandianshifei'):'';
-				inmoney.indexOf('停车费')>-1?in_money.push('tingche'):'';
-
 				this.house_data.house = e.detail.value;
 				this.house_data.img = this.imgSaveUrl.imgUploadView1;
 	
@@ -344,13 +333,14 @@
 				this.house_data.house.h_province = this.city[0];
 				this.house_data.house.h_city = this.city[1];
 				this.house_data.house.h_area = this.city[2];
-				this.house_data.house.in_money = in_money;
+				this.house_data.house.in_money = this.checkedVal;
 				this.house_data.house.state = 1;
 				this.house_data.house.uid = this.u_id;
 				this.house_data.house.metro_no = this.ditieIndex[0];
 				this.house_data.house.metro_length = e.detail.value.metro_length;
 				this.house_data.house.weijia = 2;
 				this.house_data.house.status = 1;
+				this.house_data.house.phone = uni.getStorageSync('weijia_pro')['hu_phone'];
 				this.house_data.house.listen = '';
 				this.house_data.house.uploads = this.imgSaveUrl['imgUploadView1'];
 				this.house_data.house.name = uni.getStorageSync('weijia_pro')['u_tname'];

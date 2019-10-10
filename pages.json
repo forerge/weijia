@@ -218,8 +218,14 @@
             "path" : "pages/fangke-yuyue-manage/wodeyuyue",
             "style" : {
 							"navigationBarTitleText": "我的预约"
-						}
+						}  
         }
+		,{
+		    "path" : "pages/wodeyuyue/fangdongyuyue",
+		    "style" : {
+							"navigationBarTitleText": "房东预约"
+						}
+		}
         ,{
             "path" : "pages/wuyejiaojie/wuyejiaojie",
             "style" : {

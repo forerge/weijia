@@ -63,7 +63,8 @@
 			},
 			yuyue(e){
 				// console.log(this.$refs.textareaColumnFrameEle.textareaVal);
-				// console.log(e.detail);
+				console.log(this.timestamp);
+				debugger;
 				uni.request({
 					url: this.serverApiUrl+'home/meet/add', //请求url
 					method: 'POST',               //请求方式 

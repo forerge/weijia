@@ -45,7 +45,7 @@
 		<view class="grid grid-col-4 grid-fixed-width personserve">
 			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">我的---预约</text>
+				<text class="text">我的预约</text>
 			</view>
 			<view class="grid-list grid-col-align-center" @click="hetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
@@ -167,27 +167,27 @@
 			},
 			wodeyuyue(){
 				uni.navigateTo({
-				    url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wodeyuyue/fangdongyuyue'
 				});
 			},
 			hetong(){
 				uni.navigateTo({
-				    url: '../wodehetong/wodehetong?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wodehetong/wodehetong'
 				});
 			},
 			renzheng(){
 				uni.navigateTo({
-				    url: '../woderenzheng/woderenzheng?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../woderenzheng/woderenzheng'
 				});
 			},
 			qianbao(){
 				uni.navigateTo({
-				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wodeqianbao/wodeqianbao'
 				});
 			},
 			yuanchengkaimen(){
 				uni.navigateTo({
-				    url: '../yuanchengkaimen/yuanchengkaimen?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../yuanchengkaimen/yuanchengkaimen'
 				});
 			},
 			

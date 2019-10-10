@@ -152,22 +152,22 @@
 			},
 			wodeyuyue(){
 				uni.navigateTo({
-				    url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wodeyuyue/fangdongyuyue'
 				});
 			},
 			renzheng(){
 				uni.navigateTo({
-				    url: '../woderenzheng/woderenzheng?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../woderenzheng/woderenzheng'
 				});
 			},
 			qianbao(){
 				uni.navigateTo({
-				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wodeqianbao/wodeqianbao'
 				});
 			},
 			wuyejiaojie(){
 				uni.navigateTo({
-				    url: '../wuyejiaojie/wuyejiaojie?id='+uni.getStorageSync('weijia_pro')['u_id']
+				    url: '../wuyejiaojie/wuyejiaojie'
 				});
 			}
 		}

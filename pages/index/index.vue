@@ -260,9 +260,16 @@
 					    url: '../login/login'
 					});
 				}else{
-					uni.navigateTo({
-						url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
-					});
+					if(uni.getStorageSync('weijia_role') == 1){
+						uni.navigateTo({
+							url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
+						});
+					}else{
+						uni.navigateTo({
+							url: '../wodeyuyue/fangdongyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
+						});
+					}
+					
 				}
 			},
 			qianbao(){

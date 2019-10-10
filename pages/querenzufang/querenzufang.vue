@@ -3,7 +3,7 @@
 		<goodsDetailsImgSlide :imgUrl="goodsDetailsImg" />
 		<view class="grid grid-col-2 head">
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between">
-				<text class="title grid-line-clamp-1">合租.运河新村 3居室.1厅.1卫</text>
+				<text class="title grid-line-clamp-1">{{house_detail['h_state']}}.{{house_detail['h_qv']}} {{house_detail['h_shi']}}居室.{{house_detail['h_ting']}}厅.{{house_detail['h_wei']}}卫</text>
 				<text class="price">{{ house_detail.h_money }} 元/月</text>
 				<text class="pay-way">{{ house_detail.h_rule }}</text>
 			</view>
@@ -12,9 +12,10 @@
 		<view class="grid grid-col-2 base-msg">
 			<view class="grid-list grid-combine-col-2 title"><text>基本信息</text></view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center summarize">
-				<text class="text text1">首次出租</text>
+				<text class="text text1">{{house_detail['h_liangdian']['shoucichuzu']?'首次出租':''}}</text>
+				<text class="text text1">{{house_detail['h_liangdian']['youyangtai']?'有阳台':''}}</text>
+				<text class="text text1">{{house_detail['h_liangdian']['nanbeitongtou']?'南北通透':''}}</text>
 				<text class="text text2">{{ house_detail.h_metro_length < 2000 ? '离地铁近' : '' }}</text>
-				<text class="text text3">有阳台</text>
 			</view>
 			<view class="grid-list grid-row-align-left-center base-parameter">
 				<text class="text1">面积：</text>
@@ -53,23 +54,29 @@
 		<view class="ruzhuyaoqiu">
 			<view class="title"><text>入驻要求</text></view>
 			<view class="grid grid-col-4 grid-fixed-width">
-					<view class="grid-list grid-row-align-center">
-							<text class="text">只限女生</text>
+					<view class="grid-list grid-row-align-center ">
+							<text class="text" :class="{active: house_detail['h_ask']['zhixiannvsheng']}" >只限女生</text>
 					</view>
 					<view class="grid-list grid-row-align-center">
-							<text class="text">一家人</text>
+							<text class="text" :class="{active: house_detail['h_ask']['yijiaren']}">一家人</text>
 					</view>
 					<view class="grid-list grid-row-align-center">
-							<text class="text">半年起租</text>
+							<text class="text" :class="{active: house_detail['h_ask']['bannianqizu']}">半年起租</text>
 					</view>
 					<view class="grid-list grid-row-align-center">
-							<text class="text">租户稳定</text>
+							<text class="text" :class="{active: house_detail['h_ask']['yinianqizu']}">一年起租</text>
 					</view>
 					<view class="grid-list grid-row-align-center">
-							<text class="text">禁烟</text>
+							<text class="text" :class="{active: house_detail['h_ask']['zuhuwending']}">租户稳定</text>
 					</view>
 					<view class="grid-list grid-row-align-center">
-							<text class="text">禁止养宠物</text>
+							<text class="text" :class="{active: house_detail['h_ask']['jinyan']}">禁烟</text>
+					</view>
+					<view class="grid-list grid-row-align-center">
+							<text class="text" :class="{active: house_detail['h_ask']['jinzhiyangchongwu']}">禁止养宠物</text>
+					</view>
+					<view class="grid-list grid-row-align-center">
+							<text class="text" :class="{active: house_detail['h_ask']['zuxizhengchang']}">作息正常</text>
 					</view>
 			</view>
 		</view>
@@ -78,60 +85,82 @@
 			<view class="title"><text>配置设施</text></view>
 			<view class="grid grid-col-5 grid-fixed-width">
 				<!-- <view class="grid-list grid-col-align-center {{house_config['kuandai'] == 1?'active':''}} "> -->
-				<view class="grid-list grid-col-align-center active ">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['kuandai']}" >
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-01.png'"></image>
 					<text class="text">WiFi</text>
 				</view>
-				<view class="grid-list grid-col-align-center  active">
+				<view class="grid-list grid-col-align-center " :class="{active: house_detail['h_config']['chuang']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-02.png'"></image>
 					<text class="text">床</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['yigui']}"> 
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-03.png'"></image>
 					<text class="text">衣柜</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['shafa']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-04.png'"></image>
 					<text class="text">沙发</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['zhuoyi']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-05.png'"></image>
 					<text class="text">桌椅</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-06.png'"></image>
-					<text class="text">洗衣机</text>
-				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-07.png'"></image>
-					<text class="text">冰箱</text>
-				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-08.png'"></image>
-					<text class="text">暖气</text>
-				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-09.png'"></image>
-					<text class="text">热水器</text>
-				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-10.png'"></image>
-					<text class="text">可做饭</text>
-				</view>
-				<view class="grid-list grid-col-align-center">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['dianshi']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-11.png'"></image>
 					<text class="text">电视</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-12.png'"></image>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['kongtiao']}">
+					<image class="img"  :src="serverImgUrl + 'peizhisheshi-12.png'"></image>
 					<text class="text">空调</text>
 				</view>
-				<view class="grid-list grid-col-align-center">
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['xiyiji']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-06.png'"></image>
+					<text class="text">洗衣机</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['bingxiang']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-07.png'"></image>
+					<text class="text">冰箱</text>
+				</view>
+				<!-- <view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['nuanqi']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-08.png'"></image>
+					<text class="text">暖气</text>
+				</view> -->
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['reshuiqi']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-09.png'"></image>
+					<text class="text">热水器</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['kezuofan']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-10.png'"></image>
+					<text class="text">可做饭</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['diancilu']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-11.png'"></image>
+					<text class="text">电磁炉</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['weibolu']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-12.png'"></image>
+					<text class="text">微波炉</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['duliweishengjian']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-13.png'"></image>
+					<text class="text">独立卫生间</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['ranqizao']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-14.png'"></image>
+					<text class="text">燃气灶</text>
+				</view>
+				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['chouyanji']}">
+					<image class="img" :src="serverImgUrl + 'peizhisheshi-15.png'"></image>
+					<text class="text">抽烟机</text>
+				</view>
+				
+				<!-- <view class="grid-list grid-col-align-center" :class="{active: house_config['yan']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-13.png'"></image>
 					<text class="text">阳台</text>
-				</view>
+				</view> -->
 			</view>
 		</view>
+		
 
 		<view class="weizhi-and-zhoubian">
 			<view class="title"><text>位置及周边</text></view>
@@ -154,6 +183,7 @@
 		<tuijianContentList :tuijianContent="tuijianContent" />
 		<!-- 底部 -->
 			<!-- 确认租房参数填写 -->
+		<view v-if="meet_detail['m_level'] == 2">
 			<view class="grid grid-col-2 sure-zhufang-attr">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 					<text class="title">支付金额</text> 
@@ -213,6 +243,7 @@
 					<text class="right" @click="hetongxiangqing">合同详情</text>
 				</view>
 			</view>
+		</view>
 	</view>
 </template>
 
@@ -237,9 +268,9 @@ export default {
 			goodsDetailsImg: [],
 			house_detail: [], //房源详情参数
 			tuijianContent: [], //推荐内容
-			house_config: [], //房源设施
-			house_inmoney: [], //房源包含费用
-			house_ask: [] ,//房源包含费用
+			// house_config: [], //房源设施
+			// house_inmoney: [], //房源包含费用
+			// house_ask: [] ,//房源包含费用
 			order:'',
 			imgSaveUrl:{},
 			money:'',              //支付金额
@@ -256,22 +287,24 @@ export default {
 		console.log(e);
 		console.log(this.mid);
 		uni.request({
-			url: this.serverApiUrl + 'home/house/kuai_detail', //请求url
+			url: this.serverApiUrl + 'home/house/kuai_detail_zufang', //请求url
 			method: 'POST', //请求方式
 			data: e, //传递的数据
 			success: res => {
 				//成功执行回调函数
 				if (res.statusCode == 200) {
+					console.log(res.data)
 					this.tuijianContent = res.data.same;
-					delete res.data.same;
-					this.goodsDetailsImg = res.data.h_uploads;
-					this.house_config = JSON.parse(res.data.h_config);
-					this.house_inmoney = JSON.parse(res.data.h_inmoney);
-					this.house_ask = JSON.parse(res.data.h_ask);
-					delete res.data.h_config;
-					delete res.data.h_ask;
-					delete res.data.inmoney;
-					this.house_detail = res.data;
+					// delete res.data.same;house
+					this.goodsDetailsImg = res.data.house.h_uploads;
+					// this.house_config = JSON.parse(res.data.h_config);
+					// this.house_inmoney = JSON.parse(res.data.h_inmoney);
+					// this.house_ask = JSON.parse(res.data.h_ask);
+					// delete res.data.h_config;
+					// delete res.data.h_ask;
+					// delete res.data.inmoney;
+					this.house_detail = res.data.house;
+					this.meet_detail = res.data.meet;
 				} else {
 					// console.log(res);
 				}
@@ -408,6 +441,9 @@ export default {
 		margin-bottom:1em;
 		.text{
 			padding:1px 10px;
+			color:#999;
+		}
+		.active{
 			border:1px solid #67E2B3;
 			color:#67E2B3;
 		}
