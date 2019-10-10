@@ -75,8 +75,6 @@
 				    url: '../zhengzhufabu/hezufabu'
 				});
 			},
-			
-			
 		}
 	}
 </script>

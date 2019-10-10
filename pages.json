@@ -127,7 +127,7 @@
         },
 		{
 		    "path" : "pages/wodehetong/wodehetong-detail",
-		    "style" : {
+		    "style" : {   
 				"navigationBarTitleText": "我的合同--在线预览"
 			}
 		},
