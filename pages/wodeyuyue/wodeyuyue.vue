@@ -6,7 +6,7 @@
 		</view>
 		<view v-else>
 			<block v-for="(val,index) in tuijianContent" :key="index">
-			<view class="grid grid-col-2 tuijian-content-list" >
+			<view class="grid grid-col-2 tuijian-content-list" v-if="val['m_status'] >-2">
 				<navigator class="grid-list grid-combine-col-2 grid-row-align-space-between-center" :url="'../querenzufang/querenzufang?hid='+val.h_id+'&mid='+val.m_id" >
 					<view class="image-box"  >
 						<image class="img" :src="val.h_uploads[0]" ></image>
@@ -28,8 +28,8 @@
 								 <text class="text">电话:{{val.hu_phone}}</text>
 							</view>
 							<view class="view v4 grid-row-align-space-between-center">
-								<text class="text">状态:{{val.hu_name}}</text>
-								 <text class="text btn">点我吧</text>
+								<text class="text">{{val.m_level}}</text>
+								<text class="text btn" @click="del(val.m_id,index)">删除</text>
 							</view>
 					</view>
 				</navigator> 
@@ -51,11 +51,31 @@
 				serverApiUrl:this.$commonConfig.serverApiUrl,
 				//我的收藏
 				tuijianContent:[],
-				role:'',
+				// role:'',
 			};
 		},
 		methods: { 
-			//滑块格式化
+			del(obj,key){
+				uni.request({
+					url: this.serverApiUrl+'home/meet/kuai_fangke_del', //请求url
+					method: 'POST',               //请求方式
+					data: {id:obj},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == 1){
+								this.tuijianContent[key][m_status] == -2;
+								// uni.redirectTo({
+								// 	url: '../wodeyuyue/fangdongyuyue'
+								// });
+							}
+						}else{
+							console.log(res);
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
 		  },
 		  
 		  onLoad() {
@@ -63,9 +83,9 @@
 			  console.log(this.role);
 		  	//执行uni-app提供的类似ajax异步加载
 		  	uni.request({ 
-		  		url: this.serverApiUrl+'home/meet/kuai_list_one', //请求url
+		  		url: this.serverApiUrl+'home/meet/kuai_list_fangke', //请求url
 		  		method: 'POST',               //请求方式
-		  		data: {role:this.role,id:uni.getStorageSync('weijia_pro')['u_id']},                     //传递的数据
+		  		data: {id:uni.getStorageSync('weijia_pro')['u_id']},                     //传递的数据
 		  		success: res => {   //成功执行回调函数
 		  			if(res.statusCode==200){
 						console.log(res.data);

@@ -130,7 +130,7 @@
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl:this.$commonConfig.serverApiUrl,
 				status:'',     //登录状态
-				role:'',       //登录角色
+				// role:'',       //登录角色
 				//推荐内容
 				tuijianContent:[],
 				//获取定位城市处->上下图标切换
@@ -162,8 +162,10 @@
 		
 		//2.页面加载完成、页面卸载事件
 		onLoad() {
+			console.log(uni.getStorageSync('weijia_status'));
 			console.log(uni.getStorageSync('weijia_role'));
-			this.status = uni.getStorageSync('weijia_status')
+			console.log(uni.getStorageSync('weijia_pro'));
+			this.status = uni.getStorageSync('weijia_status');
 			if(this.status == true){
 				this.role = uni.getStorageSync('weijia_role')
 			}
@@ -191,9 +193,40 @@
 				fail: () => {},
 				complete: () => {}
 			});
+			
+			
 			// uni.setStorageSync('weijia_wode', 'pages/wode/wode');
 			// uni.setStorageSync('weijia_status', false);
 		}, 
+		onPullDownRefresh() {
+			// var role = uni.getStorageSync('weijia_role');
+			
+			
+			// this.role = uni.getStorageSync('weijia_role')
+			// console.log(role);
+			if(this.status == true){
+				uni.request({
+					url: this.serverApiUrl+'home/user/kuai_shuaxin', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id']
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							uni.setStorageSync('weijia_pro', uni.getStorageSync('weijia_status'));
+							uni.setStorageSync('weijia_pro', res.data);
+							// uni.setStorageSync('weijia_role',role);
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
+			// console.log(123456);
+			setTimeout(function () {
+				uni.stopPullDownRefresh();
+			}, 2000);
+		},
 		
 		//3.事件以及自定义方法存放处
 		methods: {
@@ -205,7 +238,7 @@
 				this.downUpImg="xiala-down.png"; //切换上下图标
 				this.isActive=false;
 			},
-			chooseItem(item) {
+			chooseItem(item){
 				this.downUpImg="xiala-down.png"; //切换上下图标
 				this.isActive=false; //隐藏城市面板
 				this.cityName=item; //赋值给当前定位城市
@@ -227,9 +260,16 @@
 					    url: '../login/login'
 					});
 				}else{
-					uni.navigateTo({
-					    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
-					});
+					if(uni.getStorageSync('weijia_role') == 1){
+						uni.navigateTo({
+							url: '../wodehetong/wodehetong1'
+						});
+					}else{
+						uni.navigateTo({
+							url: '../wodehetong/fangdonghetong'
+						});
+					}
+					
 				}
 			},
 			jingjiren(){
@@ -289,9 +329,16 @@
 					    url: '../login/login'
 					});
 				}else{
-					uni.navigateTo({
-					    url: '../wuyejiaojie/wuyejiaojie?id='+uni.getStorageSync('weijia_pro')['u_id']
-					});
+					if(uni.getStorageSync('weijia_role')){
+						uni.navigateTo({
+							url: '../wuyejiaojie/wuyejiaojie-fangke-list'
+						});
+					}else{
+						uni.navigateTo({
+							url: '../wuyejiaojie/wuyejiaojie-fangdong-list'
+						});
+					}
+					
 				}
 			}
 		}, 

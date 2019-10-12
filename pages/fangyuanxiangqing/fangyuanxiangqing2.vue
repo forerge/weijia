@@ -160,103 +160,34 @@
 				</view> -->
 			</view>
 		</view>
-		
 
-		<!--<view class="weizhi-and-zhoubian">
+		<!-- <view class="weizhi-and-zhoubian">
 			<view class="title"><text>位置及周边</text></view>
-			 地图组件 
+			地图组件 
 			<showMarkersMap latitude="30.924585" longitude="121.468585" address="运河新村" />
-		</view>-->
+		</view> -->
 
 		<view class="grid grid-col-2 brief">
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center title"><text>房源介绍</text></view>
 			<view class="grid-list grid-combine-col-2  description">
-				{{house_detail['h_content']}}
+				{{house_detail.h_content}}
 			</view>
 		</view>
-		
-		
-		
 		<!-- 同小区房源 -->
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
-		<!-- 底部 -->
-			<!-- 确认租房参数填写 -->
-		<view v-if="meet_detail['m_level'] == 2">
-			<view class="grid grid-col-2 sure-zhufang-attr">
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="title">支付金额</text> 
-					<view class="input-box red grid-row-align-center"><input type="text" name='money' :value="money" placeholder="支付金额" @input="o_money" />￥</view>
-				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="title">押金</text> 
-					<view class="input-box red grid-row-align-center"><input type="text" name="ymoney" :value="ymoney" @input="o_ymoney" placeholder="押金" />￥</view>
-				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="title">实际月租金</text> 
-					<view class="input-box red grid-row-align-center"><input type="text" name="zmoney" :value="zmoney" @input="o_zmoney" placeholder="实际月租金" />￥</view>
-				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="title">租入时长</text> 
-					<view class="input-box grid-row-align-center"><input type="text" name="long" :value="long" @input="o_long" placeholder="租入时长" />月</view>
-				</view>
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<text class="title">乙方</text> 
-					<view class="input-box grid-row-align-center"><input type="text" name="long" disabled :value="house_detail.h_hname" @input="o_long" placeholder="没有数据" /></view>
-				</view>
-			</view>
-			
-			<!-- <view class="grid grid-col-2  uploadimg">
-					<view class="grid-list grid-combine-col-2">
-						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
-						<view class="grid-row-align-center v1">
-							<view class="grid-row-align-center circle">
-								+
-							</view>
-						</view>
-					</view>
-			</view> -->
-			<view class="grid grid-col-2  uploadimg">
-					<view class="grid-list grid-combine-col-2">
-						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
-						<view class="grid-row-align-center v1">
-							<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
-								<view class="upload-btn grid-row-align-center circle" slot="img-upload" id="imgUploadView1">
-									<text class="plus">+</text>
-								</view>
-							</imgUpload>
-						</view>
-					</view>
-			</view>
-			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
-				<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
-					<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
-						<text class="plus">+</text>
-					</view>
-				</imgUpload>
-			</view> -->
-			<view class="grid grid-col-2 footer">
-				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
-					<button class="center" @click="queren" >确认租房</button>
-					<text class="right" @click="hetongxiangqing">合同详情</text>
-				</view>
-			</view>
-		</view>
 	</view>
 </template>
 
 <script>
 import goodsDetailsImgSlide from '@/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue';
 import showMarkersMap from '@/components/dzy-show-markers-map/dzy-show-markers-map.vue';
-// import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
-import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
+import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
 export default {
 	components: {
 		goodsDetailsImgSlide,
 		showMarkersMap,
-		// tuijianContentList,
-		imgUpload
+		tuijianContentList
 	},
 	data() {
 		return {
@@ -267,41 +198,34 @@ export default {
 			goodsDetailsImg: [],
 			house_detail: [], //房源详情参数
 			tuijianContent: [], //推荐内容
-			meet_detail:'',
-			order:'',
-			imgSaveUrl:{},
-			money:'',              //支付金额
-			ymoney:'',              //压金额
-			zmoney:'',              //租金金额
-			long:'',                 //租房时长
-			mid:'',                  //当前的预约编号
-			list:''
+			// house_config: {}, //房源设施
+			// house_inmoney: [], //房源包含费用
+			// house_ask: [] //房源包含费用
 		};
 	},
 	//2.页面加载完成、页面卸载事件
 	onLoad(e) {
-		this.mid = e.mid;
-		console.log(e);
-		console.log(this.mid);
+		
 		uni.request({
-			url: this.serverApiUrl + 'home/house/kuai_detail_zufang', //请求url
+			url: this.serverApiUrl + 'home/house/kuai_detail', //请求url
 			method: 'POST', //请求方式
 			data: e, //传递的数据
 			success: res => {
 				//成功执行回调函数
 				if (res.statusCode == 200) {
-					console.log(res.data)
+					console.log(res.data);
+					// console.log(JSON.parse(res.data.h_config));
 					this.tuijianContent = res.data.same;
-					// delete res.data.same;house
-					this.goodsDetailsImg = res.data.house.h_uploads;
+					// delete res.data.same;
+					this.goodsDetailsImg = res.data.h_uploads;
 					// this.house_config = JSON.parse(res.data.h_config);
+					// console.log(this.house_config)
 					// this.house_inmoney = JSON.parse(res.data.h_inmoney);
 					// this.house_ask = JSON.parse(res.data.h_ask);
 					// delete res.data.h_config;
 					// delete res.data.h_ask;
 					// delete res.data.inmoney;
-					this.house_detail = res.data.house;
-					this.meet_detail = res.data.meet;
+					this.house_detail = res.data;
 				} else {
 					// console.log(res);
 				}
@@ -309,79 +233,25 @@ export default {
 			fail: () => {},
 			complete: () => {}
 		});
+		// console.log(this.house_config)
 	},
 	methods: {
-		queren(e){
-			uni.request({
-				url: this.serverApiUrl+'home/order/kuai_order_add', //请求url
-				method: 'POST',               //请求方式 
-				data: {
-					uid:uni.getStorageSync('weijia_pro')['u_id'],
-					hid:this.house_detail.h_id,
-					huid:this.house_detail.hu_id,
-					money:this.money,
-					ymoney:this.ymoney,
-					zmoney:this.zmoney,
-					long:this.long,
-					img:this.imgSaveUrl,
-					mid:this.mid,
-				},                     //传递的数据
-				success: res => {   //成功执行回调函数
-					if(res.statusCode==200){
-						if(res.data == '1'){
-							// uni.switchTab({
-							//     url: '/pages/index/index'
-							// });
-							uni.redirectTo({
-							    url: '../login/jump-role?message='+'恭喜你，下单成功。请等待房东确认！'
-							});
-						}
-					}else{ 
-						console.log(res);
-					}
-				},
-				fail: () => {},
-				complete: () => {}
-			});
-		},
-		uploadImg(eleid){	//调用子组件上传函数
-			this.$refs.imgUploadView1.upload(eleid);
-		},
-		//获取上传图片的存储路径
-		getImgSaveUrl(){
-			console.log(this.imgSaveUrl);
+		golook(){
+			var weijia_status = uni.getStorageSync('weijia_status');
+			if(weijia_status == false){
+				uni.navigateTo({
+				    url: '../login/login'
+				});
+			}else{
+				// console.log(this.house_detail['h_id']);
+				uni.navigateTo({
+					
+					url: "../yuyuefangyuan/yuyuefangyuan?id="+this.house_detail['h_id']
+				});
+			}
+			
 		},
 		
-		o_money(e){
-			this.money = e.detail.value
-		},
-		o_ymoney(e){
-			this.ymoney = e.detail.value
-		},
-		o_zmoney(e){
-			this.zmoney = e.detail.value
-		},
-		o_long(e){
-			this.long = e.detail.value
-		},
-		hetongxiangqing(){
-			console.log(0)
-			var list = {
-				uid:uni.getStorageSync('weijia_pro')['u_id'],
-				hid:this.house_detail.h_id,
-				huid:this.house_detail.hu_id,
-				money:this.money,
-				ymoney:this.ymoney,
-				zmoney:this.zmoney,
-				long:this.long,
-				img:this.imgSaveUrl,
-				hname:this.house_detail.h_hname
-			};
-			uni.setStorageSync('weijia_order_list', list);
-			uni.navigateTo({
-			    url: '../wodehetong/wodehetong2',
-			})
-		}
 	}
 };
 </script>
@@ -517,7 +387,6 @@ export default {
 	.right {
 		padding: 6px 12px;
 		border-radius: 6px;
-		line-height:normal;
 	}
 	.center {
 		background: #67e2b3;
@@ -527,51 +396,5 @@ export default {
 		background: #fce649;
 		color: #444337;
 	}
-}
-.grid.sure-zhufang-attr{
-	border-top:6px solid #F4F3F3;
-	margin-top:1em;
-	.grid-list{
-		padding:0.5em 1.5em 0;
-		.title{
-			color:#999999;
-		}
-		.input-box{
-			input[type='text']{
-				border:1px solid #D8D8D8;
-				box-sizing: border-box;
-				padding:0 0.5em;
-			}
-			&.red{
-				color:#FD0101;
-			}
-		}
-	}
-}
-.grid.uploadimg{
-	width:90%;
-	margin:0 auto;
-	.grid-list{
-				.text1{
-					height:40px;
-					.text1-1{
-						color:#FD3E3E;
-					}
-				}
-				.v1{
-					height:250rpx;
-					border:1px solid #EBEBEB;
-					border-radius: 15px;
-					.circle{
-						width:45px;
-						height:45px;
-						border:1px solid #EBEBEB;
-						border-radius: 45px;
-						color:#EBEBEB;
-						font-size:25px;
-						font-weight: 700;
-					}
-				}
-			}
 }
 </style>

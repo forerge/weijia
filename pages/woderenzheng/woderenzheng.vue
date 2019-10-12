@@ -9,9 +9,10 @@
 				</view>
 				<view class="house-center">
 					<view class="house-c-top" >{{val['s_level']}}</view>
-					<view class="house-c-bottom" v-if="val['s_status'] == '通过'">审核通过</view>
-					<view class="house-c-bottom" v-else-if="val['s_status'] == '拒绝'">{{val['s_refuse']}}</view>
-					<view class="house-c-bottom" v-else>请耐心等待</view>
+					<view class="house-c-bottom" v-if="val['level'] == 3 ">{{val['h_qv']}}--{{val['h_addr']}}</view>
+					<view class="house-c-bottom" v-if="val['level'] == 4">{{val['h_qv']}}--{{val['h_addr']}}</view>
+					<!-- <view class="house-c-bottom" v-else-if="val['s_status'] == '拒绝'">{{val['s_refuse']}}</view> -->
+					<!-- <view class="house-c-bottom" v-else>请耐心等待</view> -->
 				</view>
 				<view class="house-right" >{{val['s_status']}}</view>
 			</view>
@@ -41,15 +42,18 @@
 			}
 		} ,
 		onLoad(){
+			var role_woderenzheng = uni.getStorageSync('weijia_role')
 			uni.request({
+				
 				url: this.serverApiUrl+'home/user/kuai_renzheng', //请求url
 				method: 'POST',               //请求方式 
 				data: {
-					uid:uni.getStorageSync('weijia_pro')['u_id']
+					uid:uni.getStorageSync('weijia_pro')['u_id'],
+					role:role_woderenzheng
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						// console.log(res.data)
+						console.log(res.data)
 						this.renzheng = res.data;
 						// this.tuijianContent= res.data['house'];
 						// this.banner = res.data['banner']

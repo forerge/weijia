@@ -3,7 +3,7 @@
 		<!-- 上传图片框 -->
 		<form @submit="zhengzufabu">
 			<view class="uploadImgFrame">
-				<columnTitle columnTitle="基本信息(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
+				<columnTitle columnTitle="房屋照片(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
 				<view class="uploadImg row-items-center">
 					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='house'>
 						<view class="uploadImgBtn col-items-center" slot="img-upload" id="imgUploadView1">
@@ -340,6 +340,7 @@
 				this.house_data.house.metro_length = e.detail.value.metro_length;
 				this.house_data.house.weijia = 2;
 				this.house_data.house.status = 1;
+				this.house_data.house.phone = uni.getStorageSync('weijia_pro')['u_phone'];
 				this.house_data.house.listen = '';
 				this.house_data.house.uploads = this.imgSaveUrl['imgUploadView1'];
 				this.house_data.house.name = uni.getStorageSync('weijia_pro')['u_tname'];

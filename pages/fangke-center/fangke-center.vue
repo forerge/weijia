@@ -7,9 +7,14 @@
 							<text class="text">昵称</text>
 						</view>
 						<view class="grid-list grid-row-align-right-center">
-							<view class="turnBtn" @tap="showRoleTurn">
+							<view class="turnBtn" @tap="showRoleTurn"  v-if="rolechange == true">
 								<text>
 									切换身份	
+								</text>
+							</view>
+							<view class="turnBtn" v-else>
+								<text>
+									没有身份切换		
 								</text>
 							</view>
 						</view>
@@ -147,11 +152,16 @@
 				serverApiUrl:this.$commonConfig.serverApiUrl,
 				//客服弹框显示隐藏
 				active:false,
-				roleTurn:false
+				roleTurn:false,
+				rolechange:false,
 			}
 		},
 		onLoad() {
 			uni.setStorageSync('weijia_role',1);
+			var	user = uni.getStorageSync('weijia_pro');
+			if(user.u_two == 1 || user.u_three == 1 || user.u_four == 1){
+				this.rolechange = true;
+			}
 			// console.log(uni.getStorageSync('weijia_role'))
 			// console.log(234)
 		}, 

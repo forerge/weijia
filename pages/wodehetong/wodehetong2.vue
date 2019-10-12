@@ -42,7 +42,6 @@
 				<text class="text2">未交接 </text>                                                      
 			</view> -->
 			<view class="grid-list grid-combine-col-2 grid-row-align-right-center">
-				<button class="center" @click="queren" >确认租房</button>
 				<text class="btn" @click="yulan">预览</text>                                                         
 			</view>
 		</view>
@@ -63,24 +62,24 @@
 			var time_one = new Date();
 			var time = time_one.format('yyyy-MM-dd');
 			
-			// uni.request({ 
-			// 	url: this.serverApiUrl+'home/order/kuai_order_list', //请求url
-			// 	method: 'POST',               //请求方式 
-			// 	data: {
-			// 		uid:this.list.uid,
-			// 		hid:this.list.hid
-			// 	},                     //传递的数据
-			// 	success: res => {   //成功执行回调函数
-			// 		if(res.statusCode==200){
-			// 			console.log(res.data);
-			// 		}else{ 
-			// 			// console.log(res);
-			// 		}
-			// 		
-			// 	},
-			// 	fail: () => {},
-			// 	complete: () => {}
-			// });
+			uni.request({ 
+				url: this.serverApiUrl+'home/order/kuai_order_list', //请求url
+				method: 'POST',               //请求方式 
+				data: {
+					uid:this.list.uid,
+					hid:this.list.hid
+				},                     //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						console.log(res.data);
+					}else{ 
+						// console.log(res);
+					}
+					
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		}, 
 		data() {
 			return {
@@ -98,36 +97,6 @@
 				uni.navigateTo({
 				    url: '../wodehetong/wodehetong-detail',
 				})
-			},
-			queren(e){
-				uni.request({
-					url: this.serverApiUrl+'home/order/kuai_order', //请求url
-					method: 'POST',               //请求方式 
-					data: {
-						// uid:uni.getStorageSync('weijia_pro')['u_id'],
-						// hid:this.house_detail.h_id,
-						huid:this.house_detail.hu_id,
-						money:this.money,
-						ymoney:this.ymoney,
-						zmoney:this.zmoney,
-						long:this.long,
-						img:this.imgSaveUrl,
-					},                     //传递的数据
-					success: res => {   //成功执行回调函数
-						if(res.statusCode==200){
-							if(res.data == '1'){
-								uni.switchTab({
-								    url: '/pages/index/index'
-								});
-							}
-						}else{ 
-							console.log(res);
-						}
-						
-					},
-					fail: () => {},
-					complete: () => {}
-				});
 			},
 		}
 		

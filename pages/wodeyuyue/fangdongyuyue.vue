@@ -97,7 +97,7 @@
 			
 			del(obj){
 				uni.request({
-					url: this.serverApiUrl+'home/meet/kuai_meet_del', //请求url
+					url: this.serverApiUrl+'home/meet/kuai_fangdong_del', //请求url
 					method: 'POST',               //请求方式
 					data: {id:id},                     //传递的数据
 					success: res => {   //成功执行回调函数

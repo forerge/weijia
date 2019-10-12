@@ -37,7 +37,7 @@
 			<input class="input" type="text" @input="yezhu" :value="list.hname" placeholder="签约姓名(签约合同的乙方姓名)"/>
 		</view>
 		<view class="uploadImgFrame">
-			<columnTitle columnTitle="基本信息(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
+			<columnTitle columnTitle="相关证件照片(发布后不可更改)" backgroundColor="#5E5E5E" color="#fff"/>
 			<view class="uploadImg row-items-center">
 				<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='house'>
 					<view class="uploadImgBtn col-items-center" slot="img-upload" id="imgUploadView1">

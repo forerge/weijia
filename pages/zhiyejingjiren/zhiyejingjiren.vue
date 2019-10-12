@@ -47,7 +47,7 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
 				<text class="text">我的预约</text>
 			</view>
-			<view class="grid-list grid-col-align-center" @click="hetong">
+			<view class="grid-list grid-col-align-center" @click="wodehetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
 			</view>
@@ -150,6 +150,27 @@
 				roleTurn:false
 			}
 		},
+		onPullDownRefresh() {
+			if(this.status == true){
+				uni.request({
+					url: this.serverApiUrl+'home/user/kuai_shuaxin', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id']
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							uni.setStorageSync('weijia_pro', res.data);
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
+			setTimeout(function () {
+				uni.stopPullDownRefresh();
+			}, 2000);
+		},
 		onLoad() {
 			uni.setStorageSync('weijia_role',4);
 		}, 
@@ -170,10 +191,16 @@
 				    url: '../wodeyuyue/fangdongyuyue'
 				});
 			},
-			hetong(){
-				uni.navigateTo({
-				    url: '../wodehetong/wodehetong'
-				});
+			wodehetong(){
+				if(this.role == 1){
+					uni.navigateTo({
+						url: '../wodehetong/wodehetong1'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../wodehetong/fangdonghetong'
+					});
+				}
 			},
 			renzheng(){
 				uni.navigateTo({

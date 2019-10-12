@@ -57,10 +57,11 @@
 								uni.setStorageSync('weijia_pro', result);
 								uni.setStorageSync('weijia_status', true);
 								uni.setStorageSync('weijia_role', 1);
+								uni.switchTab({
+								    url: '/pages/index/index'
+								});
 							}
-							uni.switchTab({
-							    url: '/pages/index/index'
-							});
+							// console.log(uni.getStorageSync('weijia_role'))
 						} else {
 							// console.log(res);
 						}

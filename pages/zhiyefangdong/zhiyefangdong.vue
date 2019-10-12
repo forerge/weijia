@@ -124,6 +124,27 @@
 				roleTurn:false
 			}
 		},
+		onPullDownRefresh() {
+			if(this.status == true){
+				uni.request({
+					url: this.serverApiUrl+'home/user/kuai_shuaxin', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id']
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							uni.setStorageSync('weijia_pro', res.data);
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
+			setTimeout(function () {
+				uni.stopPullDownRefresh();
+			}, 2000);
+		},
 		onLoad() {
 			if(uni.getStorageSync('weijia_role') == 1){
 				uni.redirectTo({

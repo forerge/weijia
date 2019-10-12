@@ -29,7 +29,7 @@
 			<view class="house-right" >＞</view>
 				<!-- </navigator> -->
 		</view>
-		<view class="house-fenlei" >
+		<view class="house-fenlei" @click="weituo" >
 			<view class="house-left">
 				<image class="img" :src="serverImgUrl+'nav07.png'" mode="widthFix"></image>
 			</view>
@@ -37,9 +37,10 @@
 				<view class="house-c-top" >房东委托</view>
 				<view class="house-c-bottom">委托给经纪人，方便又省心</view>
 			</view>
-				<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
-			<view class="house-right" >＞</view>
-				</navigator>
+				<!-- <navigator url="../fangdongweituo/fangdongweituo1" hover-class="none"> -->
+			<view hover-class="none">
+				<view class="house-right" >＞</view>
+			</view>
 		</view>
 		<view class="house-fenlei" >
 			<view class="house-left">
@@ -61,19 +62,47 @@
 		
 		data() {
 			return {
-				serverImgUrl:this.$commonConfig.serverImgUrl
+				serverImgUrl:this.$commonConfig.serverImgUrl,
+				role:''
 			}
 		} ,
+		onLoad() {
+			var status = uni.getStorageSync('weijia_status');
+			this.role = uni.getStorageSync('weijia_role');
+			if(status == false){
+				uni.redirectTo({
+				    url: '../login/login'
+				});
+			}
+		}, 
 		methods: {
 			zhengzu(){
-				uni.navigateTo({
-				    url: '../zhengzhufabu/zhengzhufabu'
-				});
+				if(uni.getStorageSync('weijia_role') == 1){
+					uni.navigateTo({
+						url: '../login/jump-role?message='+'亲！当前角色不能操作此功能！'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../zhengzhufabu/zhengzhufabu'
+					});
+				}
+				
 			},
 			hezu(){
 				uni.navigateTo({
-				    url: '../zhengzhufabu/hezufabu'
+					url: '../zhengzhufabu/hezufabu'
 				});
+			},
+			weituo(){
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else{
+					uni.navigateTo({
+						url: '../zhengzhufabu/fangdongweituo'
+					});
+				}
 			},
 		}
 	}

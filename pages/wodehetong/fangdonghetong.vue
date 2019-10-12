@@ -13,9 +13,10 @@
 							<view class="title">{{val.h_qv}}</view>
 							<view class="description">{{val.h_addr}}</view>
 							<view class="btn-box grid-row-align-space-around-center">
-								<navigator :url="'../fangyuanxiangqing/fangyuanxiangqing2?id='+val.h_id" class="btn ">查看合同</navigator>
-								<text class="btn" v-if="val.o_status == 3">房东已确认</text>
-								<text class="active" v-else>房东未确认</text>
+								<navigator :url="'../fangyuanxiangqing/fangyuanxiangqing2?id='+val.h_id" class="btn ">查看房源</navigator>
+								<text class="active" v-if="val.o_status == 3">租房成交</text>
+								<text class="btn active" @click="chengjiao(val.o_id,val.h_id,val.ou_id,index)" v-else>确认租房</text>
+								<navigator :url="'../wuyejiaojie/wuyejiaojie-shenqing?id='+val.h_id" class="btn active" v-if="val.h_wuye == 1">物业交接</navigator>
 								<text class="btn active" @click="del(val.o_id,index)">删除</text>
 							</view>
 						</view>
@@ -61,18 +62,19 @@
 					complete: () => {}
 				});
 			},
-			del(id,obj){
+			chengjiao(oid,hid,uid,obj){
 				uni.request({
-					url: this.serverApiUrl+'home/order/kuai_order_del', //请求url
+					url: this.serverApiUrl+'home/order/kuai_order_chengjiao', //请求url
 					method: 'POST',               //请求方式 
 					data: {
-						u_id:this.uid,
-						o_id:id,
+						uid:uid,
+						oid:oid,
+						hid:hid,
 					},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
 							if(res.data == 1){
-								this.tuijianContent[obj]['o_level'] = -1;
+								this.tuijianContent[obj]['o_status'] = 3;
 							}
 						}else{ 
 							// console.log(res);
@@ -89,7 +91,7 @@
 			// console.log(this.role);
 			// console.log(this.uid);
 			uni.request({ 
-				url: this.serverApiUrl+'home/order/kuai_list_fangke', //请求url
+				url: this.serverApiUrl+'home/order/kuai_list_fangdong', //请求url
 				method: 'POST',               //请求方式 
 				data: {
 					u_id:this.uid,

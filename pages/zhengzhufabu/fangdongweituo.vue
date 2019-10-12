@@ -13,6 +13,25 @@
 					</imgUpload>
 				</view>
 			</view>
+			<!-- 托管方式和出租方式选择 -->
+			<view class="grid grid-col-2">
+				<view class="grid-list grid-col-align-center" style="padding:1em 0;">
+						<text class="select-title">托管方式</text>
+						<multiSelectorPicker :range="tuoguan" @bindChange="bindChange($event,'tuoguan')">
+							<text class="select-btn" slot="html" style="color:#999;">
+							{{tuoguan[0][tuoguanIndex[0]]||'请选择'}}
+							</text>
+						</multiSelectorPicker>
+				</view>
+				<view class="grid-list grid-col-align-center" style="padding:1em 0;">
+						<text class="select-title">出租方式</text>
+						<multiSelectorPicker :range="chuzu" @bindChange="bindChange($event,'chuzu')">
+							<text class="select-btn" slot="html" style="color:#999;">
+							{{chuzu[0][chuzuIndex[0]]||'请选择'}}
+							</text>
+						</multiSelectorPicker>
+				</view>
+			</view>
 			<columnTitle columnTitle="基本信息"/>
 			<view class="grid grid-col-4 base-msg">
 				<view class="grid-list grid-col-align-center grid-combine-col-4">
@@ -111,8 +130,8 @@
 			</view>
 			<!-- 联系人 -->
 			<!-- <columnTitle columnTitle="联系人"/> -->
-			<view class="grid grid-col-4 base-msg">
-				<!-- <view class="grid-list grid-col-align-center grid-combine-col-2">
+			<!--<view class="grid grid-col-4 base-msg">
+				 <view class="grid-list grid-col-align-center grid-combine-col-2">
 						<input class="select-btn" type="text" value="" placeholder="请填写姓名"/>
 				</view>
 				<view class="grid-list grid-row-align-center grid-combine-col-2">
@@ -132,7 +151,7 @@
 				<view class="grid-list grid-col-align-center  grid-combine-col-4">
 						<text class="select-title">为保护隐私，您的真实号码将被隐藏</text>
 						<text class="select-btn">123-****-789<text class="select-btn-reminder">已验证</text></text>
-				</view> -->
+				</view> 
 				<view class="grid-list grid-col-align-left-center grid-combine-col-3">
 						<text class="select-title">中介勿扰</text>
 						<text class="select-btn">开启后将有效减少中介来电</text>
@@ -147,7 +166,7 @@
 				<view class="grid-list grid-row-align-right-center">
 						<text class="select-btn" @tap="timeRangeShow">{{rangeValue[0]}}:00-{{rangeValue[1]}}:00</text>
 				</view>
-			</view>
+			</view>-->
 			<view url="./zhengzhufabu2" hover-class="none">
 					 <!-- <bigButonYellow big_button_yellow="下一步"/> -->
 				<view style="padding:1em 0;background:#fff;">
@@ -240,6 +259,10 @@
 				ditie:[['无','1号线','2号线','3号线','4号线','5号线','6号线','7号线','8号线','9号线','10号线',
 						'11号线','12号线','13号线','14号线','15号线','16号线','17号线','18号线','19号线','20号线']],
 				ditieIndex:[],
+				tuoguan:[['全权委托','托管待客看房']],
+				tuoguanIndex:[],
+				chuzu:[['整租','合租']],
+				chuzuIndex:[],
 				gender:0, //性别默认选项
 				u_id:'',
 				imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
@@ -283,6 +306,12 @@
 							   break;
 						   case 'ditie':
 							this.ditieIndex=e;
+						   break;
+						   case 'tuoguan':
+						   		this.tuoguanIndex=e;
+						   break;
+						   case 'chuzu':
+						   		this.chuzuIndex=e;
 						   break;
 				     default:
 				        break;
@@ -334,7 +363,7 @@
 				this.house_data.house.h_city = this.city[1];
 				this.house_data.house.h_area = this.city[2];
 				this.house_data.house.in_money = this.checkedVal;
-				this.house_data.house.state = 1;
+				// this.house_data.house.state = 1;
 				this.house_data.house.uid = this.u_id;
 				this.house_data.house.metro_no = this.ditieIndex[0];
 				this.house_data.house.metro_length = e.detail.value.metro_length;
@@ -344,6 +373,8 @@
 				this.house_data.house.listen = '';
 				this.house_data.house.uploads = this.imgSaveUrl['imgUploadView1'];
 				this.house_data.house.name = uni.getStorageSync('weijia_pro')['u_tname'];
+				this.house_data.house.pid = this.tuoguanIndex[0]==0?-1:-2;
+				this.house_data.house.state = this.chuzuIndex[0]+1;
 				
 				uni.setStorageSync('weijia_house',this.house_data)
 				uni.navigateTo({

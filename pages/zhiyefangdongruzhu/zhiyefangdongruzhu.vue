@@ -86,6 +86,7 @@
 			this.u_id = e.id;
 			uni.setStorageSync('weijia_role',3);
 		},
+		
 		methods: {
 			provinceCityAreaChange: function (data) {
 				this.address=data.join('');//逗号将数组拼接为字符串
