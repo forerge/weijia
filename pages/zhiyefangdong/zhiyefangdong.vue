@@ -125,7 +125,7 @@
 			}
 		},
 		onPullDownRefresh() {
-			if(this.status == true){
+			if(uni.getStorageSync('weijia_status') == true){
 				uni.request({
 					url: this.serverApiUrl+'home/user/kuai_shuaxin', //请求url
 					method: 'POST',               //请求方式 
@@ -143,7 +143,7 @@
 			}
 			setTimeout(function () {
 				uni.stopPullDownRefresh();
-			}, 2000);
+			}, 1000);
 		},
 		onLoad() {
 			if(uni.getStorageSync('weijia_role') == 1){

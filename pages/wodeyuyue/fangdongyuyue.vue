@@ -1,5 +1,10 @@
 <template>
     <view>
+		<view  class="header" v-if='tuijianContent == 0'>
+			<image class="img" :src="serverImgUrl+'no-contract.png'" mode="widthFix"></image>
+			<view class="text">亲你目前暂无预约</view>
+		</view>
+		<view v-else>
 		<block v-for="(val,index) in tuijianContent" :key="index">
 			<view class="grid grid-col-2 fangdongyuyue-box">
 				<view class="grid-list grid-combine-col-2">
@@ -34,6 +39,7 @@
 				</view>
 			</view>
 		</block>
+    </view>
     </view>
 </template>
 
@@ -144,5 +150,18 @@
 				}
 			}
 		}
-	}				
+	}		
+			.header{
+				.img{
+					display: block;
+					width:30%;
+					margin:100rpx auto 0;
+				}
+				.text{
+					line-height:90px;
+					text-align: center;
+					color:#F98747;
+				}
+			}
+			
 </style>

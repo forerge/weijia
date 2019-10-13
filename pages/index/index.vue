@@ -164,7 +164,7 @@
 		onLoad() {
 			console.log(uni.getStorageSync('weijia_status'));
 			console.log(uni.getStorageSync('weijia_role'));
-			console.log(uni.getStorageSync('weijia_pro'));
+			console.log(uni.getStorageSync('weijia_pro')['u_tname']);
 			this.status = uni.getStorageSync('weijia_status');
 			if(this.status == true){
 				this.role = uni.getStorageSync('weijia_role')
@@ -199,11 +199,6 @@
 			// uni.setStorageSync('weijia_status', false);
 		}, 
 		onPullDownRefresh() {
-			// var role = uni.getStorageSync('weijia_role');
-			
-			
-			// this.role = uni.getStorageSync('weijia_role')
-			// console.log(role);
 			if(this.status == true){
 				uni.request({
 					url: this.serverApiUrl+'home/user/kuai_shuaxin', //请求url
@@ -302,11 +297,11 @@
 				}else{
 					if(uni.getStorageSync('weijia_role') == 1){
 						uni.navigateTo({
-							url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
+							url: '../wodeyuyue/wodeyuyue'
 						});
 					}else{
 						uni.navigateTo({
-							url: '../wodeyuyue/fangdongyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']+'&role='+uni.getStorageSync('weijia_role')
+							url: '../wodeyuyue/fangdongyuyue'
 						});
 					}
 					
